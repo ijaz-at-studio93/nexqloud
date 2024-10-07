@@ -9,7 +9,7 @@ const Color kBlueColor = Color(0xFF0014FF);
 const Color kPurpleColor = Color(0xFF8020EF);
 const Color kPinkColor = Color(0xFFFF2CDF);
 
-const Color backGroundColor = Color(0xFF221F3A);
+const Color kBackgroundColor = Color(0xFF0B1228);
 const Color textFieldFillColor = Color(0xFF3a3661);
 const Color textFieldHintColor = Color(0xFF867890);
 const Color textFieldIconColor = Color(0xFF867890);
@@ -54,7 +54,7 @@ Color zerotextcolor = const Color(0xFFFFCDEA).withOpacity(0.2);
 
 Color smallLineGraphColor = const Color(0xFFFFFFFF).withOpacity(0.05);
 Color bigLineGraphColor = const Color(0xFF373070);
-const Color barChartGridColor = const Color.fromRGBO(114, 114, 114, 1);
+const Color barChartGridColor = Color.fromRGBO(114, 114, 114, 1);
 
 const Color deviceOnlineColor = Color(0x00fa9f42);
 const Color deviceOnlineDarkColor = Color(0xFFFA9F42);
@@ -110,8 +110,6 @@ LinearGradient linearGradient2 = LinearGradient(
 );
 
 const LinearGradient linearGradient3 = LinearGradient(
-  begin: Alignment.centerLeft,
-  end: Alignment.centerRight,
   colors: [
     gradientColorOne,
     gradientColorThree,
@@ -148,8 +146,8 @@ const LinearGradient graphGradient = LinearGradient(
 );
 
 const LinearGradient lightgraphGradient = LinearGradient(
-  begin: Alignment(0.0, -0.4),
-  end: Alignment(0.0, 0.9),
+  begin: Alignment(0, -0.4),
+  end: Alignment(0, 0.9),
   colors: [Color(0x40727272), Color(0x00727272)],
 );
 
@@ -164,21 +162,24 @@ const shimmerGradient = LinearGradient(
     0.3,
     0.4,
   ],
-  begin: Alignment(-1.0, -0.3),
+  begin: Alignment(-1, -0.3),
   end: Alignment(1, 0.3),
 );
 
-const shimmerGradient2 =
-    LinearGradient(begin: Alignment.topLeft, colors: <Color>[
-  Color(0xff3F376C),
-  Color(0xff3F376C),
-  Color.fromARGB(255, 70, 60, 121),
-  Color(0xff3F376C),
-  Color(0xff3F376C),
-], stops: const <double>[
-  0,
-  0.35,
-  0.5,
-  0.65,
-  1.0,
-]);
+const shimmerGradient2 = LinearGradient(
+  begin: Alignment.topLeft,
+  colors: <Color>[
+    Color(0xff3F376C),
+    Color(0xff3F376C),
+    Color.fromARGB(255, 70, 60, 121),
+    Color(0xff3F376C),
+    Color(0xff3F376C),
+  ],
+  stops: <double>[
+    0,
+    0.35,
+    0.5,
+    0.65,
+    1,
+  ],
+);
