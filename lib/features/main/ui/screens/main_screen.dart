@@ -1,6 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:syncfusion_flutter_charts/charts.dart' hide CornerStyle;
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:syncfusion_flutter_maps/maps.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
@@ -8,9 +13,6 @@ import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/core/ui/widgets/blurred_background.dart';
 import 'package:nexqloud/core/ui/widgets/custom_gradient_button.dart';
 import 'package:nexqloud/core/utils/app_text_styles.dart';
-import 'package:nexqloud/features/main/ui/widgets/counter_controls.dart';
-import 'package:nexqloud/features/main/ui/widgets/counter_display.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -58,40 +60,119 @@ class _MainScreenState extends State<MainScreen> {
             child: Image.asset('assets/images/png/top_right.png'),
           ),
           Center(
-            child: Column(
-              children: <Widget>[
-                const Space.vertical(45),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: context.height * 0.1,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/svg/nex_logo.svg',
-                        height: 24,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: GradientBoxBorder(
-                            gradient: LinearGradient(
-                              colors: [
-                                const Color(0xFF4e65b3).withOpacity(0.5),
-                                kTransparent,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  const Space.vertical(45),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.height * 0.1,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/svg/nex_logo.svg',
+                          height: 24,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 20),
+                          decoration: BoxDecoration(
+                            border: GradientBoxBorder(
+                              gradient: LinearGradient(
+                                colors: [
+                                  const Color(0xFF4e65b3).withOpacity(0.5),
+                                  kTransparent,
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                            ),
+                            borderRadius: BorderRadius.circular(1000),
+                          ),
+                          height: 45,
+                          child: BlurredBackground(
+                            blurColorFilter: kWhite.withOpacity(0.2),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                TextButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        WidgetStateProperty.all(kTransparent),
+                                  ),
+                                  onPressed: null,
+                                  child: Text(
+                                    'How it works',
+                                    style: context.normal?.copyWith(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                const Space.horizontal(25),
+                                TextButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        WidgetStateProperty.all(kTransparent),
+                                  ),
+                                  onPressed: null,
+                                  child: Text(
+                                    'Features',
+                                    style: context.normal?.copyWith(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                const Space.horizontal(25),
+                                TextButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        WidgetStateProperty.all(kTransparent),
+                                  ),
+                                  onPressed: null,
+                                  child: Text(
+                                    'Platform',
+                                    style: context.normal?.copyWith(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                const Space.horizontal(25),
+                                TextButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        WidgetStateProperty.all(kTransparent),
+                                  ),
+                                  onPressed: null,
+                                  child: Text(
+                                    'FAQs',
+                                    style: context.normal?.copyWith(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                const Space.horizontal(25),
+                                TextButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        WidgetStateProperty.all(kTransparent),
+                                  ),
+                                  onPressed: null,
+                                  child: Text(
+                                    'Solution',
+                                    style: context.normal?.copyWith(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
                               ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
                             ),
                           ),
-                          borderRadius: BorderRadius.circular(1000),
                         ),
-                        height: 45,
-                        child: BlurredBackground(
-                          blurColorFilter: kWhite.withOpacity(0.2),
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                        Container(
+                          margin: const EdgeInsets.only(left: 20),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               TextButton(
                                 style: ButtonStyle(
@@ -99,200 +180,166 @@ class _MainScreenState extends State<MainScreen> {
                                       WidgetStateProperty.all(kTransparent),
                                 ),
                                 onPressed: () {},
-                                child: Text(
-                                  'How it works',
-                                  style: context.normal?.copyWith(
-                                    fontSize: 18,
-                                  ),
+                                child: const Text(
+                                  'Sign up',
+                                  style: AppTextStyles.medium,
                                 ),
                               ),
-                              const Space.horizontal(25),
-                              TextButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      WidgetStateProperty.all(kTransparent),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  'Features',
-                                  style: context.normal?.copyWith(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ),
-                              const Space.horizontal(25),
-                              TextButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      WidgetStateProperty.all(kTransparent),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  'Platform',
-                                  style: context.normal?.copyWith(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ),
-                              const Space.horizontal(25),
-                              TextButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      WidgetStateProperty.all(kTransparent),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  'FAQs',
-                                  style: context.normal?.copyWith(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ),
-                              const Space.horizontal(25),
-                              TextButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      WidgetStateProperty.all(kTransparent),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  'Solution',
-                                  style: context.normal?.copyWith(
-                                    fontSize: 18,
-                                  ),
+                              const Space.horizontal(24),
+                              SizedBox(
+                                width: 120,
+                                child: CustomGradientButton(
+                                  title: 'Sign In',
+                                  onTap: () {},
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      Row(
-                        children: [
-                          TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  WidgetStateProperty.all(kTransparent),
-                            ),
-                            onPressed: () {},
-                            child: const Text(
-                              'Sign up',
-                              style: AppTextStyles.medium,
-                            ),
-                          ),
-                          const Space.horizontal(24),
-                          SizedBox(
-                            width: 120,
-                            child: CustomGradientButton(
-                              title: 'Sign In',
-                              onTap: () {},
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const Space.vertical(45),
-                Container(
-                  height: context.height * 0.7,
-                  width: context.width * 0.7,
-                  decoration: BoxDecoration(
-                    border: GradientBoxBorder(
-                      gradient: LinearGradient(
-                        colors: [
-                          kWhite.withOpacity(0.3),
-                          kTransparent,
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
+                      ],
                     ),
-                    borderRadius: BorderRadius.circular(30),
                   ),
-                  child: DecoratedBox(
+                  const Space.vertical(45),
+                  Container(
+                    height: context.height * 0.58,
+                    width: context.width * 0.7,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      gradient: LinearGradient(
-                        colors: [
-                          kWhite.withOpacity(0.1),
-                          kTransparent,
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
+                      border: GradientBoxBorder(
+                        gradient: LinearGradient(
+                          colors: [
+                            kWhite.withOpacity(0.3),
+                            kTransparent,
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
                       ),
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(38),
-                      child: Column(
-                        children: [
-                          Text(
-                            'NEXQLOUD INSIGHTS',
-                            style: context.semiBold?.copyWith(
-                              fontSize: 32,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        gradient: LinearGradient(
+                          colors: [
+                            kWhite.withOpacity(0.1),
+                            kTransparent,
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(38),
+                        child: Column(
+                          children: [
+                            Text(
+                              'NEXQLOUD INSIGHTS',
+                              style: context.semiBold?.copyWith(
+                                fontSize: 32,
+                              ),
                             ),
-                          ),
-                          const Space.vertical(10),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '65',
-                                  style: context.bold?.copyWith(
-                                    fontSize: 24,
-                                    color: graphlinecolor2,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: ' Active Provider Devices',
-                                  style: context.light?.copyWith(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Space.vertical(20),
-                          SizedBox(
-                            height: context.height * 0.4,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: SfMaps(
-                                layers: <MapLayer>[
-                                  MapShapeLayer(
-                                    source: _dataSource,
-                                    initialMarkersCount: 5,
-                                    zoomPanBehavior: MapZoomPanBehavior(
-                                      enableDoubleTapZooming: true,
-                                      zoomLevel: 2,
-                                      toolbarSettings: const MapToolbarSettings(
-                                        itemBackgroundColor: graphlinecolor2,
-                                        iconColor: kWhite,
-                                        itemHoverColor: kPurpleColor,
-                                        direction: Axis.vertical,
-                                        position:
-                                            MapToolbarPosition.bottomRight,
-                                      ),
+                            const Space.vertical(10),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '65',
+                                    style: context.bold?.copyWith(
+                                      fontSize: 24,
+                                      color: graphlinecolor2,
                                     ),
-                                    markerBuilder: (context, index) {
-                                      return MapMarker(
-                                        latitude: _data[index].latitude,
-                                        longitude: _data[index].longitude,
-                                        size: const Size(10, 10),
-                                        iconColor:
-                                            graphlinecolor2.withOpacity(0.8),
-                                      );
-                                    },
+                                  ),
+                                  TextSpan(
+                                    text: ' Active Provider Devices',
+                                    style: context.light?.copyWith(
+                                      fontSize: 18,
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                        ],
+                            const Space.vertical(20),
+                            SizedBox(
+                              height: context.height * 0.4,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: SfMaps(
+                                  layers: <MapLayer>[
+                                    MapShapeLayer(
+                                      source: _dataSource,
+                                      initialMarkersCount: 5,
+                                      zoomPanBehavior: MapZoomPanBehavior(
+                                        enableDoubleTapZooming: true,
+                                        zoomLevel: 2,
+                                        toolbarSettings:
+                                            const MapToolbarSettings(
+                                          itemBackgroundColor: graphlinecolor2,
+                                          iconColor: kWhite,
+                                          itemHoverColor: kPurpleColor,
+                                          direction: Axis.vertical,
+                                          position:
+                                              MapToolbarPosition.bottomRight,
+                                        ),
+                                      ),
+                                      markerBuilder: (context, index) {
+                                        return MapMarker(
+                                          latitude: _data[index].latitude,
+                                          longitude: _data[index].longitude,
+                                          size: const Size(10, 10),
+                                          iconColor:
+                                              graphlinecolor2.withOpacity(0.8),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+
+                  ///gauges
+                  const Space.vertical(34),
+                  SizedBox(
+                    height: context.height * 0.58,
+                    width: context.width * 0.7,
+                    child: const Row(
+                      children: [
+                        CircularGauge(
+                          value: '4.126',
+                          progress: 40,
+                          unit: 'GBit/s',
+                          title: 'Disk Reads',
+                        ),
+                        Space.horizontal(8),
+                        CircularGauge(
+                          value: '8.098',
+                          progress: 60,
+                          unit: 'MBit/s',
+                          title: 'Disk Writes',
+                        ),
+                        Space.horizontal(8),
+                        CircularGauge(
+                          value: '4.126',
+                          progress: 40,
+                          unit: 'GBit/s',
+                          title: 'Network Outbound',
+                        ),
+                        Space.horizontal(8),
+                        CircularGauge(
+                          value: '8.098',
+                          progress: 60,
+                          unit: 'MBit/s',
+                          title: 'Network Inbound',
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -307,4 +354,198 @@ class Model {
   final String country;
   final double latitude;
   final double longitude;
+}
+
+class CircularGauge extends StatelessWidget {
+  const CircularGauge({
+    super.key,
+    required this.value,
+    required this.progress,
+    required this.unit,
+    required this.title,
+  });
+  final String value;
+  final double progress;
+  final String unit;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 180,
+          padding: const EdgeInsets.only(bottom: 16),
+          decoration: BoxDecoration(
+            color: kWhite.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 144,
+                child: SfRadialGauge(
+                  axes: <RadialAxis>[
+                    RadialAxis(
+                      startAngle: -90,
+                      endAngle: 270,
+                      radiusFactor: 0.8,
+                      showFirstLabel: false,
+                      showLabels: false,
+                      showTicks: false,
+                      annotations: [
+                        GaugeAnnotation(
+                          widget: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                value, //'4.126'
+                                style: context.bold?.copyWith(
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Text(
+                                unit, //'GBit/s'
+                                style: context.normal?.copyWith(
+                                  fontSize: 10,
+                                  color: const Color(0xFFBFBFBF),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                      axisLineStyle: const AxisLineStyle(
+                        thickness: 0.15,
+                        color: Color(0xFFEEEEEE),
+                        thicknessUnit: GaugeSizeUnit.factor,
+                      ),
+                      pointers: <GaugePointer>[
+                        RangePointer(
+                          enableAnimation: true,
+                          animationDuration: 1600,
+                          value: progress, // 40
+                          width: 0.15,
+                          sizeUnit: GaugeSizeUnit.factor,
+                          cornerStyle: CornerStyle.bothCurve,
+                          gradient: const SweepGradient(
+                            colors: <Color>[
+                              Color(0xFF9933FF),
+                              Color(0xFF3C30C4),
+                            ],
+                            stops: <double>[0.25, 0.75],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                title, //'Disk Reads'
+                style: context.normal?.copyWith(
+                  fontSize: 12,
+                  color: const Color(0xFFBFBFBF),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          width: 180,
+          decoration: BoxDecoration(
+            color: kWhite.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Column(
+            children: [
+              const Space.vertical(32),
+              Text(
+                '328',
+                style: context.bold?.copyWith(fontSize: 32),
+              ),
+              Text(
+                'Devices Online',
+                style: context.normal?.copyWith(
+                  fontSize: 12,
+                  color: const Color(0xFFBFBFBF),
+                ),
+              ),
+              const SizedBox(
+                height: 200,
+                child: DummyAreaChart(),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class DummyAreaChart extends StatelessWidget {
+  const DummyAreaChart({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final chartData = <ChartData>[
+      ChartData(1924, 400),
+      ChartData(1925, 410),
+      ChartData(1926, 405),
+      ChartData(1927, 410),
+      ChartData(1928, 350),
+      ChartData(1929, 370),
+      ChartData(1930, 500),
+      ChartData(1931, 390),
+      ChartData(1932, 450),
+      ChartData(1933, 440),
+      ChartData(1934, 350),
+      ChartData(1935, 370),
+      ChartData(1936, 480),
+      ChartData(1937, 410),
+      ChartData(1938, 530),
+      ChartData(1939, 520),
+      ChartData(1940, 390),
+      ChartData(1941, 360),
+      ChartData(1942, 405),
+      ChartData(1943, 400),
+    ];
+    final color = <Color>[];
+    color.add(Colors.blue[50]!);
+    color.add(Colors.blue[200]!);
+    color.add(Colors.blue);
+
+    final stops = <double>[];
+    stops.add(0);
+    stops.add(0.5);
+    stops.add(1);
+
+    final gradientColors = LinearGradient(colors: color, stops: stops);
+
+    return SfCartesianChart(
+      enableSideBySideSeriesPlacement: false,
+      primaryYAxis: const NumericAxis(
+        isVisible: false,
+      ),
+      primaryXAxis: const NumericAxis(
+        isVisible: false,
+      ),
+      plotAreaBorderColor: kTransparent,
+      series: <CartesianSeries>[
+        AreaSeries<ChartData, int>(
+          enableTooltip: false,
+          dataSource: chartData,
+          xValueMapper: (data, _) => data.x,
+          yValueMapper: (data, _) => data.y,
+          gradient: gradientColors,
+        ),
+      ],
+    );
+  }
+}
+
+class ChartData {
+  ChartData(this.x, this.y);
+  final int x;
+  final int y;
 }
