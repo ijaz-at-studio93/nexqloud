@@ -2,10 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:syncfusion_flutter_charts/charts.dart' hide CornerStyle;
-import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
-
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
@@ -13,6 +9,10 @@ import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/core/ui/widgets/blurred_background.dart';
 import 'package:nexqloud/core/ui/widgets/custom_gradient_button.dart';
 import 'package:nexqloud/core/utils/app_text_styles.dart';
+import 'package:syncfusion_flutter_charts/charts.dart' hide CornerStyle;
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:syncfusion_flutter_maps/maps.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -59,6 +59,22 @@ class _MainScreenState extends State<MainScreen> {
             top: -200,
             child: Image.asset('assets/images/png/top_right.png'),
           ),
+          Positioned(
+            left: 100,
+            top: -300,
+            child: Image.asset('assets/images/png/top_right.png'),
+          ),
+          Positioned(
+            left: -500,
+            top: 100,
+            child: Image.asset('assets/images/png/right.png'),
+          ),
+          Positioned(
+            top: 50,
+            right: -100,
+            // left: -200,
+            child: Image.asset('assets/images/png/left.png'),
+          ),
           Center(
             child: SingleChildScrollView(
               child: Column(
@@ -73,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
                       children: [
                         SvgPicture.asset(
                           'assets/icons/svg/nex_logo.svg',
-                          height: 24,
+                          height: 32,
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 20),
@@ -87,10 +103,11 @@ class _MainScreenState extends State<MainScreen> {
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                               ),
+                              width: 1.5,
                             ),
                             borderRadius: BorderRadius.circular(1000),
                           ),
-                          height: 45,
+                          height: 54,
                           child: BlurredBackground(
                             blurColorFilter: kWhite.withOpacity(0.2),
                             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -106,7 +123,7 @@ class _MainScreenState extends State<MainScreen> {
                                   child: Text(
                                     'How it works',
                                     style: context.normal?.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -120,7 +137,7 @@ class _MainScreenState extends State<MainScreen> {
                                   child: Text(
                                     'Features',
                                     style: context.normal?.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -134,7 +151,7 @@ class _MainScreenState extends State<MainScreen> {
                                   child: Text(
                                     'Platform',
                                     style: context.normal?.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -148,7 +165,7 @@ class _MainScreenState extends State<MainScreen> {
                                   child: Text(
                                     'FAQs',
                                     style: context.normal?.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -162,7 +179,7 @@ class _MainScreenState extends State<MainScreen> {
                                   child: Text(
                                     'Solution',
                                     style: context.normal?.copyWith(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -451,6 +468,7 @@ class CircularGauge extends StatelessWidget {
             ],
           ),
         ),
+        const Space.vertical(15),
         Container(
           width: 180,
           decoration: BoxDecoration(
@@ -472,7 +490,7 @@ class CircularGauge extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 200,
+                height: 100,
                 child: DummyAreaChart(),
               ),
             ],
@@ -521,6 +539,21 @@ class DummyAreaChart extends StatelessWidget {
     stops.add(1);
 
     final gradientColors = LinearGradient(colors: color, stops: stops);
+
+    return SfSparkAreaChart(data: [
+      233,
+      323,
+      42,
+      23,
+      523,
+      212,
+      535,
+      564,
+      34,
+      23,
+      23,
+      2,
+    ], color: kBlueColor);
 
     return SfCartesianChart(
       enableSideBySideSeriesPlacement: false,
