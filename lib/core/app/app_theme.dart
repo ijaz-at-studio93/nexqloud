@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:nexqloud/core/app/colors.dart';
+import 'package:nexqloud/core/constants/colors.dart';
 
 class AppTheme {
   AppTheme._();
