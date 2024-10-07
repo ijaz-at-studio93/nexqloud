@@ -16,11 +16,13 @@ dependencies:
   provider: ^6.1.2
   flutter_svg: ^2.0.10+1
   gradient_borders: ^1.0.1
+  flutter_glow: ^0.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  flutter_inset_box_shadow: ^1.0.8
 
   yaml: any
 flutter:
