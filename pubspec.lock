@@ -116,7 +116,7 @@ packages:
     source: hosted
     version: "0.3.2"
   flutter_inset_box_shadow:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_inset_box_shadow
       sha256: "0b1930ed5f4ad84b11b41dda907fbc5d4c12929a4c51455c626e5937b47ffb93"
@@ -362,6 +362,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      sha256: "95a53df168fd4473bbf23c481db656db97434d18d60f59fbeec97a754794f7b5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.51"
+  syncfusion_flutter_maps:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_maps
+      sha256: "55fb3499de25ff720744fc70c73de6af0589eb26d32564e19e16ec44f475ac23"
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.51"
   term_glyph:
     dependency: transitive
     description:

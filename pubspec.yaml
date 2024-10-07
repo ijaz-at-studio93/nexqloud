@@ -17,12 +17,13 @@ dependencies:
   flutter_svg: ^2.0.10+1
   gradient_borders: ^1.0.1
   flutter_glow: ^0.3.2
+  flutter_inset_box_shadow: ^1.0.8
+  syncfusion_flutter_maps: ^27.1.51
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-  flutter_inset_box_shadow: ^1.0.8
 
   yaml: any
 flutter:
@@ -30,4 +31,18 @@ flutter:
 
   assets:
     - assets/icons/svg/
+    - assets/images/png/
+    - assets/images/svg/
     - assets/fonts/rubik/
+    - assets/json/
+
+
+  fonts:
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/rubik/Rubik-Bold.ttf
+        - asset: assets/fonts/rubik/Rubik-ExtraBold.ttf
+        - asset: assets/fonts/rubik/Rubik-Light.ttf
+        - asset: assets/fonts/rubik/Rubik-Medium.ttf
+        - asset: assets/fonts/rubik/Rubik-Regular.ttf
+        - asset: assets/fonts/rubik/Rubik-SemiBold.ttf
