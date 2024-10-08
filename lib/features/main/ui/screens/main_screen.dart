@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:nexqloud/core/extensions/log.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
@@ -199,7 +201,7 @@ class _MainScreenState extends State<MainScreen> {
                                   backgroundColor:
                                       WidgetStateProperty.all(kTransparent),
                                 ),
-                                onPressed: () {},
+                                onPressed: null,
                                 child: const Text(
                                   'Sign up',
                                   style: AppTextStyles.medium,
@@ -210,7 +212,9 @@ class _MainScreenState extends State<MainScreen> {
                                 width: 120,
                                 child: CustomGradientButton(
                                   title: 'Sign In',
-                                  onTap: () {},
+                                  onTap: () {
+                                    'Sign In'.printInfo();
+                                  },
                                 ),
                               ),
                             ],
@@ -288,25 +292,159 @@ class _MainScreenState extends State<MainScreen> {
                                     shapeHoverColor: kTransparent,
                                     shapeHoverStrokeColor:
                                         kWhite.withOpacity(0.22),
-                                    shapeHoverStrokeWidth: 1,
+                                    tooltipColor: kWhite.withOpacity(0.2),
+                                    tooltipStrokeColor: kWhite.withOpacity(0.1),
+                                    tooltipBorderRadius:
+                                        BorderRadius.circular(15),
                                   ),
                                   child: SfMaps(
                                     layers: <MapLayer>[
                                       MapShapeLayer(
-                                        strokeWidth: 1,
+                                        strokeWidth: 0,
                                         source: _dataSource,
                                         initialMarkersCount: _data.length,
                                         color: kWhite.withOpacity(0.2),
                                         strokeColor: kWhite.withOpacity(0.22),
                                         markerTooltipBuilder: (context, index) {
                                           return Padding(
-                                            padding: const EdgeInsets.all(8),
-                                            child: Text(
-                                              _data[index].country,
-                                              style: context.normal,
+                                            padding: const EdgeInsets.all(12),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        Container(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(
+                                                            4,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                              7,
+                                                            ),
+                                                            color: const Color(
+                                                              0xffa2dcff,
+                                                            ).withOpacity(
+                                                              0.2,
+                                                            ),
+                                                          ),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            'assets/icons/svg/money_icon.svg',
+                                                            height: 18,
+                                                          ),
+                                                        ),
+                                                        const Space.horizontal(
+                                                          12,
+                                                        ),
+                                                        Text(
+                                                          _data[index].country,
+                                                          style: context.medium
+                                                              ?.copyWith(
+                                                            fontSize: 16,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    const Space.horizontal(80),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        Image.asset(
+                                                          'assets/icons/png/online_icon.png',
+                                                        ),
+                                                        const Space.horizontal(
+                                                          6,
+                                                        ),
+                                                        Text(
+                                                          _data[index].country,
+                                                          style: context.medium,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                                const Space.vertical(18),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    _buildDetailRow(
+                                                      'Uptime:',
+                                                      '99.87%',
+                                                    ),
+                                                    const Space.horizontal(24),
+                                                    _buildDetailRow(
+                                                      'Uptime:',
+                                                      '99.87%',
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    _buildDetailRow(
+                                                      'Region:',
+                                                      'US-E1',
+                                                    ),
+                                                    const Space.horizontal(24),
+                                                    _buildDetailRow(
+                                                      'Region:',
+                                                      'US-E1',
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    _buildDetailRow(
+                                                      'Cores:',
+                                                      '32',
+                                                    ),
+                                                    const Space.horizontal(24),
+                                                    _buildDetailRow(
+                                                      'Cores:',
+                                                      '32',
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    _buildDetailRow(
+                                                      'Memory:',
+                                                      '64GB',
+                                                    ),
+                                                    const Space.horizontal(24),
+                                                    _buildDetailRow(
+                                                      'Memory:',
+                                                      '64GB',
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
                                           );
                                         },
+                                        //   return const ServerStatusCard();
+                                        // },
                                         zoomPanBehavior: MapZoomPanBehavior(
                                           enableDoubleTapZooming: true,
                                           zoomLevel: 1.2,
@@ -349,40 +487,70 @@ class _MainScreenState extends State<MainScreen> {
                     width: context.width * 0.7,
                     child: const Row(
                       children: [
-                        CircularGauge(
-                          value: '4.126',
-                          progress: 40,
-                          unit: 'GBit/s',
-                          title: 'Disk Reads',
-                          subCardTitle: 'Devices Online',
-                          subCardValue: '65',
+                        Expanded(
+                          child: CircularGauge(
+                            value: '4.126',
+                            progress: 40,
+                            unit: 'GBit/s',
+                            title: 'Disk Reads',
+                            subCardTitle: 'Devices Online',
+                            subCardValue: '65',
+                          ),
                         ),
                         Space.horizontal(8),
-                        CircularGauge(
-                          value: '8.098',
-                          progress: 60,
-                          unit: 'MBit/s',
-                          title: 'Disk Writes',
-                          subCardTitle: 'Total vCPU Cores',
-                          subCardValue: '8.64K',
+                        Expanded(
+                          child: CircularGauge(
+                            value: '8.098',
+                            progress: 60,
+                            unit: 'MBit/s',
+                            title: 'Disk Writes',
+                            subCardTitle: 'Total vCPU Cores',
+                            subCardValue: '8.64K',
+                          ),
                         ),
                         Space.horizontal(8),
-                        CircularGauge(
-                          value: '4.126',
-                          progress: 40,
-                          unit: 'GBit/s',
-                          title: 'Network Outbound',
-                          subCardTitle: "Total AI GPU's",
-                          subCardValue: '298',
+                        Expanded(
+                          child: NeedleCircularGauge(
+                            title: '',
+                            progress: 60,
+                            unit: 'vCPU  Utilization',
+                            value: 'CPU',
+                            subCardTitle: 'Total vCPU Cores',
+                            subCardValue: '8.64K',
+                          ),
                         ),
                         Space.horizontal(8),
-                        CircularGauge(
-                          value: '8.098',
-                          progress: 60,
-                          unit: 'MBit/s',
-                          title: 'Network Inbound',
-                          subCardTitle: 'Average Bandwidth',
-                          subCardValue: '0.8 Gb/s',
+                        Expanded(
+                          child: NeedleCircularGauge(
+                            value: 'RAM',
+                            progress: 40,
+                            unit: 'Memory Used',
+                            title: '',
+                            subCardTitle: "Total AI GPU's",
+                            subCardValue: '298',
+                          ),
+                        ),
+                        Space.horizontal(8),
+                        Expanded(
+                          child: CircularGauge(
+                            value: '4.126',
+                            progress: 40,
+                            unit: 'GBit/s',
+                            title: 'Network Outbound',
+                            subCardTitle: "Total AI GPU's",
+                            subCardValue: '298',
+                          ),
+                        ),
+                        Space.horizontal(8),
+                        Expanded(
+                          child: CircularGauge(
+                            value: '8.098',
+                            progress: 60,
+                            unit: 'MBit/s',
+                            title: 'Network Inbound',
+                            subCardTitle: 'Average Bandwidth',
+                            subCardValue: '0.8 Gb/s',
+                          ),
                         ),
                       ],
                     ),
@@ -392,6 +560,37 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildDetailRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: SizedBox(
+        width: context.height * 0.12,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Label
+            Flexible(
+              child: Text(
+                label,
+                overflow: TextOverflow.ellipsis,
+                style: context.light,
+              ),
+            ),
+            // Value
+            Flexible(
+              child: Text(
+                value,
+                overflow: TextOverflow.ellipsis,
+                style: context.light,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -427,7 +626,7 @@ class CircularGauge extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 180,
+          // width: 180,
           padding: const EdgeInsets.only(bottom: 16),
           decoration: BoxDecoration(
             color: kWhite.withOpacity(0.05),
@@ -499,15 +698,171 @@ class CircularGauge extends StatelessWidget {
                 title, //'Disk Reads'
                 style: context.normal?.copyWith(
                   fontSize: 12,
-                  color: const Color(0xFFBFBFBF),
                 ),
               ),
             ],
           ),
         ),
-        const Space.vertical(15),
+        const Space.vertical(6),
+        DecoratedBox(
+          // width: 180,
+          decoration: BoxDecoration(
+            color: kWhite.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: kWhite.withOpacity(0.1), width: 0.5),
+          ),
+          child: Column(
+            children: [
+              const Space.vertical(32),
+              Text(
+                subCardValue,
+                style: context.bold?.copyWith(fontSize: 32),
+              ),
+              Text(
+                subCardTitle,
+                style: context.normal?.copyWith(
+                  fontSize: 12,
+                  color: const Color(0xFFBFBFBF),
+                ),
+              ),
+              const SizedBox(
+                height: 80,
+                child: CustomLineChart(),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class NeedleCircularGauge extends StatelessWidget {
+  const NeedleCircularGauge({
+    super.key,
+    required this.value,
+    required this.progress,
+    required this.unit,
+    required this.title,
+    required this.subCardTitle,
+    required this.subCardValue,
+  });
+  final String value;
+  final double progress;
+  final String unit;
+  final String title;
+  final String subCardTitle;
+  final String subCardValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
         Container(
-          width: 180,
+          // width: 180,
+          padding: const EdgeInsets.only(bottom: 16),
+          decoration: BoxDecoration(
+            color: kWhite.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: kWhite.withOpacity(0.2), width: 0.5),
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 144,
+                child: SfRadialGauge(
+                  axes: <RadialAxis>[
+                    RadialAxis(
+                      // startAngle: -90,
+                      // endAngle: 270,
+                      // radiusFactor: 0.9,
+                      showFirstLabel: false,
+                      showLabels: false,
+                      tickOffset: 2,
+                      minorTicksPerInterval: 3,
+                      majorTickStyle: const MajorTickStyle(
+                        length: 0.1,
+                        color: kWhite,
+                        lengthUnit: GaugeSizeUnit.factor,
+                      ),
+                      minorTickStyle: const MinorTickStyle(
+                        length: 0.05,
+                        color: kWhite,
+                        lengthUnit: GaugeSizeUnit.factor,
+                      ),
+                      annotations: [
+                        GaugeAnnotation(
+                          angle: 90,
+                          positionFactor: 0.9,
+                          widget: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                value, //'4.126'
+                                style: context.bold?.copyWith(
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Text(
+                                unit, //'GBit/s'
+                                style: context.normal?.copyWith(
+                                  fontSize: 10,
+                                  color: const Color(0xFFBFBFBF),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                      axisLineStyle: const AxisLineStyle(
+                        thickness: 0.15,
+                        color: Color(0xFFEEEEEE),
+                        thicknessUnit: GaugeSizeUnit.factor,
+                      ),
+                      pointers: <GaugePointer>[
+                        NeedlePointer(
+                          enableAnimation: true,
+                          animationDuration: 1600,
+                          value: progress, // 40
+                          needleColor: const Color(0xFF8052FF),
+                          needleEndWidth: 4,
+                          needleStartWidth: 0,
+                          knobStyle: const KnobStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        RangePointer(
+                          enableAnimation: true,
+                          animationDuration: 1600,
+                          value: progress, // 40
+                          width: 0.15,
+                          sizeUnit: GaugeSizeUnit.factor,
+                          cornerStyle: CornerStyle.endCurve,
+                          gradient: const SweepGradient(
+                            colors: <Color>[
+                              Color(0xFF9933FF),
+                              Color(0xFF3C30C4),
+                            ],
+                            stops: <double>[0.25, 0.75],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                title, //'Disk Reads'
+                style: context.normal?.copyWith(
+                  fontSize: 12,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Space.vertical(6),
+        DecoratedBox(
+          // width: 180,
           decoration: BoxDecoration(
             color: kWhite.withOpacity(0.05),
             borderRadius: BorderRadius.circular(20),
