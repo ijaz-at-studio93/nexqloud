@@ -1,6 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:syncfusion_flutter_maps/maps.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
@@ -8,9 +13,7 @@ import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/core/ui/widgets/blurred_background.dart';
 import 'package:nexqloud/core/ui/widgets/custom_gradient_button.dart';
 import 'package:nexqloud/core/utils/app_text_styles.dart';
-import 'package:nexqloud/features/main/ui/widgets/line_chart.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
+import 'package:nexqloud/features/main/ui/widgets/custom_line_chart.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -22,9 +25,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   late List<Model> _data;
   late MapShapeSource _dataSource;
+  late MapZoomPanBehavior _zoomPanBehavior;
 
   @override
   void initState() {
+    super.initState();
     _data = const <Model>[
       Model('Brazil', -14.235004, -51.92528),
       Model('Germany', 51.16569, 10.451526),
@@ -39,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
       dataCount: _data.length,
       primaryValueMapper: (index) => _data[index].country,
     );
-    super.initState();
+    _zoomPanBehavior = MapZoomPanBehavior();
   }
 
   @override
@@ -278,37 +283,56 @@ class _MainScreenState extends State<MainScreen> {
                               height: context.height * 0.6,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
-                                child: SfMaps(
-                                  layers: <MapLayer>[
-                                    MapShapeLayer(
-                                      strokeWidth: 0.15,
-                                      source: _dataSource,
-                                      initialMarkersCount: 5,
-                                      zoomPanBehavior: MapZoomPanBehavior(
-                                        enableDoubleTapZooming: true,
-                                        // enableMouseWheelZooming: true,
-                                        zoomLevel: 1.2,
-                                        toolbarSettings:
-                                            const MapToolbarSettings(
-                                          itemBackgroundColor: graphlinecolor2,
-                                          iconColor: kWhite,
-                                          itemHoverColor: kPurpleColor,
-                                          direction: Axis.vertical,
-                                          position:
-                                              MapToolbarPosition.bottomRight,
+                                child: SfMapsTheme(
+                                  data: SfMapsThemeData(
+                                    shapeHoverColor: kTransparent,
+                                    shapeHoverStrokeColor:
+                                        kWhite.withOpacity(0.22),
+                                    shapeHoverStrokeWidth: 1,
+                                  ),
+                                  child: SfMaps(
+                                    layers: <MapLayer>[
+                                      MapShapeLayer(
+                                        strokeWidth: 1,
+                                        source: _dataSource,
+                                        initialMarkersCount: _data.length,
+                                        color: kWhite.withOpacity(0.2),
+                                        strokeColor: kWhite.withOpacity(0.22),
+                                        markerTooltipBuilder: (context, index) {
+                                          return Padding(
+                                            padding: const EdgeInsets.all(8),
+                                            child: Text(
+                                              _data[index].country,
+                                              style: context.normal,
+                                            ),
+                                          );
+                                        },
+                                        zoomPanBehavior: MapZoomPanBehavior(
+                                          enableDoubleTapZooming: true,
+                                          zoomLevel: 1.2,
+                                          toolbarSettings:
+                                              const MapToolbarSettings(
+                                            itemBackgroundColor:
+                                                graphlinecolor2,
+                                            iconColor: kWhite,
+                                            itemHoverColor: kPurpleColor,
+                                            direction: Axis.vertical,
+                                            position:
+                                                MapToolbarPosition.bottomRight,
+                                          ),
                                         ),
+                                        markerBuilder: (context, index) {
+                                          return MapMarker(
+                                            latitude: _data[index].latitude,
+                                            longitude: _data[index].longitude,
+                                            size: const Size(10, 10),
+                                            iconColor: graphlinecolor2
+                                                .withOpacity(0.8),
+                                          );
+                                        },
                                       ),
-                                      markerBuilder: (context, index) {
-                                        return MapMarker(
-                                          latitude: _data[index].latitude,
-                                          longitude: _data[index].longitude,
-                                          size: const Size(10, 10),
-                                          iconColor:
-                                              graphlinecolor2.withOpacity(0.8),
-                                        );
-                                      },
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -330,6 +354,8 @@ class _MainScreenState extends State<MainScreen> {
                           progress: 40,
                           unit: 'GBit/s',
                           title: 'Disk Reads',
+                          subCardTitle: 'Devices Online',
+                          subCardValue: '65',
                         ),
                         Space.horizontal(8),
                         CircularGauge(
@@ -337,6 +363,8 @@ class _MainScreenState extends State<MainScreen> {
                           progress: 60,
                           unit: 'MBit/s',
                           title: 'Disk Writes',
+                          subCardTitle: 'Total vCPU Cores',
+                          subCardValue: '8.64K',
                         ),
                         Space.horizontal(8),
                         CircularGauge(
@@ -344,6 +372,8 @@ class _MainScreenState extends State<MainScreen> {
                           progress: 40,
                           unit: 'GBit/s',
                           title: 'Network Outbound',
+                          subCardTitle: "Total AI GPU's",
+                          subCardValue: '298',
                         ),
                         Space.horizontal(8),
                         CircularGauge(
@@ -351,6 +381,8 @@ class _MainScreenState extends State<MainScreen> {
                           progress: 60,
                           unit: 'MBit/s',
                           title: 'Network Inbound',
+                          subCardTitle: 'Average Bandwidth',
+                          subCardValue: '0.8 Gb/s',
                         ),
                       ],
                     ),
@@ -380,11 +412,15 @@ class CircularGauge extends StatelessWidget {
     required this.progress,
     required this.unit,
     required this.title,
+    required this.subCardTitle,
+    required this.subCardValue,
   });
   final String value;
   final double progress;
   final String unit;
   final String title;
+  final String subCardTitle;
+  final String subCardValue;
 
   @override
   Widget build(BuildContext context) {
@@ -481,11 +517,11 @@ class CircularGauge extends StatelessWidget {
             children: [
               const Space.vertical(32),
               Text(
-                '328',
+                subCardValue,
                 style: context.bold?.copyWith(fontSize: 32),
               ),
               Text(
-                'Devices Online',
+                subCardTitle,
                 style: context.normal?.copyWith(
                   fontSize: 12,
                   color: const Color(0xFFBFBFBF),

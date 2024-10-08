@@ -23,11 +23,13 @@ class _CustomLineChartState extends State<CustomLineChart> {
     kBackgroundColor.withOpacity(0.02),
   ];
 
-  List<FlSpot> _dataPoints = [FlSpot(0, 3)]; // Initialize with default data
+  final List<FlSpot> _dataPoints = [
+    const FlSpot(0, 3),
+  ]; // Initialize with default data
   late Timer _timer;
-  Random _random = Random();
+  final Random _random = Random();
   double _lastXValue = 0;
-  int _maxPoints = 50; // Max points to keep in the chart at any time
+  final int _maxPoints = 50; // Max points to keep in the chart at any time
 
   @override
   void initState() {
@@ -43,10 +45,10 @@ class _CustomLineChartState extends State<CustomLineChart> {
 
   // Method to start generating real-time data
   void _startGeneratingData() {
-    _timer = Timer.periodic(Duration(milliseconds: 200), (Timer timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 200), (timer) {
       setState(() {
         // Generate a new Y value with some randomness
-        double newYValue = 3 + _random.nextDouble() * 3;
+        final newYValue = 3 + _random.nextDouble() * 3;
 
         _lastXValue += 1;
 
@@ -79,9 +81,9 @@ class _CustomLineChartState extends State<CustomLineChart> {
                 ? LineChart(
                     mainData(),
                   )
-                : Center(
-                    child:
-                        CircularProgressIndicator()), // Show a loader until data is available
+                : const Center(
+                    child: CircularProgressIndicator(),
+                  ), // Show a loader until data is available
           ),
         ),
       ],
