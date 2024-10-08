@@ -20,7 +20,7 @@ dependencies:
   flutter_inset_box_shadow: ^1.0.8
   syncfusion_flutter_maps: ^27.1.51
   syncfusion_flutter_gauges: ^27.1.51
-  syncfusion_flutter_charts: ^27.1.51
+  fl_chart: ^0.69.0
 
 dev_dependencies:
   flutter_test:

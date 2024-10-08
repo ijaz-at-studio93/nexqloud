@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -9,8 +8,7 @@ import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/core/ui/widgets/blurred_background.dart';
 import 'package:nexqloud/core/ui/widgets/custom_gradient_button.dart';
 import 'package:nexqloud/core/utils/app_text_styles.dart';
-import 'package:syncfusion_flutter_charts/charts.dart' hide CornerStyle;
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+import 'package:nexqloud/features/main/ui/widgets/line_chart.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
@@ -218,14 +216,14 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   const Space.vertical(45),
                   Container(
-                    height: context.height * 0.58,
+                    height: context.height * 0.78,
                     width: context.width * 0.7,
                     decoration: BoxDecoration(
                       border: GradientBoxBorder(
                         gradient: LinearGradient(
                           colors: [
-                            kWhite.withOpacity(0.3),
-                            kTransparent,
+                            kWhite.withOpacity(0.1),
+                            kWhite.withOpacity(0.1),
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -277,17 +275,19 @@ class _MainScreenState extends State<MainScreen> {
                             ),
                             const Space.vertical(20),
                             SizedBox(
-                              height: context.height * 0.4,
+                              height: context.height * 0.6,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: SfMaps(
                                   layers: <MapLayer>[
                                     MapShapeLayer(
+                                      strokeWidth: 0.15,
                                       source: _dataSource,
                                       initialMarkersCount: 5,
                                       zoomPanBehavior: MapZoomPanBehavior(
                                         enableDoubleTapZooming: true,
-                                        zoomLevel: 2,
+                                        // enableMouseWheelZooming: true,
+                                        zoomLevel: 1.2,
                                         toolbarSettings:
                                             const MapToolbarSettings(
                                           itemBackgroundColor: graphlinecolor2,
@@ -396,6 +396,7 @@ class CircularGauge extends StatelessWidget {
           decoration: BoxDecoration(
             color: kWhite.withOpacity(0.05),
             borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: kWhite.withOpacity(0.2), width: 0.5),
           ),
           child: Column(
             children: [
@@ -474,6 +475,7 @@ class CircularGauge extends StatelessWidget {
           decoration: BoxDecoration(
             color: kWhite.withOpacity(0.05),
             borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: kWhite.withOpacity(0.1), width: 0.5),
           ),
           child: Column(
             children: [
@@ -490,8 +492,8 @@ class CircularGauge extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 100,
-                child: DummyAreaChart(),
+                height: 80,
+                child: CustomLineChart(),
               ),
             ],
           ),
@@ -499,86 +501,4 @@ class CircularGauge extends StatelessWidget {
       ],
     );
   }
-}
-
-class DummyAreaChart extends StatelessWidget {
-  const DummyAreaChart({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final chartData = <ChartData>[
-      ChartData(1924, 400),
-      ChartData(1925, 410),
-      ChartData(1926, 405),
-      ChartData(1927, 410),
-      ChartData(1928, 350),
-      ChartData(1929, 370),
-      ChartData(1930, 500),
-      ChartData(1931, 390),
-      ChartData(1932, 450),
-      ChartData(1933, 440),
-      ChartData(1934, 350),
-      ChartData(1935, 370),
-      ChartData(1936, 480),
-      ChartData(1937, 410),
-      ChartData(1938, 530),
-      ChartData(1939, 520),
-      ChartData(1940, 390),
-      ChartData(1941, 360),
-      ChartData(1942, 405),
-      ChartData(1943, 400),
-    ];
-    final color = <Color>[];
-    color.add(Colors.blue[50]!);
-    color.add(Colors.blue[200]!);
-    color.add(Colors.blue);
-
-    final stops = <double>[];
-    stops.add(0);
-    stops.add(0.5);
-    stops.add(1);
-
-    final gradientColors = LinearGradient(colors: color, stops: stops);
-
-    return SfSparkAreaChart(data: [
-      233,
-      323,
-      42,
-      23,
-      523,
-      212,
-      535,
-      564,
-      34,
-      23,
-      23,
-      2,
-    ], color: kBlueColor);
-
-    return SfCartesianChart(
-      enableSideBySideSeriesPlacement: false,
-      primaryYAxis: const NumericAxis(
-        isVisible: false,
-      ),
-      primaryXAxis: const NumericAxis(
-        isVisible: false,
-      ),
-      plotAreaBorderColor: kTransparent,
-      series: <CartesianSeries>[
-        AreaSeries<ChartData, int>(
-          enableTooltip: false,
-          dataSource: chartData,
-          xValueMapper: (data, _) => data.x,
-          yValueMapper: (data, _) => data.y,
-          gradient: gradientColors,
-        ),
-      ],
-    );
-  }
-}
-
-class ChartData {
-  ChartData(this.x, this.y);
-  final int x;
-  final int y;
 }
