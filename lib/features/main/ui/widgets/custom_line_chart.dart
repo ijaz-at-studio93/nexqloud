@@ -65,28 +65,22 @@ class _CustomLineChartState extends State<CustomLineChart> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        ClipRRect(
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 15,
-            ),
-            // Conditionally rendering the chart only when there are data points available
-            child: _dataPoints.isNotEmpty
-                ? LineChart(
-                    mainData(),
-                  )
-                : const Center(
-                    child: CircularProgressIndicator(),
-                  ), // Show a loader until data is available
-          ),
-        ),
-      ],
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        bottomLeft: Radius.circular(20),
+        bottomRight: Radius.circular(20),
+      ),
+      child: Padding(
+        padding: EdgeInsets.zero,
+        // Conditionally rendering the chart only when there are data points available
+        child: _dataPoints.isNotEmpty
+            ? LineChart(
+                mainData(),
+              )
+            : const Center(
+                child: CircularProgressIndicator(),
+              ), // Show a loader until data is available
+      ),
     );
   }
 
@@ -101,11 +95,14 @@ class _CustomLineChartState extends State<CustomLineChart> {
       borderData: FlBorderData(
         show: false,
       ),
+      lineTouchData: LineTouchData(
+        enabled: false,
+      ),
       minX:
           _lastXValue - (_maxPoints - 5), // Show only the last few data points
       maxX: _lastXValue,
       minY: 0,
-      maxY: 6,
+      maxY: 10,
       lineBarsData: [
         LineChartBarData(
           spots: _dataPoints,

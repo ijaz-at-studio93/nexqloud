@@ -1,21 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:nexqloud/core/extensions/log.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
-
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
+import 'package:nexqloud/core/extensions/log.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/core/ui/widgets/blurred_background.dart';
 import 'package:nexqloud/core/ui/widgets/custom_gradient_button.dart';
 import 'package:nexqloud/core/utils/app_text_styles.dart';
 import 'package:nexqloud/features/main/ui/widgets/custom_line_chart.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:syncfusion_flutter_maps/maps.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -711,23 +709,29 @@ class CircularGauge extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: kWhite.withOpacity(0.1), width: 0.5),
           ),
-          child: Column(
+          child: Stack(
             children: [
-              const Space.vertical(32),
-              Text(
-                subCardValue,
-                style: context.bold?.copyWith(fontSize: 32),
-              ),
-              Text(
-                subCardTitle,
-                style: context.normal?.copyWith(
-                  fontSize: 12,
-                  color: const Color(0xFFBFBFBF),
-                ),
-              ),
               const SizedBox(
-                height: 80,
+                height: 134,
                 child: CustomLineChart(),
+              ),
+              Align(
+                child: Column(
+                  children: [
+                    const Space.vertical(32),
+                    Text(
+                      subCardValue,
+                      style: context.bold?.copyWith(fontSize: 32),
+                    ),
+                    Text(
+                      subCardTitle,
+                      style: context.normal?.copyWith(
+                        fontSize: 12,
+                        color: const Color(0xFFBFBFBF),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -768,8 +772,9 @@ class NeedleCircularGauge extends StatelessWidget {
           ),
           child: Column(
             children: [
+              const Space.vertical(10),
               SizedBox(
-                height: 144,
+                height: 134,
                 child: SfRadialGauge(
                   axes: <RadialAxis>[
                     RadialAxis(
@@ -778,7 +783,7 @@ class NeedleCircularGauge extends StatelessWidget {
                       // radiusFactor: 0.9,
                       showFirstLabel: false,
                       showLabels: false,
-                      tickOffset: 2,
+                      tickOffset: 4,
                       minorTicksPerInterval: 3,
                       majorTickStyle: const MajorTickStyle(
                         length: 0.1,
@@ -868,23 +873,29 @@ class NeedleCircularGauge extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: kWhite.withOpacity(0.1), width: 0.5),
           ),
-          child: Column(
+          child: Stack(
             children: [
-              const Space.vertical(32),
-              Text(
-                subCardValue,
-                style: context.bold?.copyWith(fontSize: 32),
-              ),
-              Text(
-                subCardTitle,
-                style: context.normal?.copyWith(
-                  fontSize: 12,
-                  color: const Color(0xFFBFBFBF),
-                ),
-              ),
               const SizedBox(
-                height: 80,
+                height: 134,
                 child: CustomLineChart(),
+              ),
+              Align(
+                child: Column(
+                  children: [
+                    const Space.vertical(32),
+                    Text(
+                      subCardValue,
+                      style: context.bold?.copyWith(fontSize: 32),
+                    ),
+                    Text(
+                      subCardTitle,
+                      style: context.normal?.copyWith(
+                        fontSize: 12,
+                        color: const Color(0xFFBFBFBF),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
