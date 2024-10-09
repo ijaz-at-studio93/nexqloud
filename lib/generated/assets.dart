@@ -2,6 +2,16 @@
 class Assets {
   Assets._();
 
+  static const String assetsWorldMap = 'assets/world_map.json';
+  static const String pngAbg = 'assets/images/png/abg.png';
+  static const String pngAppBarBg = 'assets/images/png/app_bar_bg.png';
+  static const String pngBottomLeft = 'assets/images/png/bottom_left.png';
+  static const String pngBottomRight = 'assets/images/png/bottom_right.png';
+  static const String pngLeft = 'assets/images/png/left.png';
+  static const String pngMiddle = 'assets/images/png/middle.png';
+  static const String pngOnlineIcon = 'assets/icons/png/online_icon.png';
+  static const String pngRight = 'assets/images/png/right.png';
+  static const String pngTopRight = 'assets/images/png/top_right.png';
   static const String rubikRubikBlack = 'assets/fonts/rubik/Rubik-Black.ttf';
   static const String rubikRubikBlackItalic =
       'assets/fonts/rubik/Rubik-BlackItalic.ttf';
@@ -25,5 +35,10 @@ class Assets {
       'assets/fonts/rubik/Rubik-SemiBold.ttf';
   static const String rubikRubikSemiBoldItalic =
       'assets/fonts/rubik/Rubik-SemiBoldItalic.ttf';
+  static const String svgAppleIconWhite =
+      'assets/icons/svg/apple_icon_white.svg';
+  static const String svgGooglePlayIconWhite =
+      'assets/icons/svg/google_play_icon_white.svg';
+  static const String svgMoneyIcon = 'assets/icons/svg/money_icon.svg';
   static const String svgNexLogo = 'assets/icons/svg/nex_logo.svg';
 }
