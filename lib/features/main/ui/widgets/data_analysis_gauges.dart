@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nexqloud/core/constants/colors.dart';
-
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
@@ -15,7 +14,7 @@ class DataAnalysisGauges extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 34),
       child: SizedBox(
-        height: context.height * 0.58,
+        height: context.height * 0.4,
         width: context.width * 0.7,
         child: const Row(
           children: [

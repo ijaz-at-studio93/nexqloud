@@ -2,17 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
-
-import 'package:nexqloud/core/app/di.dart';
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/models/server_model.dart';
 import 'package:nexqloud/features/main/providers/server_data_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_maps/maps.dart';
 
 class DevicesMap extends StatefulWidget {
   const DevicesMap({super.key});
@@ -103,7 +101,7 @@ class _DevicesMapState extends State<DevicesMap> {
               ),
               const Space.vertical(20),
               SizedBox(
-                height: context.height * 0.6,
+                height: context.height * 0.58,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: SfMapsTheme(
