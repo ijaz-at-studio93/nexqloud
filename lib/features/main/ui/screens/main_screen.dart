@@ -481,7 +481,7 @@ class _MainScreenState extends State<MainScreen> {
                   ///gauges
                   const Space.vertical(34),
                   SizedBox(
-                    height: context.height * 0.58,
+                    // height: context.height * 0.58,
                     width: context.width * 0.7,
                     child: const Row(
                       children: [
@@ -553,6 +553,96 @@ class _MainScreenState extends State<MainScreen> {
                       ],
                     ),
                   ),
+
+                  ///Bottom Area
+                  const Space.vertical(34),
+
+                  Container(
+                    height: 480,
+                    width: context.width * 0.7,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      gradient: const LinearGradient(
+                        colors: [
+                          gradientColorThree,
+                          gradientColorTwo,
+                          gradientColorOne,
+                        ],
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Power Tomorrow's Cloud\nToday With NexQloud",
+                          style: context.bold?.copyWith(fontSize: 32),
+                          textAlign: TextAlign.center,
+                        ),
+                        const Space.vertical(18),
+                        Text(
+                          'Start earning, saving, and innovating with our\ncollaborative ecosystem today.',
+                          style: context.normal?.copyWith(fontSize: 18),
+                          textAlign: TextAlign.center,
+                        ),
+                        const Space.vertical(20),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AppStoreIcon(
+                              assetPath:
+                                  'assets/icons/svg/apple_icon_white.svg',
+                            ),
+                            Space.horizontal(10),
+                            AppStoreIcon(
+                              assetPath:
+                                  'assets/icons/svg/google_play_icon_white.svg',
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Space.vertical(54),
+
+                  ///Footer Area
+                  Container(
+                    height: 396,
+                    width: context.width * 0.7,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/icons/svg/nex_logo.svg',
+                                  height: 32,
+                                ),
+                                const Space.vertical(25),
+                                Text(
+                                  'Inclusive. Innovative. Indispensable.',
+                                  style: context.light?.copyWith(fontSize: 16),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const Space.vertical(25),
+                                Text(
+                                  'info@nexqloud.io\nJoin our Slack community',
+                                  style: context.light?.copyWith(fontSize: 16),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        Text(
+                          '© 2022 NexQloud. All Rights Reserved.',
+                          style: context.normal?.copyWith(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Space.vertical(34),
                 ],
               ),
             ),
@@ -588,6 +678,39 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class AppStoreIcon extends StatelessWidget {
+  const AppStoreIcon({
+    super.key,
+    required this.assetPath,
+  });
+  final String assetPath;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 54,
+      width: 54,
+      decoration: BoxDecoration(
+        color: kWhite,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: const EdgeInsets.all(8),
+      child: Container(
+        padding: const EdgeInsets.all(7),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [kBlack.withOpacity(0.3), kBlack],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: SvgPicture.asset(
+          assetPath,
         ),
       ),
     );
