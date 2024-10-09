@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_glow/flutter_glow.dart';
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
@@ -133,20 +134,35 @@ class CircularGauge extends StatelessWidget {
                       showTicks: false,
                       annotations: [
                         GaugeAnnotation(
-                          widget: Column(
-                            mainAxisSize: MainAxisSize.min,
+                          widget: Stack(
                             children: [
-                              Text(
-                                value, //'4.126'
-                                style: context.bold?.copyWith(
-                                  fontSize: 18,
+                              Align(
+                                child: GlowIcon(
+                                  Icons.circle_outlined,
+                                  color: kTransparent,
+                                  glowColor:
+                                      const Color(0xFF33B1FF).withOpacity(0.35),
+                                  size: 130,
                                 ),
                               ),
-                              Text(
-                                unit, //'GBit/s'
-                                style: context.normal?.copyWith(
-                                  fontSize: 10,
-                                  color: const Color(0xFFBFBFBF),
+                              Align(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      value, //'4.126'
+                                      style: context.bold?.copyWith(
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Text(
+                                      unit, //'GBit/s'
+                                      style: context.normal?.copyWith(
+                                        fontSize: 10,
+                                        color: const Color(0xFFBFBFBF),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
@@ -169,7 +185,7 @@ class CircularGauge extends StatelessWidget {
                           gradient: const SweepGradient(
                             colors: <Color>[
                               Color(0xFF9933FF),
-                              Color(0xFF3C30C4),
+                              Color(0xFF33B1FF),
                             ],
                             stops: <double>[0.25, 0.75],
                           ),
@@ -310,6 +326,7 @@ class NeedleCircularGauge extends StatelessWidget {
                         thickness: 0.15,
                         color: Color(0xFFEEEEEE),
                         thicknessUnit: GaugeSizeUnit.factor,
+                        cornerStyle: CornerStyle.bothCurve,
                       ),
                       pointers: <GaugePointer>[
                         NeedlePointer(
@@ -329,11 +346,11 @@ class NeedleCircularGauge extends StatelessWidget {
                           value: progress, // 40
                           width: 0.15,
                           sizeUnit: GaugeSizeUnit.factor,
-                          cornerStyle: CornerStyle.endCurve,
+                          cornerStyle: CornerStyle.bothCurve,
                           gradient: const SweepGradient(
                             colors: <Color>[
+                              Color(0xFF33B1FF),
                               Color(0xFF9933FF),
-                              Color(0xFF3C30C4),
                             ],
                             stops: <double>[0.25, 0.75],
                           ),
