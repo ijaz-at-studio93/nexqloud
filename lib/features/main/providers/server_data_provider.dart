@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import 'package:nexqloud/features/main/models/server_model.dart';
 
 class ServerDataProvider with ChangeNotifier {
@@ -467,7 +468,6 @@ class ServerDataProvider with ChangeNotifier {
 
   // find region based markers
   List<ServerModel> findRegion(String region) {
-    print(region);
     return data.where((element) => element.region == region).toList();
   }
 }

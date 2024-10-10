@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_glow/flutter_glow.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/ui/widgets/custom_line_chart.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class DataAnalysisGauges extends StatelessWidget {
   const DataAnalysisGauges({super.key});

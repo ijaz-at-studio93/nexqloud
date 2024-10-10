@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+
 import 'package:flutter_svg/svg.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
@@ -109,11 +111,13 @@ class FooterArea extends StatelessWidget {
                 onTapFunctions: [
                   () => UrlLauncher.openViewName('?case-study=saas#use-cases'),
                   () => UrlLauncher.openViewName(
-                      '?case-study=blockchain#use-cases'),
+                        '?case-study=blockchain#use-cases',
+                      ),
                   () =>
                       UrlLauncher.openViewName('?case-study=gaming#use-cases'),
                   () => UrlLauncher.openViewName(
-                      '?case-study=ai-learning#use-cases'),
+                        '?case-study=ai-learning#use-cases',
+                      ),
                 ],
               ),
 
@@ -133,7 +137,8 @@ class FooterArea extends StatelessWidget {
                   () =>
                       UrlLauncher.openUrl('https://www.instagram.com/nexqloud'),
                   () => UrlLauncher.openUrl(
-                      'https://www.linkedin.com/company/nexqloud-io'),
+                        'https://www.linkedin.com/company/nexqloud-io',
+                      ),
                 ],
               ),
 
@@ -148,13 +153,17 @@ class FooterArea extends StatelessWidget {
                 ],
                 onTapFunctions: [
                   () => UrlLauncher.openViewName(
-                      'hardware-contributers?case-study=ai-learning#'),
+                        'hardware-contributers?case-study=ai-learning#',
+                      ),
                   () => UrlLauncher.openViewName(
-                      'hardware-contributers?case-study=ai-learning#'),
+                        'hardware-contributers?case-study=ai-learning#',
+                      ),
                   () => UrlLauncher.openViewName(
-                      'hardware-contributers?case-study=ai-learning#'),
+                        'hardware-contributers?case-study=ai-learning#',
+                      ),
                   () => UrlLauncher.openViewName(
-                      'hardware-contributers?case-study=ai-learning#'),
+                        'hardware-contributers?case-study=ai-learning#',
+                      ),
                 ],
               ),
             ],
