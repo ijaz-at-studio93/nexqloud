@@ -31,9 +31,7 @@ class _DevicesMapState extends State<DevicesMap> {
   void initState() {
     super.initState();
     context.read<ServerDataProvider>().setData();
-    // _markerData = context.read<ServerDataProvider>().data;
     final continents = context.read<ServerDataProvider>().getContinentList();
-    print(continents);
     for (final continent in continents) {
       final serversInAContinent =
           context.read<ServerDataProvider>().findContinentServer(continent);
@@ -43,8 +41,6 @@ class _DevicesMapState extends State<DevicesMap> {
     _dataSource = const MapShapeSource.asset(
       'world_map.json',
       shapeDataField: 'name',
-      // dataCount: _markerData.length,
-      // primaryValueMapper: (index) => _markerData[index].country,
     );
 
     _zoomPanBehavior = MapZoomPanBehavior(
@@ -261,7 +257,7 @@ class _DevicesMapState extends State<DevicesMap> {
                           },
                           onWillZoom: (details) {
                             try {
-                              print(details.newZoomLevel);
+                              details.newZoomLevel.printInfo();
                               _markerData.clear();
                               if (details.newZoomLevel! > 2 &&
                                   details.newZoomLevel! <= 3) {

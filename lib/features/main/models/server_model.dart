@@ -13,6 +13,18 @@ class ServerModel {
     this.count = 0,
   });
 
+  factory ServerModel.empty() => const ServerModel(
+        serverName: '',
+        uptime: 0,
+        region: '',
+        cores: 0,
+        memory: 0,
+        country: '',
+        latitude: 0,
+        longitude: 0,
+        continent: '',
+      );
+
   final String serverName;
   final double uptime;
   final String region;
@@ -24,16 +36,4 @@ class ServerModel {
   final double longitude;
   final String status;
   final int count;
-
-  static ServerModel empty() => const ServerModel(
-        serverName: '',
-        uptime: 0,
-        region: '',
-        cores: 0,
-        memory: 0,
-        country: '',
-        latitude: 0,
-        longitude: 0,
-        continent: '',
-      );
 }
