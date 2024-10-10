@@ -4,9 +4,9 @@ import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
+import 'package:nexqloud/features/main/ui/views/footer_area.dart';
 import 'package:nexqloud/features/main/ui/widgets/data_analysis_gauges.dart';
 import 'package:nexqloud/features/main/ui/widgets/devices_map.dart';
-import 'package:nexqloud/features/main/ui/widgets/footer_area.dart';
 import 'package:nexqloud/features/main/ui/widgets/main_app_bar.dart';
 
 class MainScreen extends StatelessWidget {

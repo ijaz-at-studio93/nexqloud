@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
@@ -15,7 +16,6 @@ class FooterArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 396,
       width: context.width * 0.7,
       child: Column(
         children: [
@@ -159,13 +159,67 @@ class FooterArea extends StatelessWidget {
               ),
             ],
           ),
-          const Spacer(),
-          Text(
-            '© 2022 NexQloud. All Rights Reserved.',
-            style: context.normal?.copyWith(fontSize: 16),
+          const Space.vertical(30),
+          Divider(
+            color: kWhite.withOpacity(0.5),
+          ),
+          const Space.vertical(20),
+          Row(
+            children: [
+              _buildCopyrightsTextWidget(context),
+              const Spacer(),
+              CupertinoButton(
+                onPressed: () => UrlLauncher.openViewName('privacy-policy'),
+                padding: EdgeInsets.zero,
+                minSize: 0,
+                child: Text(
+                  'Privacy Policy',
+                  style: context.normal
+                      ?.copyWith(fontSize: 16, color: kFooterButtonColor),
+                ),
+              ),
+              const Space.horizontal(18),
+              CupertinoButton(
+                onPressed: () => UrlLauncher.openViewName('terms-of-service'),
+                padding: EdgeInsets.zero,
+                minSize: 0,
+                child: Text(
+                  'Terms and Conditions',
+                  style: context.normal
+                      ?.copyWith(fontSize: 16, color: kFooterButtonColor),
+                ),
+              ),
+            ],
           ),
         ],
       ),
+    );
+  }
+
+  Row _buildCopyrightsTextWidget(BuildContext context) {
+    return Row(
+      children: [
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: '© Copyright 2024 ',
+                style: context.normal
+                    ?.copyWith(fontSize: 16, color: kFooterButtonColor),
+              ),
+              TextSpan(
+                text: 'NexQloud.',
+                style: context.bold?.copyWith(fontSize: 16),
+              ),
+              TextSpan(
+                text: ' All Rights Reserved.',
+                style: context.normal
+                    ?.copyWith(fontSize: 16, color: kFooterButtonColor),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
