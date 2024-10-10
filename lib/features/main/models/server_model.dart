@@ -9,6 +9,7 @@ class ServerModel {
     required this.latitude,
     required this.longitude,
     this.status = 'Online',
+    this.count = 0,
   });
 
   final String serverName;
@@ -20,4 +21,16 @@ class ServerModel {
   final double latitude;
   final double longitude;
   final String status;
+  final int count;
+
+  static ServerModel empty() => const ServerModel(
+        serverName: '',
+        uptime: 0,
+        region: '',
+        cores: 0,
+        memory: 0,
+        country: '',
+        latitude: 0,
+        longitude: 0,
+      );
 }
