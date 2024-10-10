@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/ui/widgets/data_analysis_gauges.dart';
 import 'package:nexqloud/features/main/ui/widgets/devices_map.dart';
+import 'package:nexqloud/features/main/ui/widgets/footer_area.dart';
 import 'package:nexqloud/features/main/ui/widgets/main_app_bar.dart';
 
 class MainScreen extends StatelessWidget {
@@ -54,7 +54,7 @@ class MainScreen extends StatelessWidget {
                     height: 480,
                     width: context.width * 0.7,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(50),
                       gradient: const LinearGradient(
                         colors: [
                           gradientColorThree,
@@ -67,14 +67,15 @@ class MainScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Power Tomorrow's Cloud\nToday With NexQloud",
-                          style: context.bold?.copyWith(fontSize: 32),
+                          "POWER TOMORROW'S CLOUD\nTODAY WITH NEXQLOUD",
+                          style: context.medium?.copyWith(fontSize: 40),
                           textAlign: TextAlign.center,
                         ),
                         const Space.vertical(18),
                         Text(
                           'Start earning, saving, and innovating with our\ncollaborative ecosystem today.',
-                          style: context.normal?.copyWith(fontSize: 18),
+                          style: context.normal
+                              ?.copyWith(fontSize: 18, height: 1.5),
                           textAlign: TextAlign.center,
                         ),
                         const Space.vertical(20),
@@ -95,46 +96,10 @@ class MainScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Space.vertical(54),
+                  const Space.vertical(64),
 
                   ///Footer Area
-                  SizedBox(
-                    height: 396,
-                    width: context.width * 0.7,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/svg/nex_logo.svg',
-                                  height: 32,
-                                ),
-                                const Space.vertical(25),
-                                Text(
-                                  'Inclusive. Innovative. Indispensable.',
-                                  style: context.light?.copyWith(fontSize: 16),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const Space.vertical(25),
-                                Text(
-                                  'info@nexqloud.io\nJoin our Slack community',
-                                  style: context.light?.copyWith(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        Text(
-                          '© 2022 NexQloud. All Rights Reserved.',
-                          style: context.normal?.copyWith(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                  ),
+                  const FooterArea(),
                   const Space.vertical(34),
                 ],
               ),

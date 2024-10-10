@@ -68,6 +68,7 @@ const Color graphlinecolor1 = Color(0xFFFFCDEA);
 const Color graphlinecolor2 = Color(0xFF7598EC);
 
 const greyColor = Color(0xFF18181A);
+const kFooterButtonColor = Color(0xFFBFBFBF);
 
 const Color containerColor = Color(0xFF4A386E);
 const Color offlineIndicatorColor = Color(0xFFFF3939);

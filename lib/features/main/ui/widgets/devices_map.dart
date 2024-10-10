@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:provider/provider.dart';
@@ -115,7 +116,7 @@ class _DevicesMapState extends State<DevicesMap> {
               ),
               const Space.vertical(20),
               SizedBox(
-                height: context.height * 0.6,
+                height: context.height * 0.58,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: SfMapsTheme(
