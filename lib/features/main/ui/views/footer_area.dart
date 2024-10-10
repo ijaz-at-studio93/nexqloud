@@ -6,7 +6,7 @@ import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/ui/widgets/custom_footer_buttons.dart';
-import 'package:nexqloud/features/main/utils/url_launcher_class.dart';
+import 'package:nexqloud/features/main/utils/url_launcher.dart';
 
 class FooterArea extends StatelessWidget {
   const FooterArea({

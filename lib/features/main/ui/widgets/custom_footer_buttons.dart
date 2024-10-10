@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 
@@ -7,10 +8,11 @@ class CustomFooterButtons extends StatelessWidget {
     required this.title,
     required this.buttons,
     required this.onTapFunctions,
-    Key? key,
-  })  : assert(buttons.length == onTapFunctions.length,
-            'Buttons and onTapFunctions must have the same length'),
-        super(key: key);
+    super.key,
+  }) : assert(
+          buttons.length == onTapFunctions.length,
+          'Buttons and onTapFunctions must have the same length',
+        );
   final String title;
   final List<String> buttons;
   final List<VoidCallback> onTapFunctions;

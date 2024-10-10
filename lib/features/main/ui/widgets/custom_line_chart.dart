@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fl_chart/fl_chart.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 
 class CustomLineChart extends StatefulWidget {
@@ -95,7 +97,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
       borderData: FlBorderData(
         show: false,
       ),
-      lineTouchData: LineTouchData(
+      lineTouchData: const LineTouchData(
         enabled: false,
       ),
       minX:

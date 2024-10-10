@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/utils/app_text_styles.dart';

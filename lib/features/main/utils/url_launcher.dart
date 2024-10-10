@@ -11,7 +11,7 @@ class UrlLauncher {
         mode: LaunchMode.externalApplication, // Ensures it opens in a new tab
       );
     } else {
-      throw "Could not launch $url";
+      throw 'Could not launch $url';
     }
   }
 
@@ -24,7 +24,7 @@ class UrlLauncher {
         mode: LaunchMode.externalApplication, // Ensures it opens in a new tab
       );
     } else {
-      throw "Could not launch $url";
+      throw 'Could not launch $url';
     }
   }
 }

@@ -4,6 +4,7 @@ dart_code_metrics:
   extends:
     - recommended
 
+
 analyzer:
   exclude: [ build/**, lib/l10n/**, scripts/sort_imports_script.dart ]
   errors:
@@ -105,7 +106,6 @@ linter:
     - null_closures
     - omit_local_variable_types
     - one_member_abstracts
-    - only_throw_errors
     - overridden_fields
     - package_names
     - package_prefixed_library_names

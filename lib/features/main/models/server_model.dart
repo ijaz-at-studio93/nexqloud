@@ -8,22 +8,12 @@ class ServerModel {
     required this.country,
     required this.latitude,
     required this.longitude,
+    required this.continent,
     this.status = 'Online',
     this.count = 0,
   });
 
-  final String serverName;
-  final double uptime;
-  final String region;
-  final int cores;
-  final int memory; // Memory in GB
-  final String country;
-  final double latitude;
-  final double longitude;
-  final String status;
-  final int count;
-
-  static ServerModel empty() => const ServerModel(
+  factory ServerModel.empty() => const ServerModel(
         serverName: '',
         uptime: 0,
         region: '',
@@ -32,5 +22,18 @@ class ServerModel {
         country: '',
         latitude: 0,
         longitude: 0,
+        continent: '',
       );
+
+  final String serverName;
+  final double uptime;
+  final String region;
+  final String continent;
+  final int cores;
+  final int memory; // Memory in GB
+  final String country;
+  final double latitude;
+  final double longitude;
+  final String status;
+  final int count;
 }

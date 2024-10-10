@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import 'package:nexqloud/features/main/models/server_model.dart';
 
 class ServerDataProvider with ChangeNotifier {
@@ -17,6 +18,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'United States',
         latitude: 37.7749,
         longitude: -122.4194,
+        continent: 'North America',
       ),
       const ServerModel(
         serverName: 'BRZ-452-QZA',
@@ -27,8 +29,8 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Brazil',
         latitude: -14.235004,
         longitude: -51.92528,
+        continent: 'South America',
       ),
-      // ... [Previous entries omitted for brevity] ...
       const ServerModel(
         serverName: 'RUS-576-NVS',
         uptime: 99.85,
@@ -38,8 +40,8 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Russia',
         latitude: 55.755826,
         longitude: 37.6173,
+        continent: 'Europe',
       ),
-      // New entries start here
       const ServerModel(
         serverName: 'US-577-LAX',
         uptime: 99.91,
@@ -49,6 +51,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'United States',
         latitude: 34.0522,
         longitude: -118.2437,
+        continent: 'North America',
       ),
       const ServerModel(
         serverName: 'BR-578-RIO',
@@ -59,6 +62,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Brazil',
         latitude: -22.9068,
         longitude: -43.1729,
+        continent: 'South America',
       ),
       const ServerModel(
         serverName: 'DE-579-BER',
@@ -69,6 +73,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Germany',
         latitude: 52.5200,
         longitude: 13.4050,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'AU-580-SYD',
@@ -79,6 +84,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Australia',
         latitude: -33.8688,
         longitude: 151.2093,
+        continent: 'Oceania',
       ),
       const ServerModel(
         serverName: 'IN-581-MUM',
@@ -89,6 +95,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'India',
         latitude: 19.0760,
         longitude: 72.8777,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'RU-582-SPB',
@@ -99,6 +106,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Russia',
         latitude: 59.9343,
         longitude: 30.3351,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'UK-583-MAN',
@@ -109,6 +117,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'United Kingdom',
         latitude: 53.4808,
         longitude: -2.2426,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'CN-584-SHA',
@@ -119,6 +128,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'China',
         latitude: 31.2304,
         longitude: 121.4737,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'JP-585-OSA',
@@ -129,6 +139,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Japan',
         latitude: 34.6937,
         longitude: 135.5023,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'CA-586-TOR',
@@ -139,6 +150,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Canada',
         latitude: 43.6532,
         longitude: -79.3832,
+        continent: 'North America',
       ),
       const ServerModel(
         serverName: 'FR-587-MAR',
@@ -149,6 +161,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'France',
         latitude: 43.2965,
         longitude: 5.3698,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'ZA-588-CPT',
@@ -159,6 +172,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'South Africa',
         latitude: -33.9249,
         longitude: 18.4241,
+        continent: 'Africa',
       ),
       const ServerModel(
         serverName: 'IT-589-MIL',
@@ -169,6 +183,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Italy',
         latitude: 45.4642,
         longitude: 9.1900,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'ES-590-BCN',
@@ -179,6 +194,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Spain',
         latitude: 41.3851,
         longitude: 2.1734,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'MX-591-GDL',
@@ -189,6 +205,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Mexico',
         latitude: 20.6597,
         longitude: -103.3496,
+        continent: 'North America',
       ),
       const ServerModel(
         serverName: 'AR-592-COR',
@@ -199,6 +216,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Argentina',
         latitude: -31.4201,
         longitude: -64.1888,
+        continent: 'South America',
       ),
       const ServerModel(
         serverName: 'EG-593-ALX',
@@ -209,6 +227,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Egypt',
         latitude: 31.2001,
         longitude: 29.9187,
+        continent: 'Africa',
       ),
       const ServerModel(
         serverName: 'TR-594-ANK',
@@ -219,6 +238,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Turkey',
         latitude: 39.9334,
         longitude: 32.8597,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'SA-595-JED',
@@ -229,6 +249,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Saudi Arabia',
         latitude: 21.2854,
         longitude: 39.2376,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'IR-596-MSH',
@@ -239,6 +260,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Iran',
         latitude: 36.2605,
         longitude: 59.6168,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'SE-597-GOT',
@@ -249,6 +271,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Sweden',
         latitude: 57.7089,
         longitude: 11.9746,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'NO-598-BGO',
@@ -259,6 +282,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Norway',
         latitude: 60.3913,
         longitude: 5.3221,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'FI-599-TKU',
@@ -269,6 +293,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Finland',
         latitude: 60.4518,
         longitude: 22.2666,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'DK-600-AAR',
@@ -279,6 +304,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Denmark',
         latitude: 56.1572,
         longitude: 10.2107,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'CH-601-GVA',
@@ -289,6 +315,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Switzerland',
         latitude: 46.2044,
         longitude: 6.1432,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'AT-602-GRZ',
@@ -299,6 +326,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Austria',
         latitude: 47.0707,
         longitude: 15.4395,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'NZ-603-WLG',
@@ -309,6 +337,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'New Zealand',
         latitude: -41.2865,
         longitude: 174.7762,
+        continent: 'Oceania',
       ),
       const ServerModel(
         serverName: 'TH-604-CNX',
@@ -319,6 +348,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Thailand',
         latitude: 18.7883,
         longitude: 98.9853,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'PL-605-WRO',
@@ -329,6 +359,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Poland',
         latitude: 51.1079,
         longitude: 17.0385,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'CZ-606-BRN',
@@ -339,6 +370,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Czech Republic',
         latitude: 49.1951,
         longitude: 16.6068,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'HU-607-DEB',
@@ -349,6 +381,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Hungary',
         latitude: 47.5316,
         longitude: 21.6273,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'RO-608-TIM',
@@ -359,6 +392,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Romania',
         latitude: 45.7489,
         longitude: 21.2087,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'BG-609-VAR',
@@ -369,6 +403,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Bulgaria',
         latitude: 43.2141,
         longitude: 27.9147,
+        continent: 'Europe',
       ),
       const ServerModel(
         serverName: 'RU-610-YEK',
@@ -379,6 +414,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Russia',
         latitude: 56.8389,
         longitude: 60.6057,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'CN-611-CKG',
@@ -389,6 +425,7 @@ class ServerDataProvider with ChangeNotifier {
         country: 'China',
         latitude: 29.4316,
         longitude: 106.9123,
+        continent: 'Asia',
       ),
       const ServerModel(
         serverName: 'RU-612-OMS',
@@ -399,7 +436,38 @@ class ServerDataProvider with ChangeNotifier {
         country: 'Russia',
         latitude: 54.9885,
         longitude: 73.3242,
+        continent: 'Asia',
       ),
     ];
+  }
+
+  List<String> getContinentList() {
+    return data.map((e) => e.continent).toSet().toList();
+  }
+
+  // find one server data from a continent
+  ServerModel findContinentServer(String continent) {
+    return data.firstWhere(
+      (element) => element.continent == continent,
+      orElse: () => ServerModel.empty(),
+    );
+  }
+
+  List<String> getCountryList() {
+    return data.map((e) => e.country).toSet().toList();
+  }
+
+  // find country based markers
+  List<ServerModel> findCountry(String country) {
+    return data.where((element) => element.country == country).toList();
+  }
+
+  List<String> getRegionList() {
+    return data.map((e) => e.region).toSet().toList();
+  }
+
+  // find region based markers
+  List<ServerModel> findRegion(String region) {
+    return data.where((element) => element.region == region).toList();
   }
 }
