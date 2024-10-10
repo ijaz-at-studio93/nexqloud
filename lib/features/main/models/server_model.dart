@@ -8,6 +8,7 @@ class ServerModel {
     required this.country,
     required this.latitude,
     required this.longitude,
+    required this.continent,
     this.status = 'Online',
     this.count = 0,
   });
@@ -15,6 +16,7 @@ class ServerModel {
   final String serverName;
   final double uptime;
   final String region;
+  final String continent;
   final int cores;
   final int memory; // Memory in GB
   final String country;
@@ -32,5 +34,6 @@ class ServerModel {
         country: '',
         latitude: 0,
         longitude: 0,
+        continent: '',
       );
 }

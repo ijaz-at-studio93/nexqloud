@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:nexqloud/core/extensions/log.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
@@ -21,7 +22,7 @@ class DevicesMap extends StatefulWidget {
 }
 
 class _DevicesMapState extends State<DevicesMap> {
-  late List<ServerModel> _data;
+  final List<ServerModel> _markerData = [];
   late MapShapeSource _dataSource;
   late MapZoomPanBehavior _zoomPanBehavior;
   late MapShapeLayerController _shapeController;
@@ -30,13 +31,20 @@ class _DevicesMapState extends State<DevicesMap> {
   void initState() {
     super.initState();
     context.read<ServerDataProvider>().setData();
-    _data = context.read<ServerDataProvider>().data;
+    // _markerData = context.read<ServerDataProvider>().data;
+    final continents = context.read<ServerDataProvider>().getContinentList();
+    print(continents);
+    for (final continent in continents) {
+      final serversInAContinent =
+          context.read<ServerDataProvider>().findContinentServer(continent);
+      _markerData.add(serversInAContinent);
+    }
 
-    _dataSource = MapShapeSource.asset(
+    _dataSource = const MapShapeSource.asset(
       'world_map.json',
       shapeDataField: 'name',
-      dataCount: _data.length,
-      primaryValueMapper: (index) => _data[index].country,
+      // dataCount: _markerData.length,
+      // primaryValueMapper: (index) => _markerData[index].country,
     );
 
     _zoomPanBehavior = MapZoomPanBehavior(
@@ -132,7 +140,7 @@ class _DevicesMapState extends State<DevicesMap> {
                         MapShapeLayer(
                           strokeWidth: 0,
                           source: _dataSource,
-                          initialMarkersCount: 1,
+                          initialMarkersCount: _markerData.length,
                           color: kWhite.withOpacity(0.2),
                           strokeColor: kWhite.withOpacity(0.22),
                           controller: _shapeController,
@@ -166,7 +174,7 @@ class _DevicesMapState extends State<DevicesMap> {
                                           ),
                                           const Space.horizontal(12),
                                           Text(
-                                            _data[index].serverName,
+                                            _markerData[index].serverName,
                                             style: context.medium?.copyWith(
                                               fontSize: 16,
                                             ),
@@ -182,7 +190,7 @@ class _DevicesMapState extends State<DevicesMap> {
                                           ),
                                           const Space.horizontal(6),
                                           Text(
-                                            _data[index].status,
+                                            _markerData[index].status,
                                             style: context.medium,
                                           ),
                                         ],
@@ -196,12 +204,12 @@ class _DevicesMapState extends State<DevicesMap> {
                                     children: [
                                       ServerDetailRow(
                                         label: 'Uptime:',
-                                        value: '${_data[index].uptime}%',
+                                        value: '${_markerData[index].uptime}%',
                                       ),
                                       const Space.horizontal(24),
                                       ServerDetailRow(
                                         label: 'Uptime:',
-                                        value: '${_data[index].uptime}%',
+                                        value: '${_markerData[index].uptime}%',
                                       ),
                                     ],
                                   ),
@@ -210,12 +218,12 @@ class _DevicesMapState extends State<DevicesMap> {
                                     children: [
                                       ServerDetailRow(
                                         label: 'Region:',
-                                        value: _data[index].region,
+                                        value: _markerData[index].region,
                                       ),
                                       const Space.horizontal(24),
                                       ServerDetailRow(
                                         label: 'Region:',
-                                        value: _data[index].region,
+                                        value: _markerData[index].region,
                                       ),
                                     ],
                                   ),
@@ -224,12 +232,12 @@ class _DevicesMapState extends State<DevicesMap> {
                                     children: [
                                       ServerDetailRow(
                                         label: 'Cores:',
-                                        value: '${_data[index].cores}',
+                                        value: '${_markerData[index].cores}',
                                       ),
                                       const Space.horizontal(24),
                                       ServerDetailRow(
                                         label: 'Cores:',
-                                        value: '${_data[index].cores}',
+                                        value: '${_markerData[index].cores}',
                                       ),
                                     ],
                                   ),
@@ -238,12 +246,12 @@ class _DevicesMapState extends State<DevicesMap> {
                                     children: [
                                       ServerDetailRow(
                                         label: 'Memory:',
-                                        value: '${_data[index].memory}GB',
+                                        value: '${_markerData[index].memory}GB',
                                       ),
                                       const Space.horizontal(24),
                                       ServerDetailRow(
                                         label: 'Memory:',
-                                        value: '${_data[index].memory}GB',
+                                        value: '${_markerData[index].memory}GB',
                                       ),
                                     ],
                                   ),
@@ -252,66 +260,51 @@ class _DevicesMapState extends State<DevicesMap> {
                             );
                           },
                           onWillZoom: (details) {
-                            _data.clear();
-                            if (details.newZoomLevel! <= 3) {
-                              _data.add(
-                                const ServerModel(
-                                  serverName: 'Server 1',
-                                  country: 'India',
-                                  region: 'IN',
-                                  latitude: 20.5937,
-                                  longitude: 78.9629,
-                                  uptime: 99.9,
-                                  cores: 32,
-                                  memory: 64,
-                                ),
-                              );
-                              _shapeController.clearMarkers();
-                              _shapeController.insertMarker(0);
-                            } else if (details.newZoomLevel! >= 4) {
-                              _data.addAll([
-                                const ServerModel(
-                                  serverName: 'Server 2',
-                                  country: 'India',
-                                  region: 'IN',
-                                  latitude: 11.1271,
-                                  longitude: 78.6569,
-                                  uptime: 98.5,
-                                  cores: 32,
-                                  memory: 64,
-                                ),
-                                const ServerModel(
-                                  serverName: 'Server 3',
-                                  country: 'India',
-                                  region: 'IN',
-                                  latitude: 17.3850,
-                                  longitude: 78.4867,
-                                  uptime: 98.9,
-                                  cores: 32,
-                                  memory: 64,
-                                ),
-                                const ServerModel(
-                                  serverName: 'Server 4',
-                                  country: 'India',
-                                  region: 'IN',
-                                  latitude: 19.0760,
-                                  longitude: 72.8777,
-                                  uptime: 99.2,
-                                  cores: 64,
-                                  memory: 128,
-                                ),
-                              ]);
-                              _shapeController.clearMarkers();
-                              for (var i = 0; i < _data.length; i++) {
-                                _shapeController.insertMarker(i);
+                            try {
+                              print(details.newZoomLevel);
+                              _markerData.clear();
+                              if (details.newZoomLevel! > 2 &&
+                                  details.newZoomLevel! <= 3) {
+                                final regions = context
+                                    .read<ServerDataProvider>()
+                                    .getRegionList();
+                                final serversInARegion = <ServerModel>[];
+                                for (final region in regions) {
+                                  final servers = context
+                                      .read<ServerDataProvider>()
+                                      .findRegion(region);
+                                  serversInARegion.addAll(servers);
+                                }
+                                _markerData.addAll(serversInARegion);
+                                _shapeController.clearMarkers();
+                                for (var i = 0; i < _markerData.length; i++) {
+                                  _shapeController.insertMarker(i);
+                                }
+                              } else if (details.newZoomLevel! >= 4) {
+                                final countries = context
+                                    .read<ServerDataProvider>()
+                                    .getCountryList();
+
+                                for (final country in countries) {
+                                  final serversInACountry = context
+                                      .read<ServerDataProvider>()
+                                      .findCountry(country);
+                                  _markerData.addAll(serversInACountry);
+                                }
+                                _shapeController.clearMarkers();
+                                for (var i = 0; i < _markerData.length; i++) {
+                                  _shapeController.insertMarker(i);
+                                }
                               }
+                            } catch (e) {
+                              e.printError();
                             }
                             return true;
                           },
                           markerBuilder: (context, index) {
                             return MapMarker(
-                              latitude: _data[index].latitude,
-                              longitude: _data[index].longitude,
+                              latitude: _markerData[index].latitude,
+                              longitude: _markerData[index].longitude,
                               size: const Size(10, 10),
                               iconColor: graphlinecolor2.withOpacity(0.8),
                             );
