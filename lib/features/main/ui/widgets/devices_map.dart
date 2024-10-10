@@ -1,16 +1,17 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_maps/maps.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/models/server_model.dart';
 import 'package:nexqloud/features/main/providers/server_data_provider.dart';
-import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
 
 class DevicesMap extends StatefulWidget {
   const DevicesMap({super.key});
@@ -23,6 +24,7 @@ class _DevicesMapState extends State<DevicesMap> {
   late List<ServerModel> _data;
   late MapShapeSource _dataSource;
   late MapZoomPanBehavior _zoomPanBehavior;
+  late MapShapeLayerController _shapeController;
 
   @override
   void initState() {
@@ -36,7 +38,20 @@ class _DevicesMapState extends State<DevicesMap> {
       dataCount: _data.length,
       primaryValueMapper: (index) => _data[index].country,
     );
-    _zoomPanBehavior = MapZoomPanBehavior();
+
+    _zoomPanBehavior = MapZoomPanBehavior(
+      enableDoubleTapZooming: true,
+      zoomLevel: 1.2,
+      toolbarSettings: const MapToolbarSettings(
+        itemBackgroundColor: graphlinecolor2,
+        iconColor: kWhite,
+        itemHoverColor: kPurpleColor,
+        direction: Axis.vertical,
+        position: MapToolbarPosition.bottomRight,
+      ),
+    );
+
+    _shapeController = MapShapeLayerController();
   }
 
   @override
@@ -117,9 +132,11 @@ class _DevicesMapState extends State<DevicesMap> {
                         MapShapeLayer(
                           strokeWidth: 0,
                           source: _dataSource,
-                          initialMarkersCount: _data.length,
+                          initialMarkersCount: 1,
                           color: kWhite.withOpacity(0.2),
                           strokeColor: kWhite.withOpacity(0.22),
+                          controller: _shapeController,
+                          zoomPanBehavior: _zoomPanBehavior,
                           markerTooltipBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.all(12),
@@ -135,28 +152,19 @@ class _DevicesMapState extends State<DevicesMap> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
-                                            padding: const EdgeInsets.all(
-                                              4,
-                                            ),
+                                            padding: const EdgeInsets.all(4),
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(
-                                                7,
-                                              ),
-                                              color: const Color(
-                                                0xffa2dcff,
-                                              ).withOpacity(
-                                                0.2,
-                                              ),
+                                                  BorderRadius.circular(7),
+                                              color: const Color(0xffa2dcff)
+                                                  .withOpacity(0.2),
                                             ),
                                             child: SvgPicture.asset(
                                               'assets/icons/svg/money_icon.svg',
                                               height: 18,
                                             ),
                                           ),
-                                          const Space.horizontal(
-                                            12,
-                                          ),
+                                          const Space.horizontal(12),
                                           Text(
                                             _data[index].serverName,
                                             style: context.medium?.copyWith(
@@ -172,9 +180,7 @@ class _DevicesMapState extends State<DevicesMap> {
                                           Image.asset(
                                             'assets/icons/png/online_icon.png',
                                           ),
-                                          const Space.horizontal(
-                                            6,
-                                          ),
+                                          const Space.horizontal(6),
                                           Text(
                                             _data[index].status,
                                             style: context.medium,
@@ -184,6 +190,7 @@ class _DevicesMapState extends State<DevicesMap> {
                                     ],
                                   ),
                                   const Space.vertical(18),
+                                  // More detailed server information rows...
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -244,19 +251,63 @@ class _DevicesMapState extends State<DevicesMap> {
                               ),
                             );
                           },
-                          //   return const ServerStatusCard();
-                          // },
-                          zoomPanBehavior: MapZoomPanBehavior(
-                            enableDoubleTapZooming: true,
-                            zoomLevel: 1.2,
-                            toolbarSettings: const MapToolbarSettings(
-                              itemBackgroundColor: graphlinecolor2,
-                              iconColor: kWhite,
-                              itemHoverColor: kPurpleColor,
-                              direction: Axis.vertical,
-                              position: MapToolbarPosition.bottomRight,
-                            ),
-                          ),
+                          onWillZoom: (details) {
+                            _data.clear();
+                            if (details.newZoomLevel! <= 3) {
+                              _data.add(
+                                const ServerModel(
+                                  serverName: 'Server 1',
+                                  country: 'India',
+                                  region: 'IN',
+                                  latitude: 20.5937,
+                                  longitude: 78.9629,
+                                  uptime: 99.9,
+                                  cores: 32,
+                                  memory: 64,
+                                ),
+                              );
+                              _shapeController.clearMarkers();
+                              _shapeController.insertMarker(0);
+                            } else if (details.newZoomLevel! >= 4) {
+                              _data.addAll([
+                                const ServerModel(
+                                  serverName: 'Server 2',
+                                  country: 'India',
+                                  region: 'IN',
+                                  latitude: 11.1271,
+                                  longitude: 78.6569,
+                                  uptime: 98.5,
+                                  cores: 32,
+                                  memory: 64,
+                                ),
+                                const ServerModel(
+                                  serverName: 'Server 3',
+                                  country: 'India',
+                                  region: 'IN',
+                                  latitude: 17.3850,
+                                  longitude: 78.4867,
+                                  uptime: 98.9,
+                                  cores: 32,
+                                  memory: 64,
+                                ),
+                                const ServerModel(
+                                  serverName: 'Server 4',
+                                  country: 'India',
+                                  region: 'IN',
+                                  latitude: 19.0760,
+                                  longitude: 72.8777,
+                                  uptime: 99.2,
+                                  cores: 64,
+                                  memory: 128,
+                                ),
+                              ]);
+                              _shapeController.clearMarkers();
+                              for (var i = 0; i < _data.length; i++) {
+                                _shapeController.insertMarker(i);
+                              }
+                            }
+                            return true;
+                          },
                           markerBuilder: (context, index) {
                             return MapMarker(
                               latitude: _data[index].latitude,
@@ -298,7 +349,6 @@ class ServerDetailRow extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Label
             Flexible(
               child: Text(
                 label,
@@ -306,7 +356,6 @@ class ServerDetailRow extends StatelessWidget {
                 style: context.light,
               ),
             ),
-            // Value
             Flexible(
               child: Text(
                 value,
