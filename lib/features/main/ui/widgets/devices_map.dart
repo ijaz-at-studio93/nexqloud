@@ -38,11 +38,21 @@ class _DevicesMapState extends State<DevicesMap> {
       _markerData.add(serversInAContinent);
     }
 
+    final continentsList = [
+      'Asia',
+      'Africa',
+      'Europe',
+      'South America',
+      'Australia',
+      'North America',
+      'Antarctica',
+    ];
+
     _dataSource = MapShapeSource.asset(
       'world_map.json',
       shapeDataField: 'continent',
       dataCount: _markerData.length,
-      primaryValueMapper: (index) => _markerData[index].continent,
+      primaryValueMapper: (index) => continentsList[index],
     );
 
     _zoomPanBehavior = MapZoomPanBehavior(
