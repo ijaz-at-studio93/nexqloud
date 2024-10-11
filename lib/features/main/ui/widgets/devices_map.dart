@@ -25,6 +25,7 @@ class _DevicesMapState extends State<DevicesMap> {
   late MapShapeSource _dataSource;
   late MapZoomPanBehavior _zoomPanBehavior;
   late MapShapeLayerController _shapeController;
+  int selectedIndex = 1;
 
   @override
   void initState() {
@@ -37,14 +38,16 @@ class _DevicesMapState extends State<DevicesMap> {
       _markerData.add(serversInAContinent);
     }
 
-    _dataSource = const MapShapeSource.asset(
+    _dataSource = MapShapeSource.asset(
       'world_map.json',
-      shapeDataField: 'name',
+      shapeDataField: 'continent',
+      dataCount: _markerData.length,
+      primaryValueMapper: (index) => _markerData[index].continent,
     );
 
     _zoomPanBehavior = MapZoomPanBehavior(
       enableDoubleTapZooming: true,
-      zoomLevel: 1.2,
+      // zoomLevel: 1.2,
       toolbarSettings: const MapToolbarSettings(
         itemBackgroundColor: graphlinecolor2,
         iconColor: kWhite,
@@ -140,6 +143,13 @@ class _DevicesMapState extends State<DevicesMap> {
                           strokeColor: kWhite.withOpacity(0.22),
                           controller: _shapeController,
                           zoomPanBehavior: _zoomPanBehavior,
+                          selectedIndex: selectedIndex,
+                          onSelectionChanged: (index) {
+                            print(_markerData[index].serverName);
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
                           markerTooltipBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.all(12),
@@ -330,7 +340,8 @@ class _DevicesMapState extends State<DevicesMap> {
                                         .read<ServerDataProvider>()
                                         .findContinentServer(continent);
                                     _markerData.add(
-                                        serverInAContinent); // Use `add` for a single server
+                                      serverInAContinent,
+                                    ); // Use `add` for a single server
                                   }
                                   // Add continent-level markers
                                 }
