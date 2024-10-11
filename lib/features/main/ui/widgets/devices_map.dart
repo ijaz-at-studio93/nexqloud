@@ -1,11 +1,7 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
-
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/log.dart';
@@ -13,6 +9,9 @@ import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/models/server_model.dart';
 import 'package:nexqloud/features/main/providers/server_data_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_maps/maps.dart';
 
 class DevicesMap extends StatefulWidget {
   const DevicesMap({super.key});
@@ -258,9 +257,11 @@ class _DevicesMapState extends State<DevicesMap> {
                           onWillZoom: (details) {
                             try {
                               details.newZoomLevel.printInfo();
-                              _markerData.clear();
+
+                              // Keep the existing logic for zooming in (as it works correctly)
                               if (details.newZoomLevel! > 2 &&
                                   details.newZoomLevel! <= 3) {
+                                _markerData.clear();
                                 final regions = context
                                     .read<ServerDataProvider>()
                                     .getRegionList();
@@ -277,15 +278,61 @@ class _DevicesMapState extends State<DevicesMap> {
                                   _shapeController.insertMarker(i);
                                 }
                               } else if (details.newZoomLevel! >= 4) {
+                                _markerData.clear();
                                 final countries = context
                                     .read<ServerDataProvider>()
                                     .getCountryList();
-
                                 for (final country in countries) {
                                   final serversInACountry = context
                                       .read<ServerDataProvider>()
                                       .findCountry(country);
                                   _markerData.addAll(serversInACountry);
+                                }
+                                _shapeController.clearMarkers();
+                                for (var i = 0; i < _markerData.length; i++) {
+                                  _shapeController.insertMarker(i);
+                                }
+                              }
+
+                              // Handle zoom out logic correctly by reverting to continents
+                              if (details.newZoomLevel! < 4 &&
+                                  details.previousZoomLevel! >= 4) {
+                                // Zooming out from level 4+ (countries) to 3 or below (regions or continents)
+                                _markerData.clear();
+                                final regions = context
+                                    .read<ServerDataProvider>()
+                                    .getRegionList();
+                                final serversInARegion = <ServerModel>[];
+                                for (final region in regions) {
+                                  final servers = context
+                                      .read<ServerDataProvider>()
+                                      .findRegion(region);
+                                  serversInARegion.addAll(servers);
+                                }
+                                _markerData.addAll(serversInARegion);
+                                _shapeController.clearMarkers();
+                                for (var i = 0; i < _markerData.length; i++) {
+                                  _shapeController.insertMarker(i);
+                                }
+                              } else if (details.newZoomLevel! <= 2 &&
+                                  details.previousZoomLevel! > 2) {
+                                // Zooming out further to continent-level markers (reset to the initial state)
+                                _markerData.clear(); // Clear current markers
+                                final continents = context
+                                    .read<ServerDataProvider>()
+                                    .getContinentList();
+                                for (final continent in continents) {
+                                  final serversInAContinent = context
+                                      .read<ServerDataProvider>()
+                                      .findContinentServer(continent);
+                                  for (final continent in continents) {
+                                    final serverInAContinent = context
+                                        .read<ServerDataProvider>()
+                                        .findContinentServer(continent);
+                                    _markerData.add(
+                                        serverInAContinent); // Use `add` for a single server
+                                  }
+                                  // Add continent-level markers
                                 }
                                 _shapeController.clearMarkers();
                                 for (var i = 0; i < _markerData.length; i++) {
@@ -298,11 +345,34 @@ class _DevicesMapState extends State<DevicesMap> {
                             return true;
                           },
                           markerBuilder: (context, index) {
+                            double markerSize;
+
+                            // Define marker size based on the number of markers
+                            if (_markerData.length <= 10) {
+                              // Fewer markers, larger size
+                              markerSize = 18.0;
+                            } else if (_markerData.length <= 50) {
+                              // Moderate number of markers, medium size
+                              markerSize = 15.0;
+                            } else {
+                              // More markers, smaller size
+                              markerSize = 10.0;
+                            }
                             return MapMarker(
                               latitude: _markerData[index].latitude,
                               longitude: _markerData[index].longitude,
-                              size: const Size(10, 10),
+                              size: Size(markerSize, markerSize),
                               iconColor: graphlinecolor2.withOpacity(0.8),
+                              child: ZoomIn(
+                                child: Container(
+                                  height: markerSize,
+                                  width: markerSize,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: graphlinecolor2.withOpacity(0.8),
+                                  ),
+                                ),
+                              ),
                             );
                           },
                         ),

@@ -2,6 +2,13 @@
 class Assets {
   Assets._();
 
+  static const String assetsAfrica = 'assets/africa.json';
+  static const String assetsAsia = 'assets/asia.json';
+  static const String assetsAustralia = 'assets/australia.json';
+  static const String assetsEurope = 'assets/europe.json';
+  static const String assetsNorthAmerica = 'assets/north-america.json';
+  static const String assetsOceania = 'assets/oceania.json';
+  static const String assetsSouthAmerica = 'assets/south-america.json';
   static const String assetsWorldMap = 'assets/world_map.json';
   static const String pngAbg = 'assets/images/png/abg.png';
   static const String pngAppBarBg = 'assets/images/png/app_bar_bg.png';
