@@ -23,9 +23,9 @@ final router = GoRouter(
       path: AppRoute.main.path,
       builder: (context, state) => const MainScreen(),
     ),
-    GoRoute(
-      path: AppRoute.map.path,
-      builder: (context, state) => const ContinentMap(index: 0,),
-    ),
+    // GoRoute(
+    //   path: AppRoute.map.path,
+    //   builder: (context, state) => const ContinentMap(index: 0,),
+    // ),
   ],
 );

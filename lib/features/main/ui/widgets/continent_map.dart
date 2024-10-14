@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
+import 'package:nexqloud/core/extensions/log.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
@@ -16,9 +17,11 @@ import 'package:nexqloud/features/main/ui/widgets/world_map.dart';
 class ContinentMap extends StatefulWidget {
   const ContinentMap({
     super.key,
-    required this.index,
+    required this.continent,
+    required this.filePath,
   });
-  final int index;
+  final String continent;
+  final String filePath;
 
   @override
   State<ContinentMap> createState() => _ContinentMapState();
@@ -48,38 +51,39 @@ class _ContinentMapState extends State<ContinentMap> {
   }
 
   void _configureContinentMap() {
-    _continentMapShapeController = MapShapeLayerController();
-    _continentMapZoomPanBehavior = MapZoomPanBehavior(
-      enableDoubleTapZooming: true,
-      toolbarSettings: const MapToolbarSettings(
-        itemBackgroundColor: graphlinecolor2,
-        iconColor: kWhite,
-        itemHoverColor: kPurpleColor,
-        direction: Axis.vertical,
-        position: MapToolbarPosition.bottomRight,
-      ),
-    );
+    // _continentMapShapeController = MapShapeLayerController();
+    // _continentMapZoomPanBehavior = MapZoomPanBehavior(
+    //   enableDoubleTapZooming: true,
+    //   toolbarSettings: const MapToolbarSettings(
+    //     itemBackgroundColor: graphlinecolor2,
+    //     iconColor: kWhite,
+    //     itemHoverColor: kPurpleColor,
+    //     direction: Axis.vertical,
+    //     position: MapToolbarPosition.bottomRight,
+    //   ),
+    // );
 
-    final continent = _continentsList.keys.toList()[widget.index];
-    print('continent: $continent');
+    try {
+      final countries =
+          context.read<ServerDataProvider>().findCountryInContinent(
+                widget.continent,
+              );
+      for (final country in countries) {
+        final serversInACountry =
+            context.read<ServerDataProvider>().findCountry(country);
+        print('serversInACountry: $serversInACountry');
+        _continentMarkersData.addAll(serversInACountry);
+      }
 
-    final countries = context.read<ServerDataProvider>().findCountryInContinent(
-          continent,
-        );
-    for (final country in countries) {
-      final serversInACountry =
-          context.read<ServerDataProvider>().findCountry(country);
-      _continentMarkersData.addAll(serversInACountry);
+      _continentDataSource = MapShapeSource.asset(
+        widget.filePath,
+        shapeDataField: 'country',
+        // shapeDataField: 'continent',
+        // dataCount: _continentMarkersData.length,
+      );
+    } catch (e) {
+      e.printError();
     }
-
-    final mapJsonFile = _continentsList.values.toList()[widget.index];
-    print(mapJsonFile);
-    _continentDataSource = MapShapeSource.asset(
-      mapJsonFile,
-      shapeDataField: 'continent',
-      dataCount: _continentMarkersData.length,
-      primaryValueMapper: (index) => _continentsList.keys.toList()[index],
-    );
   }
 
   @override
@@ -104,8 +108,8 @@ class _ContinentMapState extends State<ContinentMap> {
                 initialMarkersCount: _continentMarkersData.length,
                 color: kWhite.withOpacity(0.2),
                 strokeColor: kWhite.withOpacity(0.22),
-                controller: _continentMapShapeController,
-                zoomPanBehavior: _continentMapZoomPanBehavior,
+                // controller: _continentMapShapeController,
+                // zoomPanBehavior: _continentMapZoomPanBehavior,
                 markerTooltipBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(12),
