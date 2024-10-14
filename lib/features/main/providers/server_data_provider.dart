@@ -470,4 +470,13 @@ class ServerDataProvider with ChangeNotifier {
   List<ServerModel> findRegion(String region) {
     return data.where((element) => element.region == region).toList();
   }
+
+  // find countries in a continent
+  List<String> findCountryInContinent(String continent) {
+    return data
+        .where((element) => element.continent == continent)
+        .map((e) => e.country)
+        .toSet()
+        .toList();
+  }
 }
