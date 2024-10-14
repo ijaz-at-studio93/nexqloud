@@ -7,7 +7,7 @@ import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/ui/views/footer_area.dart';
 import 'package:nexqloud/features/main/ui/widgets/data_analysis_gauges.dart';
 import 'package:nexqloud/features/main/ui/widgets/data_grid.dart';
-import 'package:nexqloud/features/main/ui/widgets/devices_map.dart';
+import 'package:nexqloud/features/main/ui/widgets/world_map.dart';
 import 'package:nexqloud/features/main/ui/widgets/main_app_bar.dart';
 
 class MainScreen extends StatelessWidget {
@@ -49,7 +49,7 @@ class MainScreen extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   const MainAppBar(),
-                  const DevicesMap(),
+                  const WorldMap(),
                   const DataAnalysisGauges(),
                   SizedBox(
                     height: context.height * 0.7,

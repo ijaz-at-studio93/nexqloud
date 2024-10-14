@@ -1,5 +1,5 @@
 enum AppRoute {
-  main('/');
+  main('/'),map('/map');
 
   const AppRoute(this.path);
 
