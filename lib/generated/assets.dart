@@ -18,7 +18,9 @@ class Assets {
   static const String pngMiddle = 'assets/images/png/middle.png';
   static const String pngOnlineIcon = 'assets/icons/png/online_icon.png';
   static const String pngRight = 'assets/images/png/right.png';
+  static const String pngSecureIcon = 'assets/icons/png/secure_icon.png';
   static const String pngTopRight = 'assets/images/png/top_right.png';
+  static const String pngWarningIcon = 'assets/icons/png/warning_icon.png';
   static const String rubikRubikBlack = 'assets/fonts/rubik/Rubik-Black.ttf';
   static const String rubikRubikBlackItalic =
       'assets/fonts/rubik/Rubik-BlackItalic.ttf';
@@ -44,8 +46,11 @@ class Assets {
       'assets/fonts/rubik/Rubik-SemiBoldItalic.ttf';
   static const String svgAppleIconWhite =
       'assets/icons/svg/apple_icon_white.svg';
+  static const String svgCpuMeterIcon = 'assets/icons/svg/cpu_meter_icon.svg';
   static const String svgGooglePlayIconWhite =
       'assets/icons/svg/google_play_icon_white.svg';
+  static const String svgGpuIcon = 'assets/icons/svg/gpu_icon.svg';
   static const String svgMoneyIcon = 'assets/icons/svg/money_icon.svg';
   static const String svgNexLogo = 'assets/icons/svg/nex_logo.svg';
+  static const String svgServer = 'assets/icons/svg/server.svg';
 }

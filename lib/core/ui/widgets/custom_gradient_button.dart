@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
-
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/utils/app_text_styles.dart';
@@ -17,19 +15,23 @@ class CustomGradientButton extends StatelessWidget {
     this.addShadow = true,
     this.isText20 = false,
     this.isFromWallet = false,
+    this.preFix,
+    this.hideGlow = false,
   });
   final String title;
   final VoidCallback onTap;
   final Widget? trailing;
+  final Widget? preFix;
   final bool isEnable;
   final bool addShadow;
   final bool isText20;
   final bool isFromWallet;
+  final bool hideGlow;
 
   @override
   Widget build(BuildContext context) {
     return GlowContainer(
-      glowColor: isEnable ? glowColor : null,
+      glowColor: !hideGlow ? glowColor : null,
       blurRadius: 25,
       offset: const Offset(0, 4),
       child: Stack(
@@ -82,6 +84,7 @@ class CustomGradientButton extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Spacer(),
+                    if (preFix != null) preFix!,
                     if (trailing != null)
                       const SizedBox(
                         width: 32,
@@ -92,8 +95,8 @@ class CustomGradientButton extends StatelessWidget {
                         color: isEnable ? kWhite : kWhite.withOpacity(0.5),
                       ),
                     ),
-                    const Spacer(),
                     if (trailing != null) trailing!,
+                    const Spacer(),
                   ],
                 ),
               ),

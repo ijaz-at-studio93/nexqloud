@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/svg.dart';
-
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/ui/views/footer_area.dart';
 import 'package:nexqloud/features/main/ui/widgets/data_analysis_gauges.dart';
+import 'package:nexqloud/features/main/ui/widgets/data_grid.dart';
 import 'package:nexqloud/features/main/ui/widgets/devices_map.dart';
 import 'package:nexqloud/features/main/ui/widgets/main_app_bar.dart';
 
@@ -52,6 +51,12 @@ class MainScreen extends StatelessWidget {
                   const MainAppBar(),
                   const DevicesMap(),
                   const DataAnalysisGauges(),
+                  SizedBox(
+                    height: context.height * 0.7,
+                    width: context.width * 0.7,
+                    child: TransparentDataGrid(),
+                  ),
+                  const Space.vertical(40),
                   Container(
                     height: 480,
                     width: context.width * 0.7,
