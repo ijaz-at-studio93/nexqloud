@@ -25,14 +25,14 @@ class ContinentMap extends StatefulWidget {
 }
 
 class _ContinentMapState extends State<ContinentMap> {
-  final Map<String, String> _continentsList = {
-    'Asia': 'assets/maps/asia.json',
-    'Africa': 'assets/maps/africa.json',
-    'Europe': 'assets/maps/europe.json',
-    'South America': 'assets/maps/south-america.json',
-    'Australia': 'assets/maps/australia.json',
-    'North America': 'assets/maps/north-america.json',
-    'Antarctica': 'assets/maps/oceania.json',
+  final _continentsList = {
+    'Asia': 'asia.json',
+    'Africa': 'africa.json',
+    'Europe': 'europe.json',
+    'South America': 'south-america.json',
+    'Australia': 'australia.json',
+    'North America': 'north-america.json',
+    'Antarctica': 'oceania.json',
   };
 
   final List<ServerModel> _continentMarkersData = [];
@@ -43,16 +43,11 @@ class _ContinentMapState extends State<ContinentMap> {
   @override
   void initState() {
     super.initState();
-    print('ContinentMap initialized with index: ${widget.index}');
+
     _configureContinentMap();
   }
 
   void _configureContinentMap() {
-    assert(
-      widget.index >= 0 && widget.index < _continentsList.length,
-      'Index out of bounds',
-    );
-
     _continentMapShapeController = MapShapeLayerController();
     _continentMapZoomPanBehavior = MapZoomPanBehavior(
       enableDoubleTapZooming: true,
@@ -66,27 +61,24 @@ class _ContinentMapState extends State<ContinentMap> {
     );
 
     final continent = _continentsList.keys.toList()[widget.index];
-    print('Continent: $continent');
+    print('continent: $continent');
 
-    final countries =
-        context.read<ServerDataProvider>().findCountryInContinent(continent);
-    print('Countries in $continent: $countries');
-
+    final countries = context.read<ServerDataProvider>().findCountryInContinent(
+          continent,
+        );
     for (final country in countries) {
       final serversInACountry =
           context.read<ServerDataProvider>().findCountry(country);
       _continentMarkersData.addAll(serversInACountry);
     }
-    print('Total markers: ${_continentMarkersData.length}');
 
     final mapJsonFile = _continentsList.values.toList()[widget.index];
-    print('Map JSON file: $mapJsonFile');
-
+    print(mapJsonFile);
     _continentDataSource = MapShapeSource.asset(
       mapJsonFile,
-      shapeDataField: 'name', // Ensure this matches your JSON shape data
+      shapeDataField: 'continent',
       dataCount: _continentMarkersData.length,
-      primaryValueMapper: (index) => continent,
+      primaryValueMapper: (index) => _continentsList.keys.toList()[index],
     );
   }
 
