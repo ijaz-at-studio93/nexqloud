@@ -431,9 +431,9 @@ class _WorldMapState extends State<WorldMap> {
                   ),
                 ),
               ] else
-                const ContinentMap(
-                  continent: 'Asia',
-                  filePath: 'asia.json',
+                ContinentMap(
+                  continent: _continentsList.keys.toList()[_selectedIndex],
+                  filePath: _continentsList.values.toList()[_selectedIndex],
                 ),
               //   SizedBox(
               //     height: context.height * 0.58,
