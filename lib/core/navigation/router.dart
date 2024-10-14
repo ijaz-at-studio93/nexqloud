@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:nexqloud/core/navigation/app_route.dart';
 import 'package:nexqloud/core/observers/app_navigation_observer.dart';
 import 'package:nexqloud/features/main/ui/screens/main_screen.dart';
-import 'package:nexqloud/features/main/ui/widgets/continent_map.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
