@@ -15,9 +15,110 @@ class DataAnalysisGauges extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 34),
       child: SizedBox(
-        height: context.height * 0.5,
-        width: context.width * 0.83,
-        child: const Row(
+        height: context.isDesktop ? context.height * 0.5 : null,
+        width: context.width * 0.9,
+        child:
+            context.isMobile ? MobileAnalysisCards() : DesktopAnalysisCards(),
+      ),
+    );
+  }
+}
+
+class DesktopAnalysisCards extends StatelessWidget {
+  const DesktopAnalysisCards({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Expanded(
+          child: CircularGauge(
+            value: '4.126',
+            progress: 40,
+            unit: 'GBit/s',
+            title: 'Disk Reads',
+            subCardTitle: 'Devices Online',
+            subCardValue: '65',
+          ),
+        ),
+        const Space.horizontal(8),
+        const Expanded(
+          child: CircularGauge(
+            value: '8.098',
+            progress: 60,
+            unit: 'MBit/s',
+            title: 'Disk Writes',
+            subCardTitle: 'Total vCPU Cores',
+            subCardValue: '8.64K',
+          ),
+        ),
+        const Space.horizontal(8),
+        SizedBox(
+          width: context.isDesktop
+              ? context.width * 0.16
+              : context.isTablet
+                  ? 270
+                  : 270,
+          child: const NeedleCircularGauge(
+            title: '',
+            progress: 60,
+            unit: 'vCPU  Utilization',
+            value: 'CPU',
+            subCardTitle: 'Total vCPU Cores',
+            subCardValue: '8.64K',
+          ),
+        ),
+        const Space.horizontal(8),
+        SizedBox(
+          width: context.isDesktop
+              ? context.width * 0.16
+              : context.isTablet
+                  ? 270
+                  : 270,
+          child: const NeedleCircularGauge(
+            value: 'RAM',
+            progress: 40,
+            unit: 'Memory Used',
+            title: '',
+            subCardTitle: "Total AI GPU's",
+            subCardValue: '298',
+          ),
+        ),
+        const Space.horizontal(8),
+        const Expanded(
+          child: CircularGauge(
+            value: '4.126',
+            progress: 40,
+            unit: 'GBit/s',
+            title: 'Network Outbound',
+            subCardTitle: "Total AI GPU's",
+            subCardValue: '298',
+          ),
+        ),
+        const Space.horizontal(8),
+        const Expanded(
+          child: CircularGauge(
+            value: '8.098',
+            progress: 60,
+            unit: 'MBit/s',
+            title: 'Network Inbound',
+            subCardTitle: 'Average Bandwidth',
+            subCardValue: '0.8 Gb/s',
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class MobileAnalysisCards extends StatelessWidget {
+  const MobileAnalysisCards({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        Row(
           children: [
             Expanded(
               child: CircularGauge(
@@ -40,9 +141,12 @@ class DataAnalysisGauges extends StatelessWidget {
                 subCardValue: '8.64K',
               ),
             ),
-            Space.horizontal(8),
-            SizedBox(
-              width: 270,
+          ],
+        ),
+        Space.vertical(8),
+        Row(
+          children: [
+            Expanded(
               child: NeedleCircularGauge(
                 title: '',
                 progress: 60,
@@ -53,8 +157,7 @@ class DataAnalysisGauges extends StatelessWidget {
               ),
             ),
             Space.horizontal(8),
-            SizedBox(
-              width: 270,
+            Expanded(
               child: NeedleCircularGauge(
                 value: 'RAM',
                 progress: 40,
@@ -64,7 +167,11 @@ class DataAnalysisGauges extends StatelessWidget {
                 subCardValue: '298',
               ),
             ),
-            Space.horizontal(8),
+          ],
+        ),
+        Space.vertical(8),
+        Row(
+          children: [
             Expanded(
               child: CircularGauge(
                 value: '4.126',
@@ -87,8 +194,8 @@ class DataAnalysisGauges extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
+        )
+      ],
     );
   }
 }
@@ -124,77 +231,88 @@ class CircularGauge extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 185,
-                child: SfRadialGauge(
-                  axes: <RadialAxis>[
-                    RadialAxis(
-                      startAngle: -90,
-                      endAngle: 270,
-                      radiusFactor: 0.8,
-                      showFirstLabel: false,
-                      showLabels: false,
-                      showTicks: false,
-                      annotations: [
-                        GaugeAnnotation(
-                          widget: Stack(
-                            children: [
-                              Align(
-                                child: GlowIcon(
-                                  Icons.circle_outlined,
-                                  color: kTransparent,
-                                  glowColor:
-                                      const Color(0xFF33B1FF).withOpacity(0.35),
-                                  size: 160,
+                height: context.isDesktop
+                    ? context.width * 0.12
+                    : context.isTablet
+                        ? 185
+                        : 185,
+                child: Padding(
+                  padding: !context.isDesktop
+                      ? EdgeInsets.only(top: 12)
+                      : EdgeInsets.zero,
+                  child: SfRadialGauge(
+                    axes: <RadialAxis>[
+                      RadialAxis(
+                        startAngle: -90,
+                        endAngle: 270,
+                        radiusFactor: context.isDesktop ? 0.8 : 1,
+                        showFirstLabel: false,
+                        showLabels: false,
+                        showTicks: false,
+                        annotations: [
+                          GaugeAnnotation(
+                            widget: Stack(
+                              children: [
+                                Align(
+                                  child: GlowIcon(
+                                    Icons.circle_outlined,
+                                    color: kTransparent,
+                                    glowColor: const Color(0xFF33B1FF)
+                                        .withOpacity(0.35),
+                                    size: context.isDesktop
+                                        ? context.width * .11
+                                        : context.width * .01,
+                                  ),
                                 ),
-                              ),
-                              Align(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      value, //'4.126'
-                                      style: context.bold?.copyWith(
-                                        fontSize: 18,
+                                Align(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        value, //'4.126'
+                                        style: context.bold?.copyWith(
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      unit, //'GBit/s'
-                                      style: context.normal?.copyWith(
-                                        fontSize: 10,
-                                        color: const Color(0xFFBFBFBF),
+                                      Text(
+                                        unit, //'GBit/s'
+                                        style: context.normal?.copyWith(
+                                          fontSize: 10,
+                                          color: const Color(0xFFBFBFBF),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                        ],
+                        axisLineStyle: const AxisLineStyle(
+                          thickness: 0.17,
+                          color: Color(0xFFEEEEEE),
+                          thicknessUnit: GaugeSizeUnit.factor,
                         ),
-                      ],
-                      axisLineStyle: const AxisLineStyle(
-                        thickness: 0.17,
-                        color: Color(0xFFEEEEEE),
-                        thicknessUnit: GaugeSizeUnit.factor,
+                        pointers: <GaugePointer>[
+                          RangePointer(
+                            enableAnimation: true,
+                            animationDuration: 1600,
+                            value: progress, // 40
+                            width: 0.17,
+                            sizeUnit: GaugeSizeUnit.factor,
+                            cornerStyle: CornerStyle.bothCurve,
+                            gradient: const SweepGradient(
+                              colors: <Color>[
+                                Color(0xFF9933FF),
+                                Color(0xFF33B1FF),
+                              ],
+                              stops: <double>[0.25, 0.75],
+                            ),
+                          ),
+                        ],
                       ),
-                      pointers: <GaugePointer>[
-                        RangePointer(
-                          enableAnimation: true,
-                          animationDuration: 1600,
-                          value: progress, // 40
-                          width: 0.17,
-                          sizeUnit: GaugeSizeUnit.factor,
-                          cornerStyle: CornerStyle.bothCurve,
-                          gradient: const SweepGradient(
-                            colors: <Color>[
-                              Color(0xFF9933FF),
-                              Color(0xFF33B1FF),
-                            ],
-                            stops: <double>[0.25, 0.75],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Text(
@@ -279,7 +397,11 @@ class NeedleCircularGauge extends StatelessWidget {
             children: [
               const Space.vertical(10),
               SizedBox(
-                height: 200,
+                height: context.isDesktop
+                    ? context.width * 0.132
+                    : context.isTablet
+                        ? 200
+                        : 200,
                 child: SfRadialGauge(
                   axes: <RadialAxis>[
                     RadialAxis(

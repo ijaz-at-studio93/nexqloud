@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
@@ -76,8 +75,8 @@ class _WorldMapState extends State<WorldMap> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height * 0.82,
-      width: context.width * 0.83,
+      height: context.isMobile ? context.height * 0.63 : context.height * 0.82,
+      width: context.width * 0.9,
       decoration: BoxDecoration(
         border: GradientBoxBorder(
           gradient: LinearGradient(
@@ -109,6 +108,8 @@ class _WorldMapState extends State<WorldMap> {
             children: [
               Text(
                 'NEXQLOUD INSIGHTS',
+                maxLines: 2,
+                textAlign: TextAlign.center,
                 style: context.semiBold?.copyWith(
                   fontSize: 32,
                 ),
@@ -120,14 +121,14 @@ class _WorldMapState extends State<WorldMap> {
                     TextSpan(
                       text: '65',
                       style: context.bold?.copyWith(
-                        fontSize: 24,
+                        fontSize: context.isMobile ? 18 : 24,
                         color: graphlinecolor2,
                       ),
                     ),
                     TextSpan(
                       text: ' Active Provider Devices',
                       style: context.light?.copyWith(
-                        fontSize: 18,
+                        fontSize: context.isMobile ? 14 : 18,
                       ),
                     ),
                   ],
@@ -162,7 +163,9 @@ class _WorldMapState extends State<WorldMap> {
               const Space.vertical(20),
               if (_selectedIndex == -1) ...[
                 SizedBox(
-                  height: context.height * 0.58,
+                  height: context.width < 900
+                      ? context.height * 0.4
+                      : context.height * 0.58,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: SfMapsTheme(
@@ -192,129 +195,131 @@ class _WorldMapState extends State<WorldMap> {
                               //   if (_selectedIndex == -1) return;
                               // });
                             },
-                            markerTooltipBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Container(
-                                              padding: const EdgeInsets.all(4),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(7),
-                                                color: const Color(0xffa2dcff)
-                                                    .withOpacity(0.2),
-                                              ),
-                                              child: SvgPicture.asset(
-                                                'assets/icons/svg/money_icon.svg',
-                                                height: 18,
-                                              ),
-                                            ),
-                                            const Space.horizontal(12),
-                                            Text(
-                                              _worldMapMarkersData[index]
-                                                  .serverName,
-                                              style: context.medium?.copyWith(
-                                                fontSize: 16,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const Space.horizontal(80),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Image.asset(
-                                              'assets/icons/png/online_icon.png',
-                                            ),
-                                            const Space.horizontal(6),
-                                            Text(
-                                              _worldMapMarkersData[index]
-                                                  .status,
-                                              style: context.medium,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const Space.vertical(18),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ServerDetailRow(
-                                          label: 'Uptime:',
-                                          value:
-                                              '${_worldMapMarkersData[index].uptime}%',
-                                        ),
-                                        const Space.horizontal(24),
-                                        ServerDetailRow(
-                                          label: 'Uptime:',
-                                          value:
-                                              '${_worldMapMarkersData[index].uptime}%',
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ServerDetailRow(
-                                          label: 'Region:',
-                                          value: _worldMapMarkersData[index]
-                                              .region,
-                                        ),
-                                        const Space.horizontal(24),
-                                        ServerDetailRow(
-                                          label: 'Region:',
-                                          value: _worldMapMarkersData[index]
-                                              .region,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ServerDetailRow(
-                                          label: 'Cores:',
-                                          value:
-                                              '${_worldMapMarkersData[index].cores}',
-                                        ),
-                                        const Space.horizontal(24),
-                                        ServerDetailRow(
-                                          label: 'Cores:',
-                                          value:
-                                              '${_worldMapMarkersData[index].cores}',
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ServerDetailRow(
-                                          label: 'Memory:',
-                                          value:
-                                              '${_worldMapMarkersData[index].memory}GB',
-                                        ),
-                                        const Space.horizontal(24),
-                                        ServerDetailRow(
-                                          label: 'Memory:',
-                                          value:
-                                              '${_worldMapMarkersData[index].memory}GB',
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
+
+                            ///Hover UI below if needed
+                            // markerTooltipBuilder: (context, index) {
+                            //   return Padding(
+                            //     padding: const EdgeInsets.all(12),
+                            //     child: Column(
+                            //       mainAxisSize: MainAxisSize.min,
+                            //       children: [
+                            //         Row(
+                            //           mainAxisSize: MainAxisSize.min,
+                            //           mainAxisAlignment:
+                            //               MainAxisAlignment.spaceBetween,
+                            //           children: [
+                            //             Row(
+                            //               mainAxisSize: MainAxisSize.min,
+                            //               children: [
+                            //                 Container(
+                            //                   padding: const EdgeInsets.all(4),
+                            //                   decoration: BoxDecoration(
+                            //                     borderRadius:
+                            //                         BorderRadius.circular(7),
+                            //                     color: const Color(0xffa2dcff)
+                            //                         .withOpacity(0.2),
+                            //                   ),
+                            //                   child: SvgPicture.asset(
+                            //                     'assets/icons/svg/money_icon.svg',
+                            //                     height: 18,
+                            //                   ),
+                            //                 ),
+                            //                 const Space.horizontal(12),
+                            //                 Text(
+                            //                   _worldMapMarkersData[index]
+                            //                       .serverName,
+                            //                   style: context.medium?.copyWith(
+                            //                     fontSize: 16,
+                            //                   ),
+                            //                 ),
+                            //               ],
+                            //             ),
+                            //             const Space.horizontal(80),
+                            //             Row(
+                            //               mainAxisSize: MainAxisSize.min,
+                            //               children: [
+                            //                 Image.asset(
+                            //                   'assets/icons/png/online_icon.png',
+                            //                 ),
+                            //                 const Space.horizontal(6),
+                            //                 Text(
+                            //                   _worldMapMarkersData[index]
+                            //                       .status,
+                            //                   style: context.medium,
+                            //                 ),
+                            //               ],
+                            //             ),
+                            //           ],
+                            //         ),
+                            //         const Space.vertical(18),
+                            //         Row(
+                            //           mainAxisSize: MainAxisSize.min,
+                            //           children: [
+                            //             ServerDetailRow(
+                            //               label: 'Uptime:',
+                            //               value:
+                            //                   '${_worldMapMarkersData[index].uptime}%',
+                            //             ),
+                            //             const Space.horizontal(24),
+                            //             ServerDetailRow(
+                            //               label: 'Uptime:',
+                            //               value:
+                            //                   '${_worldMapMarkersData[index].uptime}%',
+                            //             ),
+                            //           ],
+                            //         ),
+                            //         Row(
+                            //           mainAxisSize: MainAxisSize.min,
+                            //           children: [
+                            //             ServerDetailRow(
+                            //               label: 'Region:',
+                            //               value: _worldMapMarkersData[index]
+                            //                   .region,
+                            //             ),
+                            //             const Space.horizontal(24),
+                            //             ServerDetailRow(
+                            //               label: 'Region:',
+                            //               value: _worldMapMarkersData[index]
+                            //                   .region,
+                            //             ),
+                            //           ],
+                            //         ),
+                            //         Row(
+                            //           mainAxisSize: MainAxisSize.min,
+                            //           children: [
+                            //             ServerDetailRow(
+                            //               label: 'Cores:',
+                            //               value:
+                            //                   '${_worldMapMarkersData[index].cores}',
+                            //             ),
+                            //             const Space.horizontal(24),
+                            //             ServerDetailRow(
+                            //               label: 'Cores:',
+                            //               value:
+                            //                   '${_worldMapMarkersData[index].cores}',
+                            //             ),
+                            //           ],
+                            //         ),
+                            //         Row(
+                            //           mainAxisSize: MainAxisSize.min,
+                            //           children: [
+                            //             ServerDetailRow(
+                            //               label: 'Memory:',
+                            //               value:
+                            //                   '${_worldMapMarkersData[index].memory}GB',
+                            //             ),
+                            //             const Space.horizontal(24),
+                            //             ServerDetailRow(
+                            //               label: 'Memory:',
+                            //               value:
+                            //                   '${_worldMapMarkersData[index].memory}GB',
+                            //             ),
+                            //           ],
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   );
+                            // },
                             onWillZoom: (details) {
                               try {
                                 details.newZoomLevel.printInfo();
@@ -412,11 +417,14 @@ class _WorldMapState extends State<WorldMap> {
                             },
                             markerBuilder: (context, index) {
                               double markerSize;
+                              bool canShowCount = false;
 
                               if (_worldMapMarkersData.length <= 10) {
                                 markerSize = 30.0;
+                                canShowCount = true;
                               } else if (_worldMapMarkersData.length <= 50) {
                                 markerSize = 15.0;
+                                canShowCount = false;
                               } else {
                                 markerSize = 10.0;
                               }
@@ -435,12 +443,12 @@ class _WorldMapState extends State<WorldMap> {
                                       color: graphlinecolor2.withOpacity(0.8),
                                     ),
                                     // alignment: Alignment.center,
-                                    child: _worldMapMarkersData.length <= 10
-                                        ? Text(
-                                            '${_worldMapMarkersData.length}',
-                                            style: context.medium,
-                                          )
-                                        : null,
+                                    // child: canShowCount
+                                    //     ? Text(
+                                    //         '${_worldMapMarkersData.length}',
+                                    //         style: context.medium,
+                                    //       )
+                                    //     : null,
                                   ),
                                 ),
                               );

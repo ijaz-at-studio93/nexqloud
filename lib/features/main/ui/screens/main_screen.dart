@@ -53,13 +53,13 @@ class MainScreen extends StatelessWidget {
                   const DataAnalysisGauges(),
                   SizedBox(
                     height: context.height * 0.7,
-                    width: context.width * 0.83,
+                    width: context.width * 0.9,
                     child: TransparentDataGrid(),
                   ),
                   const Space.vertical(40),
                   Container(
                     height: 480,
-                    width: context.width * 0.83,
+                    width: context.width * 0.9,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                       gradient: const LinearGradient(

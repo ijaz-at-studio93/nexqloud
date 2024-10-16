@@ -39,9 +39,9 @@ flutter:
     - assets/icons/svg/
     - assets/icons/png/
     - assets/images/png/
-    - assets/images/svg/
+#    - assets/images/svg/
     - assets/fonts/rubik/
-    - assets/json/
+#    - assets/json/
 
 
   fonts:
