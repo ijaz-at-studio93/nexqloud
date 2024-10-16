@@ -280,14 +280,14 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          width: 100,
+          width: 104,
           height: 30,
           child: CustomGradientButton(
             title: 'Previous',
             addShadow: false,
             hideGlow: true,
             preFix: const Padding(
-              padding: EdgeInsets.only(right: 8.0),
+              padding: EdgeInsets.only(right: 7, left: 10),
               child: Icon(
                 Icons.arrow_back_rounded,
                 size: 14,

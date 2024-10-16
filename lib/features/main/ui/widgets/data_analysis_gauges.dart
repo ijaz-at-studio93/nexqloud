@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_glow/flutter_glow.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
-
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/ui/widgets/custom_line_chart.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class DataAnalysisGauges extends StatelessWidget {
   const DataAnalysisGauges({super.key});
@@ -17,8 +15,8 @@ class DataAnalysisGauges extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 34),
       child: SizedBox(
-        height: context.height * 0.4,
-        width: context.width * 0.7,
+        height: context.height * 0.5,
+        width: context.width * 0.83,
         child: const Row(
           children: [
             Expanded(
@@ -43,7 +41,8 @@ class DataAnalysisGauges extends StatelessWidget {
               ),
             ),
             Space.horizontal(8),
-            Expanded(
+            SizedBox(
+              width: 270,
               child: NeedleCircularGauge(
                 title: '',
                 progress: 60,
@@ -54,7 +53,8 @@ class DataAnalysisGauges extends StatelessWidget {
               ),
             ),
             Space.horizontal(8),
-            Expanded(
+            SizedBox(
+              width: 270,
               child: NeedleCircularGauge(
                 value: 'RAM',
                 progress: 40,
@@ -115,7 +115,7 @@ class CircularGauge extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.only(bottom: 26),
           decoration: BoxDecoration(
             color: kWhite.withOpacity(0.05),
             borderRadius: BorderRadius.circular(20),
@@ -124,7 +124,7 @@ class CircularGauge extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 144,
+                height: 185,
                 child: SfRadialGauge(
                   axes: <RadialAxis>[
                     RadialAxis(
@@ -144,7 +144,7 @@ class CircularGauge extends StatelessWidget {
                                   color: kTransparent,
                                   glowColor:
                                       const Color(0xFF33B1FF).withOpacity(0.35),
-                                  size: 130,
+                                  size: 160,
                                 ),
                               ),
                               Align(
@@ -172,7 +172,7 @@ class CircularGauge extends StatelessWidget {
                         ),
                       ],
                       axisLineStyle: const AxisLineStyle(
-                        thickness: 0.15,
+                        thickness: 0.17,
                         color: Color(0xFFEEEEEE),
                         thicknessUnit: GaugeSizeUnit.factor,
                       ),
@@ -181,7 +181,7 @@ class CircularGauge extends StatelessWidget {
                           enableAnimation: true,
                           animationDuration: 1600,
                           value: progress, // 40
-                          width: 0.15,
+                          width: 0.17,
                           sizeUnit: GaugeSizeUnit.factor,
                           cornerStyle: CornerStyle.bothCurve,
                           gradient: const SweepGradient(
@@ -207,7 +207,8 @@ class CircularGauge extends StatelessWidget {
           ),
         ),
         const Space.vertical(6),
-        DecoratedBox(
+        Container(
+          height: 150,
           // width: 180,
           decoration: BoxDecoration(
             color: kWhite.withOpacity(0.05),
@@ -217,13 +218,13 @@ class CircularGauge extends StatelessWidget {
           child: Stack(
             children: [
               const SizedBox(
-                height: 134,
+                height: 150,
                 child: CustomLineChart(),
               ),
               Align(
                 child: Column(
                   children: [
-                    const Space.vertical(32),
+                    const Space.vertical(16),
                     Text(
                       subCardValue,
                       style: context.bold?.copyWith(fontSize: 32),
@@ -267,9 +268,8 @@ class NeedleCircularGauge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        DecoratedBox(
           // width: 180,
-          padding: const EdgeInsets.only(bottom: 16),
           decoration: BoxDecoration(
             color: kWhite.withOpacity(0.05),
             borderRadius: BorderRadius.circular(20),
@@ -279,7 +279,7 @@ class NeedleCircularGauge extends StatelessWidget {
             children: [
               const Space.vertical(10),
               SizedBox(
-                height: 134,
+                height: 200,
                 child: SfRadialGauge(
                   axes: <RadialAxis>[
                     RadialAxis(
@@ -325,7 +325,7 @@ class NeedleCircularGauge extends StatelessWidget {
                         ),
                       ],
                       axisLineStyle: const AxisLineStyle(
-                        thickness: 0.15,
+                        thickness: 0.2,
                         color: Color(0xFFEEEEEE),
                         thicknessUnit: GaugeSizeUnit.factor,
                         cornerStyle: CornerStyle.bothCurve,
@@ -346,7 +346,7 @@ class NeedleCircularGauge extends StatelessWidget {
                           enableAnimation: true,
                           animationDuration: 1600,
                           value: progress, // 40
-                          width: 0.15,
+                          width: 0.2,
                           sizeUnit: GaugeSizeUnit.factor,
                           cornerStyle: CornerStyle.bothCurve,
                           gradient: const SweepGradient(
@@ -372,7 +372,8 @@ class NeedleCircularGauge extends StatelessWidget {
           ),
         ),
         const Space.vertical(6),
-        DecoratedBox(
+        Container(
+          height: 150,
           // width: 180,
           decoration: BoxDecoration(
             color: kWhite.withOpacity(0.05),
@@ -382,13 +383,13 @@ class NeedleCircularGauge extends StatelessWidget {
           child: Stack(
             children: [
               const SizedBox(
-                height: 134,
+                height: 150,
                 child: CustomLineChart(),
               ),
               Align(
                 child: Column(
                   children: [
-                    const Space.vertical(32),
+                    const Space.vertical(16),
                     Text(
                       subCardValue,
                       style: context.bold?.copyWith(fontSize: 32),

@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_core/theme.dart';
-import 'package:syncfusion_flutter_maps/maps.dart';
-
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/log.dart';
@@ -15,6 +10,9 @@ import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/models/server_model.dart';
 import 'package:nexqloud/features/main/providers/server_data_provider.dart';
 import 'package:nexqloud/features/main/ui/widgets/continent_map.dart';
+import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_maps/maps.dart';
 
 class WorldMap extends StatefulWidget {
   const WorldMap({super.key});
@@ -48,6 +46,7 @@ class _WorldMapState extends State<WorldMap> {
     _worldMapShapeController = MapShapeLayerController();
     _worldMapZoomPanBehavior = MapZoomPanBehavior(
       enableDoubleTapZooming: true,
+      zoomLevel: 1.2,
       toolbarSettings: const MapToolbarSettings(
         itemBackgroundColor: graphlinecolor2,
         iconColor: kWhite,
@@ -77,8 +76,8 @@ class _WorldMapState extends State<WorldMap> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height * 0.8,
-      width: context.width * 0.7,
+      height: context.height * 0.82,
+      width: context.width * 0.83,
       decoration: BoxDecoration(
         border: GradientBoxBorder(
           gradient: LinearGradient(
@@ -186,12 +185,12 @@ class _WorldMapState extends State<WorldMap> {
                             zoomPanBehavior: _worldMapZoomPanBehavior,
                             selectedIndex: _selectedIndex,
                             onSelectionChanged: (index) {
-                              setState(() {
-                                print(_worldMapMarkersData[index].serverName);
-
-                                _selectedIndex = index;
-                                if (_selectedIndex == -1) return;
-                              });
+                              // setState(() {
+                              //   print(_worldMapMarkersData[index].serverName);
+                              //
+                              //   _selectedIndex = index;
+                              //   if (_selectedIndex == -1) return;
+                              // });
                             },
                             markerTooltipBuilder: (context, index) {
                               return Padding(
@@ -415,7 +414,7 @@ class _WorldMapState extends State<WorldMap> {
                               double markerSize;
 
                               if (_worldMapMarkersData.length <= 10) {
-                                markerSize = 18.0;
+                                markerSize = 30.0;
                               } else if (_worldMapMarkersData.length <= 50) {
                                 markerSize = 15.0;
                               } else {
@@ -435,6 +434,13 @@ class _WorldMapState extends State<WorldMap> {
                                       shape: BoxShape.circle,
                                       color: graphlinecolor2.withOpacity(0.8),
                                     ),
+                                    // alignment: Alignment.center,
+                                    child: _worldMapMarkersData.length <= 10
+                                        ? Text(
+                                            '${_worldMapMarkersData.length}',
+                                            style: context.medium,
+                                          )
+                                        : null,
                                   ),
                                 ),
                               );
@@ -446,9 +452,11 @@ class _WorldMapState extends State<WorldMap> {
                   ),
                 ),
               ] else
-                ContinentMap(
-                  continent: _continentsList.keys.toList()[_selectedIndex],
-                  filePath: _continentsList.values.toList()[_selectedIndex],
+                FadeIn(
+                  child: ContinentMap(
+                    continent: _continentsList.keys.toList()[_selectedIndex],
+                    filePath: _continentsList.values.toList()[_selectedIndex],
+                  ),
                 ),
             ],
           ),

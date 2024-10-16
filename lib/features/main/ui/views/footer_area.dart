@@ -16,7 +16,7 @@ class FooterArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.width * 0.7,
+      width: context.width * 0.83,
       child: Column(
         children: [
           Row(

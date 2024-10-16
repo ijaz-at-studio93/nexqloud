@@ -7,8 +7,8 @@ import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/ui/views/footer_area.dart';
 import 'package:nexqloud/features/main/ui/widgets/data_analysis_gauges.dart';
 import 'package:nexqloud/features/main/ui/widgets/data_grid.dart';
-import 'package:nexqloud/features/main/ui/widgets/world_map.dart';
 import 'package:nexqloud/features/main/ui/widgets/main_app_bar.dart';
+import 'package:nexqloud/features/main/ui/widgets/world_map.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -53,13 +53,13 @@ class MainScreen extends StatelessWidget {
                   const DataAnalysisGauges(),
                   SizedBox(
                     height: context.height * 0.7,
-                    width: context.width * 0.7,
+                    width: context.width * 0.83,
                     child: TransparentDataGrid(),
                   ),
                   const Space.vertical(40),
                   Container(
                     height: 480,
-                    width: context.width * 0.7,
+                    width: context.width * 0.83,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                       gradient: const LinearGradient(

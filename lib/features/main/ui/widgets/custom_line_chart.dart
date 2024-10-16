@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:fl_chart/fl_chart.dart';
-
+import 'package:flutter/material.dart';
 import 'package:nexqloud/core/constants/colors.dart';
 
 class CustomLineChart extends StatefulWidget {
@@ -47,7 +45,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
 
   // Method to start generating real-time data
   void _startGeneratingData() {
-    _timer = Timer.periodic(const Duration(milliseconds: 200), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 150), (timer) {
       setState(() {
         // Generate a new Y value with some randomness
         final newYValue = 3 + _random.nextDouble() * 3;
