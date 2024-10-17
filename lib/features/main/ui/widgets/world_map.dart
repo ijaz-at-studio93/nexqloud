@@ -417,7 +417,7 @@ class _WorldMapState extends State<WorldMap> {
                             },
                             markerBuilder: (context, index) {
                               double markerSize;
-                              bool canShowCount = false;
+                              var canShowCount = false;
 
                               if (_worldMapMarkersData.length <= 10) {
                                 markerSize = 30.0;

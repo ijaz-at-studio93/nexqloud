@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
+import 'package:nexqloud/core/extensions/log.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/ui/widgets/custom_line_chart.dart';
@@ -12,13 +13,16 @@ class DataAnalysisGauges extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.isDesktop.printInfo();
+    context.isMobile.printInfo();
     return Padding(
       padding: const EdgeInsets.only(top: 34),
       child: SizedBox(
         height: context.isDesktop ? context.height * 0.5 : null,
         width: context.width * 0.9,
-        child:
-            context.isMobile ? MobileAnalysisCards() : DesktopAnalysisCards(),
+        child: context.isMobile || context.isTablet
+            ? const MobileAnalysisCards()
+            : const DesktopAnalysisCards(),
       ),
     );
   }
@@ -194,7 +198,7 @@ class MobileAnalysisCards extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
       ],
     );
   }
@@ -238,7 +242,7 @@ class CircularGauge extends StatelessWidget {
                         : 185,
                 child: Padding(
                   padding: !context.isDesktop
-                      ? EdgeInsets.only(top: 12)
+                      ? const EdgeInsets.only(top: 12)
                       : EdgeInsets.zero,
                   child: SfRadialGauge(
                     axes: <RadialAxis>[
