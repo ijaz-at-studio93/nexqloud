@@ -48,4 +48,4 @@ gen:
 	fluttergen -c pubspec.yaml
 
 deploy:
-	flutter clean && flutter build web && firebase deploy	
+	flutter build web && firebase deploy	
