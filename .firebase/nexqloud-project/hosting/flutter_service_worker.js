@@ -3,11 +3,11 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"flutter_bootstrap.js": "76a54a51205b7a925d39e15f902d9270",
+const RESOURCES = {"flutter_bootstrap.js": "b2e2ca2148e67a10af07cd589919a37c",
 "version.json": "1e90f5ceea926c44b079d28f431455d0",
 "index.html": "1a32aa2bcb1db5ab12672acf20c72c71",
 "/": "1a32aa2bcb1db5ab12672acf20c72c71",
-"main.dart.js": "41528a2437e7311d15be70e3dacd7c8f",
+"main.dart.js": "a8697b361618f2953a10888bc6d40ff9",
 "flutter.js": "f393d3c16b631f36852323de8e583132",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
@@ -22,7 +22,6 @@ const RESOURCES = {"flutter_bootstrap.js": "76a54a51205b7a925d39e15f902d9270",
 "assets/packages/syncfusion_flutter_datagrid/assets/font/FilterIcon.ttf": "b8e5e5bf2b490d3576a9562f24395532",
 "assets/packages/syncfusion_flutter_datagrid/assets/font/UnsortIcon.ttf": "acdd567faa403388649e37ceb9adeb44",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
-"assets/world_map.json": "aebb0515a60983165136da7cbe60c68e",
 "assets/AssetManifest.bin": "a786b502b614f3ffbe92e8a8d27b280f",
 "assets/fonts/MaterialIcons-Regular.otf": "a3f14571cbe2c62c992f0137f2ecf694",
 "assets/assets/north-america.json": "34fc983ca01db7b2d644902fb676b773",

@@ -75,7 +75,8 @@ class MainScreen extends StatelessWidget {
                       children: [
                         Text(
                           "POWER TOMORROW'S CLOUD\nTODAY WITH NEXQLOUD",
-                          style: context.medium?.copyWith(fontSize: 40),
+                          style: context.medium
+                              ?.copyWith(fontSize: context.isMobile ? 27 : 40),
                           textAlign: TextAlign.center,
                         ),
                         const Space.vertical(18),
