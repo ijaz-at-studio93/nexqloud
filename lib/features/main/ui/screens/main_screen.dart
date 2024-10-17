@@ -52,7 +52,7 @@ class MainScreen extends StatelessWidget {
                   const WorldMap(),
                   const DataAnalysisGauges(),
                   SizedBox(
-                    height: context.height * 0.7,
+                    height: context.height * 0.75,
                     width: context.width * 0.9,
                     child: TransparentDataGrid(),
                   ),

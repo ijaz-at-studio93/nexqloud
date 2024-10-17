@@ -5,6 +5,7 @@ import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
+import 'package:nexqloud/core/navigation/router.dart';
 import 'package:nexqloud/core/ui/widgets/custom_gradient_button.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
@@ -265,7 +266,7 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
     return GridColumn(
       columnName: fieldName,
       label: Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8),
         alignment: Alignment.center,
         child: Text(
           columnName,
@@ -416,7 +417,9 @@ class ProviderDataSource extends DataGridSource {
             // padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                const Space.horizontal(20),
+                Space.horizontal(
+                  navigatorKey.currentState!.context.width * 0.03,
+                ),
                 Image.asset(
                   cell.value == 'Audited'
                       ? 'assets/icons/png/secure_icon.png'
