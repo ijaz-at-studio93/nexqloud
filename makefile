@@ -46,3 +46,6 @@ fix:
 	dart fix --apply && dart scripts/sort_imports_script.dart lib/ && dart format .	
 gen:
 	fluttergen -c pubspec.yaml
+
+deploy:
+	flutter clean && flutter build web && firebase deploy	
