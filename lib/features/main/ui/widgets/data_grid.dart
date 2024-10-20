@@ -64,6 +64,7 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
       backgroundColor: Colors.transparent,
       body: Column(
         children: [
+          if (context.isMobile || context.isTablet) const Space.vertical(20),
           _buildSearchBar(),
           Expanded(
             child: SfDataGridTheme(
@@ -78,7 +79,9 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
                   color: kWhite.withOpacity(0.04),
                   child: SfDataGrid(
                     source: _providerDataSource,
-                    columnWidthMode: ColumnWidthMode.fill,
+                    columnWidthMode: context.isMobile
+                        ? ColumnWidthMode.auto
+                        : ColumnWidthMode.fill,
                     columns: <GridColumn>[
                       _buildGridColumn('Name', 'name'),
                       _buildGridColumn('Location', 'location'),
@@ -107,6 +110,180 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
   }
 
   Widget _buildSearchBar() {
+    return context.isDesktop
+        ? _buildDesktopSearchBar()
+        : _buildMobileSearchBar();
+  }
+
+  Widget _buildMobileSearchBar() {
+    return Container(
+      decoration: BoxDecoration(
+        color: kWhite.withOpacity(0.05),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      margin: const EdgeInsets.only(bottom: 25),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              SizedBox(
+                width: context.width * 0.79,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Search',
+                      style: context.normal!.copyWith(
+                        color: kWhite,
+                        fontSize: 16,
+                      ),
+                    ),
+                    const Space.vertical(10),
+                    TextField(
+                      onChanged: _onSearch,
+                      decoration: InputDecoration(
+                        hintText: 'Search Providers',
+                        hintStyle: const TextStyle(color: kWhite),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: kWhite,
+                        ),
+                        border: GradientOutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          gradient: LinearGradient(
+                            colors: [
+                              kWhite.withOpacity(0.1),
+                              gradientColorThree.withOpacity(0.1),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const Space.vertical(20),
+          Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Rows',
+                    style: context.normal!.copyWith(
+                      color: kWhite,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const Space.vertical(8),
+                  Container(
+                    height: 49,
+                    width: context.width * 0.37,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: kWhite.withOpacity(0.02),
+                      borderRadius: BorderRadius.circular(8),
+                      border: GradientBoxBorder(
+                        gradient: LinearGradient(
+                          colors: [
+                            kWhite.withOpacity(0.1),
+                            gradientColorThree.withOpacity(0.1),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                    ),
+                    child: DropdownButton<int>(
+                      value: rowsPerPage,
+                      isExpanded: true,
+                      underline: const SizedBox(),
+                      dropdownColor: kPurpleColor.withOpacity(0.7),
+                      items: [10, 20, 30].map((value) {
+                        return DropdownMenuItem<int>(
+                          value: value,
+                          child: Text(
+                            '$value',
+                            style: context.normal,
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          rowsPerPage = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const Space.horizontal(20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Sort by:',
+                    style: context.normal!.copyWith(
+                      color: kWhite,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const Space.vertical(8),
+                  Container(
+                    height: 49,
+                    width: context.width * 0.37,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: kWhite.withOpacity(0.02),
+                      borderRadius: BorderRadius.circular(8),
+                      border: GradientBoxBorder(
+                        gradient: LinearGradient(
+                          colors: [
+                            kWhite.withOpacity(0.1),
+                            gradientColorThree.withOpacity(0.1),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                    ),
+                    child: DropdownButton<String>(
+                      value: 'Active Lease',
+                      isExpanded: true,
+                      underline: const SizedBox(),
+                      dropdownColor: kPurpleColor.withOpacity(0.7),
+                      items: ['Active Lease', 'CPU Usage', 'Memory']
+                          .map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(
+                            value,
+                            style: context.normal,
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (newValue) {
+                        // Add sort logic here
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Container _buildDesktopSearchBar() {
     return Container(
       decoration: BoxDecoration(
         color: kWhite.withOpacity(0.05),
@@ -265,6 +442,7 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
   GridColumn _buildGridColumn(String columnName, String fieldName) {
     return GridColumn(
       columnName: fieldName,
+      width: context.isMobile ? context.width * 0.22 : double.nan,
       label: Container(
         padding: const EdgeInsets.all(8),
         alignment: Alignment.center,

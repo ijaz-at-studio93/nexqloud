@@ -52,7 +52,9 @@ class MainScreen extends StatelessWidget {
                   const WorldMap(),
                   const DataAnalysisGauges(),
                   SizedBox(
-                    height: context.height * 0.75,
+                    height: context.isMobile
+                        ? context.height * 1.15
+                        : context.height * 0.75,
                     width: context.width * 0.9,
                     child: TransparentDataGrid(),
                   ),
@@ -76,14 +78,15 @@ class MainScreen extends StatelessWidget {
                         Text(
                           "POWER TOMORROW'S CLOUD\nTODAY WITH NEXQLOUD",
                           style: context.medium
-                              ?.copyWith(fontSize: context.isMobile ? 27 : 40),
+                              ?.copyWith(fontSize: context.isMobile ? 24 : 40),
                           textAlign: TextAlign.center,
                         ),
                         const Space.vertical(18),
                         Text(
                           'Start earning, saving, and innovating with our\ncollaborative ecosystem today.',
-                          style: context.normal
-                              ?.copyWith(fontSize: 18, height: 1.5),
+                          style: context.normal?.copyWith(
+                              fontSize: context.isMobile ? 15 : 18,
+                              height: 1.5),
                           textAlign: TextAlign.center,
                         ),
                         const Space.vertical(20),

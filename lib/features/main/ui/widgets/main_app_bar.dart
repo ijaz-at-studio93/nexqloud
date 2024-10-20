@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -8,6 +9,7 @@ import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/core/ui/widgets/blurred_background.dart';
 import 'package:nexqloud/core/ui/widgets/custom_gradient_button.dart';
+import 'package:nexqloud/features/main/utils/url_launcher.dart';
 
 class MainAppBar extends StatelessWidget {
   const MainAppBar({super.key});
@@ -27,9 +29,14 @@ class MainAppBar extends StatelessWidget {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      'assets/icons/svg/nex_logo.svg',
-                      height: 32,
+                    CupertinoButton(
+                      onPressed: () => UrlLauncher.openViewName(''),
+                      padding: EdgeInsets.zero,
+                      minSize: 0,
+                      child: SvgPicture.asset(
+                        'assets/icons/svg/nex_logo.svg',
+                        height: 32,
+                      ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
@@ -59,7 +66,8 @@ class MainAppBar extends StatelessWidget {
                                 backgroundColor:
                                     WidgetStateProperty.all(kTransparent),
                               ),
-                              onPressed: null,
+                              onPressed: () =>
+                                  UrlLauncher.openViewName('#overview'),
                               child: Text(
                                 'How it works',
                                 style: context.normal?.copyWith(
@@ -73,7 +81,8 @@ class MainAppBar extends StatelessWidget {
                                 backgroundColor:
                                     WidgetStateProperty.all(kTransparent),
                               ),
-                              onPressed: null,
+                              onPressed: () =>
+                                  UrlLauncher.openViewName('#features'),
                               child: Text(
                                 'Features',
                                 style: context.normal?.copyWith(
@@ -87,7 +96,8 @@ class MainAppBar extends StatelessWidget {
                                 backgroundColor:
                                     WidgetStateProperty.all(kTransparent),
                               ),
-                              onPressed: null,
+                              onPressed: () => UrlLauncher.openViewName(
+                                  'strategic-partners'),
                               child: Text(
                                 'Platform',
                                 style: context.normal?.copyWith(
@@ -101,7 +111,8 @@ class MainAppBar extends StatelessWidget {
                                 backgroundColor:
                                     WidgetStateProperty.all(kTransparent),
                               ),
-                              onPressed: null,
+                              onPressed: () =>
+                                  UrlLauncher.openViewName('#faqs'),
                               child: Text(
                                 'FAQs',
                                 style: context.normal?.copyWith(
@@ -115,7 +126,8 @@ class MainAppBar extends StatelessWidget {
                                 backgroundColor:
                                     WidgetStateProperty.all(kTransparent),
                               ),
-                              onPressed: null,
+                              onPressed: () =>
+                                  UrlLauncher.openViewName('#built-for-all'),
                               child: Text(
                                 'Solution',
                                 style: context.normal?.copyWith(
@@ -160,9 +172,14 @@ class MainAppBar extends StatelessWidget {
               : Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      'assets/icons/svg/nex_logo.svg',
-                      height: 25,
+                    CupertinoButton(
+                      onPressed: () => UrlLauncher.openViewName(''),
+                      padding: EdgeInsets.zero,
+                      minSize: 0,
+                      child: SvgPicture.asset(
+                        'assets/icons/svg/nex_logo.svg',
+                        height: 25,
+                      ),
                     ),
                     IconButton(
                       onPressed: () {},
@@ -170,7 +187,7 @@ class MainAppBar extends StatelessWidget {
                         Icons.menu,
                         color: kWhite,
                       ),
-                    )
+                    ),
                   ],
                 );
         },

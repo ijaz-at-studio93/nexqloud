@@ -249,7 +249,11 @@ class CircularGauge extends StatelessWidget {
                       RadialAxis(
                         startAngle: -90,
                         endAngle: 270,
-                        radiusFactor: context.isDesktop ? 0.8 : 1,
+                        radiusFactor: context.isDesktop
+                            ? 0.8
+                            : context.isMobile
+                                ? 0.76
+                                : 1,
                         showFirstLabel: false,
                         showLabels: false,
                         showTicks: false,
@@ -319,6 +323,8 @@ class CircularGauge extends StatelessWidget {
                   ),
                 ),
               ),
+              // if (context.isMobile || context.isTablet)
+              //   const Space.vertical(10),
               Text(
                 title, //'Disk Reads'
                 style: context.normal?.copyWith(
@@ -411,7 +417,11 @@ class NeedleCircularGauge extends StatelessWidget {
                     RadialAxis(
                       // startAngle: -90,
                       // endAngle: 270,
-                      // radiusFactor: 0.9,
+                      radiusFactor: context.isDesktop
+                          ? 0.95
+                          : context.isMobile
+                              ? 0.8
+                              : 0.95,
                       showFirstLabel: false,
                       showLabels: false,
                       tickOffset: 4,

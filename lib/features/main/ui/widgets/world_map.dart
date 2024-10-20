@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
-import 'package:nexqloud/core/extensions/log.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/models/server_model.dart';
@@ -57,12 +56,27 @@ class _WorldMapState extends State<WorldMap> {
   }
 
   void _configureWorldMap() {
-    final continents = context.read<ServerDataProvider>().getContinentList();
-    for (final continent in continents) {
-      final serversInAContinent =
-          context.read<ServerDataProvider>().findContinentServer(continent);
-      _worldMapMarkersData.add(serversInAContinent);
+    // Fetch all the servers (continents, regions, and countries) and add them to markers
+    final regions = context.read<ServerDataProvider>().getRegionList();
+    final countries = context.read<ServerDataProvider>().getCountryList();
+
+    final allServers = <ServerModel>[];
+
+    // Combine regions and countries server data to load all markers at once
+    for (final region in regions) {
+      final serversInRegion =
+          context.read<ServerDataProvider>().findRegion(region);
+      allServers.addAll(serversInRegion);
     }
+
+    for (final country in countries) {
+      final serversInCountry =
+          context.read<ServerDataProvider>().findCountry(country);
+      allServers.addAll(serversInCountry);
+    }
+
+    // Load all server data into _worldMapMarkersData
+    _worldMapMarkersData.addAll(allServers);
 
     _worldMapDataSource = MapShapeSource.asset(
       'world_map.json',
@@ -75,7 +89,11 @@ class _WorldMapState extends State<WorldMap> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.isMobile ? context.height * 0.63 : context.height * 0.82,
+      height: context.isMobile
+          ? context.height * 0.51
+          : context.isTablet
+              ? context.height * 0.7
+              : context.height * 0.82,
       width: context.width * 0.9,
       decoration: BoxDecoration(
         border: GradientBoxBorder(
@@ -103,7 +121,7 @@ class _WorldMapState extends State<WorldMap> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(38),
+          padding: EdgeInsets.all(context.isMobile ? 20 : 38),
           child: Column(
             children: [
               Text(
@@ -111,7 +129,7 @@ class _WorldMapState extends State<WorldMap> {
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 style: context.semiBold?.copyWith(
-                  fontSize: 32,
+                  fontSize: context.isMobile ? 30 : 32,
                 ),
               ),
               const Space.vertical(10),
@@ -134,7 +152,7 @@ class _WorldMapState extends State<WorldMap> {
                   ],
                 ),
               ),
-              const Space.vertical(20),
+              Space.vertical(context.isDesktop ? 20 : 10),
               if (_selectedIndex != -1)
                 Align(
                   alignment: Alignment.centerLeft,
@@ -160,12 +178,14 @@ class _WorldMapState extends State<WorldMap> {
                     ),
                   ),
                 ),
-              const Space.vertical(20),
+              if (context.isDesktop) const Space.vertical(20),
               if (_selectedIndex == -1) ...[
                 SizedBox(
-                  height: context.width < 900
-                      ? context.height * 0.4
-                      : context.height * 0.58,
+                  height: context.isMobile
+                      ? context.height * 0.3
+                      : context.isTablet
+                          ? context.height * 0.5
+                          : context.height * 0.58,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: SfMapsTheme(
@@ -320,101 +340,101 @@ class _WorldMapState extends State<WorldMap> {
                             //     ),
                             //   );
                             // },
-                            onWillZoom: (details) {
-                              try {
-                                details.newZoomLevel.printInfo();
-
-                                if (details.newZoomLevel! > 2 &&
-                                    details.newZoomLevel! <= 3) {
-                                  _worldMapMarkersData.clear();
-                                  final regions = context
-                                      .read<ServerDataProvider>()
-                                      .getRegionList();
-                                  final serversInARegion = <ServerModel>[];
-                                  for (final region in regions) {
-                                    final servers = context
-                                        .read<ServerDataProvider>()
-                                        .findRegion(region);
-                                    serversInARegion.addAll(servers);
-                                  }
-                                  _worldMapMarkersData.addAll(serversInARegion);
-                                  _worldMapShapeController.clearMarkers();
-                                  for (var i = 0;
-                                      i < _worldMapMarkersData.length;
-                                      i++) {
-                                    _worldMapShapeController.insertMarker(i);
-                                  }
-                                } else if (details.newZoomLevel! >= 4) {
-                                  _worldMapMarkersData.clear();
-                                  final countries = context
-                                      .read<ServerDataProvider>()
-                                      .getCountryList();
-                                  for (final country in countries) {
-                                    final serversInACountry = context
-                                        .read<ServerDataProvider>()
-                                        .findCountry(country);
-                                    _worldMapMarkersData
-                                        .addAll(serversInACountry);
-                                  }
-                                  _worldMapShapeController.clearMarkers();
-                                  for (var i = 0;
-                                      i < _worldMapMarkersData.length;
-                                      i++) {
-                                    _worldMapShapeController.insertMarker(i);
-                                  }
-                                }
-
-                                if (details.newZoomLevel! < 4 &&
-                                    details.previousZoomLevel! >= 4) {
-                                  _worldMapMarkersData.clear();
-                                  final regions = context
-                                      .read<ServerDataProvider>()
-                                      .getRegionList();
-                                  final serversInARegion = <ServerModel>[];
-                                  for (final region in regions) {
-                                    final servers = context
-                                        .read<ServerDataProvider>()
-                                        .findRegion(region);
-                                    serversInARegion.addAll(servers);
-                                  }
-                                  _worldMapMarkersData.addAll(serversInARegion);
-                                  _worldMapShapeController.clearMarkers();
-                                  for (var i = 0;
-                                      i < _worldMapMarkersData.length;
-                                      i++) {
-                                    _worldMapShapeController.insertMarker(i);
-                                  }
-                                } else if (details.newZoomLevel! <= 2 &&
-                                    details.previousZoomLevel! > 2) {
-                                  _worldMapMarkersData.clear();
-                                  final continents = context
-                                      .read<ServerDataProvider>()
-                                      .getContinentList();
-                                  for (final continent in continents) {
-                                    final serversInAContinent = context
-                                        .read<ServerDataProvider>()
-                                        .findContinentServer(continent);
-                                    for (final continent in continents) {
-                                      final serverInAContinent = context
-                                          .read<ServerDataProvider>()
-                                          .findContinentServer(continent);
-                                      _worldMapMarkersData.add(
-                                        serverInAContinent,
-                                      );
-                                    }
-                                  }
-                                  _worldMapShapeController.clearMarkers();
-                                  for (var i = 0;
-                                      i < _worldMapMarkersData.length;
-                                      i++) {
-                                    _worldMapShapeController.insertMarker(i);
-                                  }
-                                }
-                              } catch (e) {
-                                e.printError();
-                              }
-                              return true;
-                            },
+                            // onWillZoom: (details) {
+                            //   try {
+                            //     details.newZoomLevel.printInfo();
+                            //
+                            //     if (details.newZoomLevel! > 2 &&
+                            //         details.newZoomLevel! <= 3) {
+                            //       _worldMapMarkersData.clear();
+                            //       final regions = context
+                            //           .read<ServerDataProvider>()
+                            //           .getRegionList();
+                            //       final serversInARegion = <ServerModel>[];
+                            //       for (final region in regions) {
+                            //         final servers = context
+                            //             .read<ServerDataProvider>()
+                            //             .findRegion(region);
+                            //         serversInARegion.addAll(servers);
+                            //       }
+                            //       _worldMapMarkersData.addAll(serversInARegion);
+                            //       _worldMapShapeController.clearMarkers();
+                            //       for (var i = 0;
+                            //           i < _worldMapMarkersData.length;
+                            //           i++) {
+                            //         _worldMapShapeController.insertMarker(i);
+                            //       }
+                            //     } else if (details.newZoomLevel! >= 4) {
+                            //       _worldMapMarkersData.clear();
+                            //       final countries = context
+                            //           .read<ServerDataProvider>()
+                            //           .getCountryList();
+                            //       for (final country in countries) {
+                            //         final serversInACountry = context
+                            //             .read<ServerDataProvider>()
+                            //             .findCountry(country);
+                            //         _worldMapMarkersData
+                            //             .addAll(serversInACountry);
+                            //       }
+                            //       _worldMapShapeController.clearMarkers();
+                            //       for (var i = 0;
+                            //           i < _worldMapMarkersData.length;
+                            //           i++) {
+                            //         _worldMapShapeController.insertMarker(i);
+                            //       }
+                            //     }
+                            //
+                            //     if (details.newZoomLevel! < 4 &&
+                            //         details.previousZoomLevel! >= 4) {
+                            //       _worldMapMarkersData.clear();
+                            //       final regions = context
+                            //           .read<ServerDataProvider>()
+                            //           .getRegionList();
+                            //       final serversInARegion = <ServerModel>[];
+                            //       for (final region in regions) {
+                            //         final servers = context
+                            //             .read<ServerDataProvider>()
+                            //             .findRegion(region);
+                            //         serversInARegion.addAll(servers);
+                            //       }
+                            //       _worldMapMarkersData.addAll(serversInARegion);
+                            //       _worldMapShapeController.clearMarkers();
+                            //       for (var i = 0;
+                            //           i < _worldMapMarkersData.length;
+                            //           i++) {
+                            //         _worldMapShapeController.insertMarker(i);
+                            //       }
+                            //     } else if (details.newZoomLevel! <= 2 &&
+                            //         details.previousZoomLevel! > 2) {
+                            //       _worldMapMarkersData.clear();
+                            //       final continents = context
+                            //           .read<ServerDataProvider>()
+                            //           .getContinentList();
+                            //       for (final continent in continents) {
+                            //         final serversInAContinent = context
+                            //             .read<ServerDataProvider>()
+                            //             .findContinentServer(continent);
+                            //         for (final continent in continents) {
+                            //           final serverInAContinent = context
+                            //               .read<ServerDataProvider>()
+                            //               .findContinentServer(continent);
+                            //           _worldMapMarkersData.add(
+                            //             serverInAContinent,
+                            //           );
+                            //         }
+                            //       }
+                            //       _worldMapShapeController.clearMarkers();
+                            //       for (var i = 0;
+                            //           i < _worldMapMarkersData.length;
+                            //           i++) {
+                            //         _worldMapShapeController.insertMarker(i);
+                            //       }
+                            //     }
+                            //   } catch (e) {
+                            //     e.printError();
+                            //   }
+                            //   return true;
+                            // },
                             markerBuilder: (context, index) {
                               double markerSize;
                               var canShowCount = false;
