@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import 'package:nexqloud/core/constants/colors.dart';
 import 'package:nexqloud/core/constants/space.dart';
 import 'package:nexqloud/core/extensions/size_ext.dart';
@@ -179,14 +181,39 @@ class _MainScreenState extends State<MainScreen>
                         vertical: 20,
                         horizontal: 30,
                       ),
-                      child: const Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          MenuItem(text: 'Link Device'),
-                          MenuItem(text: 'Elastic Computing'),
-                          MenuItem(text: 'Web Hosting'),
-                          MenuItem(text: 'Partners'),
-                          MenuItem(text: 'FAQs'),
+                          MenuItem(
+                            text: 'Link Device',
+                            onTap: () {
+                              UrlLauncher.openViewName('#overview');
+                            },
+                          ),
+                          MenuItem(
+                            text: 'Elastic Computing',
+                            onTap: () {
+                              UrlLauncher.openViewName('#features');
+                            },
+                          ),
+                          MenuItem(
+                            text: 'Web Hosting',
+                            onTap: () {
+                              UrlLauncher.openViewName('#built-for-all');
+                            },
+                          ),
+                          MenuItem(
+                            text: 'Partners',
+                            onTap: () {
+                              UrlLauncher.openViewName('strategic-partners');
+                            },
+                          ),
+                          MenuItem(
+                            text: 'FAQs',
+                            onTap: () {
+                              UrlLauncher.openViewName('#faqs');
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -243,19 +270,34 @@ class AppStoreIcon extends StatelessWidget {
 }
 
 class MenuItem extends StatelessWidget {
-  const MenuItem({super.key, required this.text});
+  const MenuItem({
+    super.key,
+    required this.text,
+    required this.onTap,
+  });
   final String text;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-        ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              color: kTransparent,
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                text,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
