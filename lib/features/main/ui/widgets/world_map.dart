@@ -80,9 +80,9 @@ class _WorldMapState extends State<WorldMap> {
     context.read<ServerDataProvider>().data.length;
     _worldMapDataSource = MapShapeSource.asset(
       'world_map.json',
-      shapeDataField: 'continent',
+      shapeDataField: 'name',
       dataCount: context.read<ServerDataProvider>().data.length,
-      primaryValueMapper: (index) => _continentsList.keys.toList()[index],
+      // primaryValueMapper: (index) => _continentsList.keys.toList()[index],
     );
   }
 
@@ -140,7 +140,7 @@ class _WorldMapState extends State<WorldMap> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: '65',
+                      text: _worldMapDataSource.dataCount.toString(),
                       style: context.bold?.copyWith(
                         fontSize: context.isMobile ? 18 : 24,
                         color: graphlinecolor2,
@@ -182,327 +182,329 @@ class _WorldMapState extends State<WorldMap> {
                   ),
                 ),
               if (context.isDesktop) const Space.vertical(20),
-              if (_selectedIndex == -1) ...[
-                SizedBox(
-                  height: context.isMobile
-                      ? context.height * 0.3
-                      : context.isTablet
-                          ? context.height * 0.5
-                          : context.height * 0.58,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: SfMapsTheme(
-                      data: SfMapsThemeData(
-                        shapeHoverColor: kTransparent,
-                        shapeHoverStrokeColor: kWhite.withOpacity(0.22),
-                        tooltipColor: kWhite.withOpacity(0.2),
-                        tooltipStrokeColor: kWhite.withOpacity(0.1),
-                        tooltipBorderRadius: BorderRadius.circular(15),
-                      ),
-                      child: SfMaps(
-                        layers: <MapLayer>[
-                          MapShapeLayer(
-                            strokeWidth: 0,
-                            source: _worldMapDataSource,
-                            initialMarkersCount:
-                                context.read<ServerDataProvider>().data.length,
-                            color: kWhite.withOpacity(0.2),
-                            strokeColor: kWhite.withOpacity(0.22),
-                            controller: _worldMapShapeController,
-                            zoomPanBehavior: _worldMapZoomPanBehavior,
-                            selectedIndex: _selectedIndex,
-                            onSelectionChanged: (index) {
-                              // setState(() {
-                              //   print(_worldMapMarkersData[index].serverName);
-                              //
-                              //   _selectedIndex = index;
-                              //   if (_selectedIndex == -1) return;
-                              // });
-                            },
+              // if (_selectedIndex == -1) ...[
+              SizedBox(
+                height: context.isMobile
+                    ? context.height * 0.3
+                    : context.isTablet
+                        ? context.height * 0.5
+                        : context.height * 0.58,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: SfMapsTheme(
+                    data: SfMapsThemeData(
+                      shapeHoverColor: kTransparent,
+                      shapeHoverStrokeColor: kWhite.withOpacity(0.22),
+                      tooltipColor: kWhite.withOpacity(0.2),
+                      tooltipStrokeColor: kWhite.withOpacity(0.1),
+                      tooltipBorderRadius: BorderRadius.circular(15),
+                    ),
+                    child: SfMaps(
+                      layers: <MapLayer>[
+                        MapShapeLayer(
+                          strokeWidth: 0,
+                          // showDataLabels: true,
+                          source: _worldMapDataSource,
+                          initialMarkersCount: _worldMapDataSource.dataCount,
+                          color: kWhite.withOpacity(0.2),
+                          strokeColor: kWhite.withOpacity(0.22),
+                          controller: _worldMapShapeController,
+                          zoomPanBehavior: _worldMapZoomPanBehavior,
+                          selectedIndex: _selectedIndex,
+                          onSelectionChanged: (index) {
+                            // setState(() {
 
-                            ///Hover UI below if needed
-                            // markerTooltipBuilder: (context, index) {
-                            //   return Padding(
-                            //     padding: const EdgeInsets.all(12),
-                            //     child: Column(
-                            //       mainAxisSize: MainAxisSize.min,
-                            //       children: [
-                            //         Row(
-                            //           mainAxisSize: MainAxisSize.min,
-                            //           mainAxisAlignment:
-                            //               MainAxisAlignment.spaceBetween,
-                            //           children: [
-                            //             Row(
-                            //               mainAxisSize: MainAxisSize.min,
-                            //               children: [
-                            //                 Container(
-                            //                   padding: const EdgeInsets.all(4),
-                            //                   decoration: BoxDecoration(
-                            //                     borderRadius:
-                            //                         BorderRadius.circular(7),
-                            //                     color: const Color(0xffa2dcff)
-                            //                         .withOpacity(0.2),
-                            //                   ),
-                            //                   child: SvgPicture.asset(
-                            //                     'assets/icons/svg/money_icon.svg',
-                            //                     height: 18,
-                            //                   ),
-                            //                 ),
-                            //                 const Space.horizontal(12),
-                            //                 Text(
-                            //                   _worldMapMarkersData[index]
-                            //                       .serverName,
-                            //                   style: context.medium?.copyWith(
-                            //                     fontSize: 16,
-                            //                   ),
-                            //                 ),
-                            //               ],
-                            //             ),
-                            //             const Space.horizontal(80),
-                            //             Row(
-                            //               mainAxisSize: MainAxisSize.min,
-                            //               children: [
-                            //                 Image.asset(
-                            //                   'assets/icons/png/online_icon.png',
-                            //                 ),
-                            //                 const Space.horizontal(6),
-                            //                 Text(
-                            //                   _worldMapMarkersData[index]
-                            //                       .status,
-                            //                   style: context.medium,
-                            //                 ),
-                            //               ],
-                            //             ),
-                            //           ],
-                            //         ),
-                            //         const Space.vertical(18),
-                            //         Row(
-                            //           mainAxisSize: MainAxisSize.min,
-                            //           children: [
-                            //             ServerDetailRow(
-                            //               label: 'Uptime:',
-                            //               value:
-                            //                   '${_worldMapMarkersData[index].uptime}%',
-                            //             ),
-                            //             const Space.horizontal(24),
-                            //             ServerDetailRow(
-                            //               label: 'Uptime:',
-                            //               value:
-                            //                   '${_worldMapMarkersData[index].uptime}%',
-                            //             ),
-                            //           ],
-                            //         ),
-                            //         Row(
-                            //           mainAxisSize: MainAxisSize.min,
-                            //           children: [
-                            //             ServerDetailRow(
-                            //               label: 'Region:',
-                            //               value: _worldMapMarkersData[index]
-                            //                   .region,
-                            //             ),
-                            //             const Space.horizontal(24),
-                            //             ServerDetailRow(
-                            //               label: 'Region:',
-                            //               value: _worldMapMarkersData[index]
-                            //                   .region,
-                            //             ),
-                            //           ],
-                            //         ),
-                            //         Row(
-                            //           mainAxisSize: MainAxisSize.min,
-                            //           children: [
-                            //             ServerDetailRow(
-                            //               label: 'Cores:',
-                            //               value:
-                            //                   '${_worldMapMarkersData[index].cores}',
-                            //             ),
-                            //             const Space.horizontal(24),
-                            //             ServerDetailRow(
-                            //               label: 'Cores:',
-                            //               value:
-                            //                   '${_worldMapMarkersData[index].cores}',
-                            //             ),
-                            //           ],
-                            //         ),
-                            //         Row(
-                            //           mainAxisSize: MainAxisSize.min,
-                            //           children: [
-                            //             ServerDetailRow(
-                            //               label: 'Memory:',
-                            //               value:
-                            //                   '${_worldMapMarkersData[index].memory}GB',
-                            //             ),
-                            //             const Space.horizontal(24),
-                            //             ServerDetailRow(
-                            //               label: 'Memory:',
-                            //               value:
-                            //                   '${_worldMapMarkersData[index].memory}GB',
-                            //             ),
-                            //           ],
-                            //         ),
-                            //       ],
-                            //     ),
-                            //   );
-                            // },
-                            // onWillZoom: (details) {
-                            //   try {
-                            //     details.newZoomLevel.printInfo();
-                            //
-                            //     if (details.newZoomLevel! > 2 &&
-                            //         details.newZoomLevel! <= 3) {
-                            //       _worldMapMarkersData.clear();
-                            //       final regions = context
-                            //           .read<ServerDataProvider>()
-                            //           .getRegionList();
-                            //       final serversInARegion = <ServerModel>[];
-                            //       for (final region in regions) {
-                            //         final servers = context
-                            //             .read<ServerDataProvider>()
-                            //             .findRegion(region);
-                            //         serversInARegion.addAll(servers);
-                            //       }
-                            //       _worldMapMarkersData.addAll(serversInARegion);
-                            //       _worldMapShapeController.clearMarkers();
-                            //       for (var i = 0;
-                            //           i < _worldMapMarkersData.length;
-                            //           i++) {
-                            //         _worldMapShapeController.insertMarker(i);
-                            //       }
-                            //     } else if (details.newZoomLevel! >= 4) {
-                            //       _worldMapMarkersData.clear();
-                            //       final countries = context
-                            //           .read<ServerDataProvider>()
-                            //           .getCountryList();
-                            //       for (final country in countries) {
-                            //         final serversInACountry = context
-                            //             .read<ServerDataProvider>()
-                            //             .findCountry(country);
-                            //         _worldMapMarkersData
-                            //             .addAll(serversInACountry);
-                            //       }
-                            //       _worldMapShapeController.clearMarkers();
-                            //       for (var i = 0;
-                            //           i < _worldMapMarkersData.length;
-                            //           i++) {
-                            //         _worldMapShapeController.insertMarker(i);
-                            //       }
-                            //     }
-                            //
-                            //     if (details.newZoomLevel! < 4 &&
-                            //         details.previousZoomLevel! >= 4) {
-                            //       _worldMapMarkersData.clear();
-                            //       final regions = context
-                            //           .read<ServerDataProvider>()
-                            //           .getRegionList();
-                            //       final serversInARegion = <ServerModel>[];
-                            //       for (final region in regions) {
-                            //         final servers = context
-                            //             .read<ServerDataProvider>()
-                            //             .findRegion(region);
-                            //         serversInARegion.addAll(servers);
-                            //       }
-                            //       _worldMapMarkersData.addAll(serversInARegion);
-                            //       _worldMapShapeController.clearMarkers();
-                            //       for (var i = 0;
-                            //           i < _worldMapMarkersData.length;
-                            //           i++) {
-                            //         _worldMapShapeController.insertMarker(i);
-                            //       }
-                            //     } else if (details.newZoomLevel! <= 2 &&
-                            //         details.previousZoomLevel! > 2) {
-                            //       _worldMapMarkersData.clear();
-                            //       final continents = context
-                            //           .read<ServerDataProvider>()
-                            //           .getContinentList();
-                            //       for (final continent in continents) {
-                            //         final serversInAContinent = context
-                            //             .read<ServerDataProvider>()
-                            //             .findContinentServer(continent);
-                            //         for (final continent in continents) {
-                            //           final serverInAContinent = context
-                            //               .read<ServerDataProvider>()
-                            //               .findContinentServer(continent);
-                            //           _worldMapMarkersData.add(
-                            //             serverInAContinent,
-                            //           );
-                            //         }
-                            //       }
-                            //       _worldMapShapeController.clearMarkers();
-                            //       for (var i = 0;
-                            //           i < _worldMapMarkersData.length;
-                            //           i++) {
-                            //         _worldMapShapeController.insertMarker(i);
-                            //       }
-                            //     }
-                            //   } catch (e) {
-                            //     e.printError();
-                            //   }
-                            //   return true;
-                            // },
-                            markerBuilder: (context, index) {
-                              double markerSize;
-                              var canShowCount = false;
+                            _selectedIndex = index;
+                            print(_selectedIndex);
+                            print(_worldMapMarkersData[index].continent);
 
-                              if (context
-                                      .read<ServerDataProvider>()
-                                      .data
-                                      .length <=
-                                  10) {
-                                markerSize = 30.0;
-                                canShowCount = true;
-                              } else if (context
-                                      .read<ServerDataProvider>()
-                                      .data
-                                      .length <=
-                                  50) {
-                                markerSize = 15.0;
-                                canShowCount = false;
-                              } else {
-                                markerSize = 10.0;
-                              }
-                              return MapMarker(
-                                latitude: context
+                            // if (_selectedIndex == -1) return;
+                            // });
+                          },
+
+                          ///Hover UI below if needed
+                          // markerTooltipBuilder: (context, index) {
+                          //   return Padding(
+                          //     padding: const EdgeInsets.all(12),
+                          //     child: Column(
+                          //       mainAxisSize: MainAxisSize.min,
+                          //       children: [
+                          //         Row(
+                          //           mainAxisSize: MainAxisSize.min,
+                          //           mainAxisAlignment:
+                          //               MainAxisAlignment.spaceBetween,
+                          //           children: [
+                          //             Row(
+                          //               mainAxisSize: MainAxisSize.min,
+                          //               children: [
+                          //                 Container(
+                          //                   padding: const EdgeInsets.all(4),
+                          //                   decoration: BoxDecoration(
+                          //                     borderRadius:
+                          //                         BorderRadius.circular(7),
+                          //                     color: const Color(0xffa2dcff)
+                          //                         .withOpacity(0.2),
+                          //                   ),
+                          //                   child: SvgPicture.asset(
+                          //                     'assets/icons/svg/money_icon.svg',
+                          //                     height: 18,
+                          //                   ),
+                          //                 ),
+                          //                 const Space.horizontal(12),
+                          //                 Text(
+                          //                   _worldMapMarkersData[index]
+                          //                       .serverName,
+                          //                   style: context.medium?.copyWith(
+                          //                     fontSize: 16,
+                          //                   ),
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //             const Space.horizontal(80),
+                          //             Row(
+                          //               mainAxisSize: MainAxisSize.min,
+                          //               children: [
+                          //                 Image.asset(
+                          //                   'assets/icons/png/online_icon.png',
+                          //                 ),
+                          //                 const Space.horizontal(6),
+                          //                 Text(
+                          //                   _worldMapMarkersData[index]
+                          //                       .status,
+                          //                   style: context.medium,
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //           ],
+                          //         ),
+                          //         const Space.vertical(18),
+                          //         Row(
+                          //           mainAxisSize: MainAxisSize.min,
+                          //           children: [
+                          //             ServerDetailRow(
+                          //               label: 'Uptime:',
+                          //               value:
+                          //                   '${_worldMapMarkersData[index].uptime}%',
+                          //             ),
+                          //             const Space.horizontal(24),
+                          //             ServerDetailRow(
+                          //               label: 'Uptime:',
+                          //               value:
+                          //                   '${_worldMapMarkersData[index].uptime}%',
+                          //             ),
+                          //           ],
+                          //         ),
+                          //         Row(
+                          //           mainAxisSize: MainAxisSize.min,
+                          //           children: [
+                          //             ServerDetailRow(
+                          //               label: 'Region:',
+                          //               value: _worldMapMarkersData[index]
+                          //                   .region,
+                          //             ),
+                          //             const Space.horizontal(24),
+                          //             ServerDetailRow(
+                          //               label: 'Region:',
+                          //               value: _worldMapMarkersData[index]
+                          //                   .region,
+                          //             ),
+                          //           ],
+                          //         ),
+                          //         Row(
+                          //           mainAxisSize: MainAxisSize.min,
+                          //           children: [
+                          //             ServerDetailRow(
+                          //               label: 'Cores:',
+                          //               value:
+                          //                   '${_worldMapMarkersData[index].cores}',
+                          //             ),
+                          //             const Space.horizontal(24),
+                          //             ServerDetailRow(
+                          //               label: 'Cores:',
+                          //               value:
+                          //                   '${_worldMapMarkersData[index].cores}',
+                          //             ),
+                          //           ],
+                          //         ),
+                          //         Row(
+                          //           mainAxisSize: MainAxisSize.min,
+                          //           children: [
+                          //             ServerDetailRow(
+                          //               label: 'Memory:',
+                          //               value:
+                          //                   '${_worldMapMarkersData[index].memory}GB',
+                          //             ),
+                          //             const Space.horizontal(24),
+                          //             ServerDetailRow(
+                          //               label: 'Memory:',
+                          //               value:
+                          //                   '${_worldMapMarkersData[index].memory}GB',
+                          //             ),
+                          //           ],
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   );
+                          // },
+                          // onWillZoom: (details) {
+                          //   try {
+                          //     details.newZoomLevel.printInfo();
+                          //
+                          //     if (details.newZoomLevel! > 2 &&
+                          //         details.newZoomLevel! <= 3) {
+                          //       _worldMapMarkersData.clear();
+                          //       final regions = context
+                          //           .read<ServerDataProvider>()
+                          //           .getRegionList();
+                          //       final serversInARegion = <ServerModel>[];
+                          //       for (final region in regions) {
+                          //         final servers = context
+                          //             .read<ServerDataProvider>()
+                          //             .findRegion(region);
+                          //         serversInARegion.addAll(servers);
+                          //       }
+                          //       _worldMapMarkersData.addAll(serversInARegion);
+                          //       _worldMapShapeController.clearMarkers();
+                          //       for (var i = 0;
+                          //           i < _worldMapMarkersData.length;
+                          //           i++) {
+                          //         _worldMapShapeController.insertMarker(i);
+                          //       }
+                          //     } else if (details.newZoomLevel! >= 4) {
+                          //       _worldMapMarkersData.clear();
+                          //       final countries = context
+                          //           .read<ServerDataProvider>()
+                          //           .getCountryList();
+                          //       for (final country in countries) {
+                          //         final serversInACountry = context
+                          //             .read<ServerDataProvider>()
+                          //             .findCountry(country);
+                          //         _worldMapMarkersData
+                          //             .addAll(serversInACountry);
+                          //       }
+                          //       _worldMapShapeController.clearMarkers();
+                          //       for (var i = 0;
+                          //           i < _worldMapMarkersData.length;
+                          //           i++) {
+                          //         _worldMapShapeController.insertMarker(i);
+                          //       }
+                          //     }
+                          //
+                          //     if (details.newZoomLevel! < 4 &&
+                          //         details.previousZoomLevel! >= 4) {
+                          //       _worldMapMarkersData.clear();
+                          //       final regions = context
+                          //           .read<ServerDataProvider>()
+                          //           .getRegionList();
+                          //       final serversInARegion = <ServerModel>[];
+                          //       for (final region in regions) {
+                          //         final servers = context
+                          //             .read<ServerDataProvider>()
+                          //             .findRegion(region);
+                          //         serversInARegion.addAll(servers);
+                          //       }
+                          //       _worldMapMarkersData.addAll(serversInARegion);
+                          //       _worldMapShapeController.clearMarkers();
+                          //       for (var i = 0;
+                          //           i < _worldMapMarkersData.length;
+                          //           i++) {
+                          //         _worldMapShapeController.insertMarker(i);
+                          //       }
+                          //     } else if (details.newZoomLevel! <= 2 &&
+                          //         details.previousZoomLevel! > 2) {
+                          //       _worldMapMarkersData.clear();
+                          //       final continents = context
+                          //           .read<ServerDataProvider>()
+                          //           .getContinentList();
+                          //       for (final continent in continents) {
+                          //         final serversInAContinent = context
+                          //             .read<ServerDataProvider>()
+                          //             .findContinentServer(continent);
+                          //         for (final continent in continents) {
+                          //           final serverInAContinent = context
+                          //               .read<ServerDataProvider>()
+                          //               .findContinentServer(continent);
+                          //           _worldMapMarkersData.add(
+                          //             serverInAContinent,
+                          //           );
+                          //         }
+                          //       }
+                          //       _worldMapShapeController.clearMarkers();
+                          //       for (var i = 0;
+                          //           i < _worldMapMarkersData.length;
+                          //           i++) {
+                          //         _worldMapShapeController.insertMarker(i);
+                          //       }
+                          //     }
+                          //   } catch (e) {
+                          //     e.printError();
+                          //   }
+                          //   return true;
+                          // },
+                          markerBuilder: (context, index) {
+                            double markerSize;
+                            var canShowCount = false;
+
+                            if (context
                                     .read<ServerDataProvider>()
-                                    .data[index]
-                                    .latitude,
-                                longitude: context
+                                    .data
+                                    .length <=
+                                10) {
+                              markerSize = 30.0;
+                              canShowCount = true;
+                            } else if (context
                                     .read<ServerDataProvider>()
-                                    .data[index]
-                                    .longitude,
-                                size: Size(markerSize, markerSize),
-                                iconColor: graphlinecolor2.withOpacity(0.8),
-                                child: ZoomIn(
-                                  child: Container(
-                                    height: markerSize,
-                                    width: markerSize,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: graphlinecolor2.withOpacity(0.8),
-                                    ),
-                                    // alignment: Alignment.center,
-                                    // child: canShowCount
-                                    //     ? Text(
-                                    //         '${_worldMapMarkersData.length}',
-                                    //         style: context.medium,
-                                    //       )
-                                    //     : null,
+                                    .data
+                                    .length <=
+                                50) {
+                              markerSize = 15.0;
+                              canShowCount = false;
+                            } else {
+                              markerSize = 10.0;
+                            }
+                            return MapMarker(
+                              latitude: context
+                                  .read<ServerDataProvider>()
+                                  .data[index]
+                                  .latitude,
+                              longitude: context
+                                  .read<ServerDataProvider>()
+                                  .data[index]
+                                  .longitude,
+                              size: Size(markerSize, markerSize),
+                              iconColor: graphlinecolor2.withOpacity(0.8),
+                              child: ZoomIn(
+                                child: Container(
+                                  height: markerSize,
+                                  width: markerSize,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: graphlinecolor2.withOpacity(0.8),
                                   ),
+                                  // alignment: Alignment.center,
+                                  // child: canShowCount
+                                  //     ? Text(
+                                  //         '${_worldMapMarkersData.length}',
+                                  //         style: context.medium,
+                                  //       )
+                                  //     : null,
                                 ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ] else
-                FadeIn(
-                  child: ContinentMap(
-                    continent: _continentsList.keys.toList()[_selectedIndex],
-                    filePath: _continentsList.values.toList()[_selectedIndex],
-                  ),
-                ),
+              ),
+              // ] else
+              // FadeIn(
+              //   child: ContinentMap(
+              //     continent: _continentsList.keys.toList()[_selectedIndex],
+              //     filePath: _continentsList.values.toList()[_selectedIndex],
+              //   ),
+              // ),
             ],
           ),
         ),
