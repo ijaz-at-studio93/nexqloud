@@ -77,11 +77,11 @@ class _WorldMapState extends State<WorldMap> {
 
     // Load all server data into _worldMapMarkersData
     _worldMapMarkersData.addAll(allServers);
-
+    context.read<ServerDataProvider>().data.length;
     _worldMapDataSource = MapShapeSource.asset(
       'world_map.json',
       shapeDataField: 'continent',
-      dataCount: _worldMapMarkersData.length,
+      dataCount: context.read<ServerDataProvider>().data.length,
       primaryValueMapper: (index) => _continentsList.keys.toList()[index],
     );
   }
@@ -204,7 +204,8 @@ class _WorldMapState extends State<WorldMap> {
                           MapShapeLayer(
                             strokeWidth: 0,
                             source: _worldMapDataSource,
-                            initialMarkersCount: _worldMapMarkersData.length,
+                            initialMarkersCount:
+                                context.read<ServerDataProvider>().data.length,
                             color: kWhite.withOpacity(0.2),
                             strokeColor: kWhite.withOpacity(0.22),
                             controller: _worldMapShapeController,
@@ -442,19 +443,32 @@ class _WorldMapState extends State<WorldMap> {
                               double markerSize;
                               var canShowCount = false;
 
-                              if (_worldMapMarkersData.length <= 10) {
+                              if (context
+                                      .read<ServerDataProvider>()
+                                      .data
+                                      .length <=
+                                  10) {
                                 markerSize = 30.0;
                                 canShowCount = true;
-                              } else if (_worldMapMarkersData.length <= 50) {
+                              } else if (context
+                                      .read<ServerDataProvider>()
+                                      .data
+                                      .length <=
+                                  50) {
                                 markerSize = 15.0;
                                 canShowCount = false;
                               } else {
                                 markerSize = 10.0;
                               }
                               return MapMarker(
-                                latitude: _worldMapMarkersData[index].latitude,
-                                longitude:
-                                    _worldMapMarkersData[index].longitude,
+                                latitude: context
+                                    .read<ServerDataProvider>()
+                                    .data[index]
+                                    .latitude,
+                                longitude: context
+                                    .read<ServerDataProvider>()
+                                    .data[index]
+                                    .longitude,
                                 size: Size(markerSize, markerSize),
                                 iconColor: graphlinecolor2.withOpacity(0.8),
                                 child: ZoomIn(

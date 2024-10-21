@@ -10,6 +10,7 @@ class Assets {
   static const String assetsOceania = 'assets/oceania.json';
   static const String assetsSouthAmerica = 'assets/south-america.json';
   static const String assetsWorldMap = 'assets/world_map.json';
+  static const String nexqloudAssetsWorldMap = 'assets/world_map.json';
   static const String pngAbg = 'assets/images/png/abg.png';
   static const String pngAppBarBg = 'assets/images/png/app_bar_bg.png';
   static const String pngBottomLeft = 'assets/images/png/bottom_left.png';
