@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nexqloud/core/constants/colors.dart';
@@ -9,6 +10,7 @@ import 'package:nexqloud/features/main/ui/widgets/data_analysis_gauges.dart';
 import 'package:nexqloud/features/main/ui/widgets/data_grid.dart';
 import 'package:nexqloud/features/main/ui/widgets/main_app_bar.dart';
 import 'package:nexqloud/features/main/ui/widgets/world_map.dart';
+import 'package:nexqloud/features/main/utils/url_launcher.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -90,17 +92,21 @@ class MainScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         const Space.vertical(20),
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             AppStoreIcon(
                               assetPath:
                                   'assets/icons/svg/apple_icon_white.svg',
+                              onTap: () => UrlLauncher.openUrl(
+                                  'https://apps.apple.com/us/app/nexqloud-app/id6499353452'),
                             ),
-                            Space.horizontal(10),
+                            const Space.horizontal(10),
                             AppStoreIcon(
                               assetPath:
                                   'assets/icons/svg/google_play_icon_white.svg',
+                              onTap: () => UrlLauncher.openUrl(
+                                  'https://play.google.com/store/apps/details?id=com.nexqloud.providerapp.prod'),
                             ),
                           ],
                         ),
@@ -126,30 +132,37 @@ class AppStoreIcon extends StatelessWidget {
   const AppStoreIcon({
     super.key,
     required this.assetPath,
+    this.onTap,
   });
   final String assetPath;
+  final onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 54,
-      width: 54,
-      decoration: BoxDecoration(
-        color: kWhite,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      padding: const EdgeInsets.all(8),
+    return CupertinoButton(
+      onPressed: onTap,
+      padding: EdgeInsets.zero,
+      minSize: 0,
       child: Container(
-        padding: const EdgeInsets.all(7),
+        height: 54,
+        width: 54,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [kBlack.withOpacity(0.3), kBlack],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-          borderRadius: BorderRadius.circular(12),
+          color: kWhite,
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: SvgPicture.asset(
-          assetPath,
+        padding: const EdgeInsets.all(8),
+        child: Container(
+          padding: const EdgeInsets.all(7),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [kBlack.withOpacity(0.3), kBlack],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: SvgPicture.asset(
+            assetPath,
+          ),
         ),
       ),
     );

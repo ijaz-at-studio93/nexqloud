@@ -121,7 +121,10 @@ class _WorldMapState extends State<WorldMap> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(context.isMobile ? 20 : 38),
+          padding: EdgeInsets.symmetric(
+            vertical: context.isMobile ? 20 : 38,
+            horizontal: context.isMobile ? 10 : 38,
+          ),
           child: Column(
             children: [
               Text(
