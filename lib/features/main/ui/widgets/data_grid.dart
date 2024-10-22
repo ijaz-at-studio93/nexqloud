@@ -41,7 +41,7 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
     'Berlin',
     'Paris',
     'Sydney',
-    'San Francisco'
+    'California',
   ];
 
   Future<List<ProviderModel>> fetchAndGenerateProviderData() async {
@@ -90,6 +90,7 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
     originalProviderData = providers;
     providerData = providers;
     _providerDataSource = ProviderDataSource(providerData: providerData);
+    setState(() {});
 
     return providers;
   }
@@ -690,14 +691,18 @@ class ProviderDataSource extends DataGridSource {
                   cell.value == 'true'
                       ? 'assets/icons/png/secure_icon.png'
                       : 'assets/icons/png/warning_icon.png',
-                  height: 16,
-                  width: 16,
+                  height: navigatorKey.currentState!.context.isMobile ? 14 : 16,
+                  width: navigatorKey.currentState!.context.isMobile ? 14 : 16,
                 ),
                 const Space.horizontal(8),
                 Text(
                   // cell.value.toString(),
                   cell.value == 'true' ? 'Online' : 'Offline',
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: navigatorKey.currentState!.context.isMobile
+                          ? 12
+                          : 14),
                 ),
               ],
             ),
@@ -713,13 +718,17 @@ class ProviderDataSource extends DataGridSource {
                 ),
                 SvgPicture.asset(
                   'assets/icons/svg/server.svg',
-                  height: 16,
-                  width: 16,
+                  height: navigatorKey.currentState!.context.isMobile ? 14 : 16,
+                  width: navigatorKey.currentState!.context.isMobile ? 14 : 16,
                 ),
                 const Space.horizontal(8),
                 Text(
                   cell.value.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: navigatorKey.currentState!.context.isMobile
+                          ? 12
+                          : 14),
                 ),
               ],
             ),
@@ -735,13 +744,17 @@ class ProviderDataSource extends DataGridSource {
                 ),
                 SvgPicture.asset(
                   'assets/icons/svg/server.svg',
-                  height: 16,
-                  width: 16,
+                  height: navigatorKey.currentState!.context.isMobile ? 14 : 16,
+                  width: navigatorKey.currentState!.context.isMobile ? 14 : 16,
                 ),
                 const Space.horizontal(8),
                 Text(
                   cell.value.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: navigatorKey.currentState!.context.isMobile
+                          ? 12
+                          : 14),
                 ),
               ],
             ),
@@ -757,13 +770,17 @@ class ProviderDataSource extends DataGridSource {
                 ),
                 SvgPicture.asset(
                   'assets/icons/svg/gpu_icon.svg',
-                  height: 16,
-                  width: 16,
+                  height: navigatorKey.currentState!.context.isMobile ? 14 : 16,
+                  width: navigatorKey.currentState!.context.isMobile ? 14 : 16,
                 ),
                 const Space.horizontal(8),
                 Text(
                   cell.value.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: navigatorKey.currentState!.context.isMobile
+                          ? 12
+                          : 14),
                 ),
               ],
             ),
@@ -779,24 +796,65 @@ class ProviderDataSource extends DataGridSource {
                 ),
                 SvgPicture.asset(
                   'assets/icons/svg/cpu_meter_icon.svg',
-                  height: 16,
-                  width: 16,
+                  height: navigatorKey.currentState!.context.isMobile ? 14 : 16,
+                  width: navigatorKey.currentState!.context.isMobile ? 14 : 16,
                 ),
                 const Space.horizontal(8),
                 Text(
                   cell.value.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: navigatorKey.currentState!.context.isMobile
+                          ? 12
+                          : 14),
+                ),
+              ],
+            ),
+          );
+        } else if (cell.columnName == 'location') {
+          return Container(
+            alignment: Alignment.topLeft,
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Space.horizontal(
+                  navigatorKey.currentState!.context.width *
+                      (navigatorKey.currentState!.context.isMobile
+                          ? 0.01
+                          : 0.03),
+                ),
+                Text(
+                  cell.value.toString(),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: navigatorKey.currentState!.context.isMobile
+                          ? 12
+                          : 14), // Text color
                 ),
               ],
             ),
           );
         } else {
           return Container(
-            alignment: Alignment.center,
+            alignment: Alignment.topLeft,
             padding: const EdgeInsets.all(8.0),
-            child: Text(
-              cell.value.toString(),
-              style: const TextStyle(color: Colors.white), // Text color
+            child: Row(
+              children: [
+                Space.horizontal(
+                  navigatorKey.currentState!.context.width *
+                      (navigatorKey.currentState!.context.isMobile
+                          ? 0.01
+                          : 0.025),
+                ),
+                Text(
+                  cell.value.toString(),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: navigatorKey.currentState!.context.isMobile
+                          ? 12
+                          : 14), // Text color
+                ),
+              ],
             ),
           );
         }
