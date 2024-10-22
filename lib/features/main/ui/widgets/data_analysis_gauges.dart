@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:nexqloud/core/constants/colors.dart';
@@ -47,13 +50,42 @@ class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
   // Mock function to simulate data updates
   void updateGaugeData() {
     setState(() {
-      diskReadsProgress = (diskReadsProgress + 5) % 100;
-      diskWritesProgress = (diskWritesProgress + 3) % 100;
-      cpuProgress = (cpuProgress + 2) % 100;
-      ramProgress = (ramProgress + 4) % 100;
-      networkOutboundProgress = (networkOutboundProgress + 6) % 100;
-      networkInboundProgress = (networkInboundProgress + 5) % 100;
+      diskReadsProgress = (diskReadsProgress + Random().nextInt(10) - 5)
+          .clamp(10, 90)
+          .toDouble();
+      diskWritesProgress = (diskWritesProgress + Random().nextInt(10) - 5)
+          .clamp(10, 90)
+          .toDouble();
+      cpuProgress =
+          (cpuProgress + Random().nextInt(10) - 5).clamp(10, 90).toDouble();
+      ramProgress =
+          (ramProgress + Random().nextInt(10) - 5).clamp(10, 90).toDouble();
+      networkOutboundProgress =
+          (networkOutboundProgress + Random().nextInt(10) - 5)
+              .clamp(10, 90)
+              .toDouble();
+      networkInboundProgress =
+          (networkInboundProgress + Random().nextInt(10) - 5)
+              .clamp(10, 90)
+              .toDouble();
     });
+  }
+
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+      'called'.printInfo();
+      updateGaugeData();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel(); // Cancel the timer when the widget is disposed
+    super.dispose();
   }
 
   @override
@@ -62,7 +94,7 @@ class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
       children: [
         Expanded(
           child: CircularGauge(
-            value: '4.126',
+            value: diskReadsProgress.toString(),
             progress: diskReadsProgress,
             unit: 'GBit/s',
             title: 'Disk Reads',
@@ -73,7 +105,7 @@ class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
         const Space.horizontal(8),
         Expanded(
           child: CircularGauge(
-            value: '8.098',
+            value: diskWritesProgress.toString(),
             progress: diskWritesProgress,
             unit: 'MBit/s',
             title: 'Disk Writes',
@@ -108,7 +140,7 @@ class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
         const Space.horizontal(8),
         Expanded(
           child: CircularGauge(
-            value: '4.126',
+            value: networkOutboundProgress.toString(),
             progress: networkOutboundProgress,
             unit: 'GBit/s',
             title: 'Network Outbound',
@@ -119,7 +151,7 @@ class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
         const Space.horizontal(8),
         Expanded(
           child: CircularGauge(
-            value: '8.098',
+            value: networkInboundProgress.toString(),
             progress: networkInboundProgress,
             unit: 'MBit/s',
             title: 'Network Inbound',
