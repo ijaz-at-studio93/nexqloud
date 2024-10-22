@@ -57,9 +57,9 @@ class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
           .clamp(10, 90)
           .toDouble();
       cpuProgress =
-          (cpuProgress + Random().nextInt(10) - 5).clamp(10, 90).toDouble();
+          (cpuProgress + Random().nextInt(10) - 5).clamp(40, 90).toDouble();
       ramProgress =
-          (ramProgress + Random().nextInt(10) - 5).clamp(10, 90).toDouble();
+          (ramProgress + Random().nextInt(10) - 5).clamp(20, 90).toDouble();
       networkOutboundProgress =
           (networkOutboundProgress + Random().nextInt(10) - 5)
               .clamp(10, 90)
@@ -77,7 +77,7 @@ class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
   void initState() {
     super.initState();
     _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
-      'called'.printInfo();
+      // 'called'.printInfo();
       updateGaugeData();
     });
   }
@@ -326,7 +326,7 @@ class CircularGauge extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
-                                        value, //'4.126'
+                                        '$value.0', //'4.126'
                                         style: context.bold?.copyWith(
                                           fontSize: 18,
                                         ),
