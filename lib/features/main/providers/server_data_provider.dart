@@ -9,7 +9,7 @@ class ServerDataProvider with ChangeNotifier {
   void setData() {
     _data = <ServerModel>[
       const ServerModel(
-        serverName: 'NXQ-842-EEV',
+        serverName: 'SRV-84O70Q',
         uptime: 99.87,
         region: 'US-E1',
         cores: 32,
@@ -20,7 +20,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'NA-754-CHI',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'NA-US1',
         cores: 32,
@@ -31,7 +31,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'NA-757-LAX',
+        serverName: 'SRV-84O70Q',
         uptime: 99.80,
         region: 'NA-US2',
         cores: 32,
@@ -42,7 +42,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'NA-768-YUL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.10,
         region: 'NA-CA1',
         cores: 32,
@@ -53,7 +53,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-577-LAX',
+        serverName: 'SRV-84O70Q',
         uptime: 99.91,
         region: 'US-W1',
         cores: 128,
@@ -64,7 +64,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-586-TOR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.11,
         region: 'CA-E2',
         cores: 32,
@@ -75,7 +75,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'MX-591-GDL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.03,
         region: 'MX-W1',
         cores: 64,
@@ -86,7 +86,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-741-NYC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.87,
         region: 'US-E1',
         cores: 128,
@@ -97,7 +97,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-742-LAX',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'US-W1',
         cores: 64,
@@ -108,7 +108,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-743-TOR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.56,
         region: 'CA-E1',
         cores: 64,
@@ -119,7 +119,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'MX-744-GDL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'MX-W1',
         cores: 64,
@@ -130,7 +130,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-745-ATL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.43,
         region: 'US-SE1',
         cores: 32,
@@ -141,7 +141,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-701-NYC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.65,
         region: 'US-E1',
         cores: 32,
@@ -152,7 +152,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-702-MIA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'US-SE1',
         cores: 16,
@@ -163,7 +163,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-703-DAL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'US-SW1',
         cores: 64,
@@ -174,7 +174,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-704-SEA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'US-NW1',
         cores: 128,
@@ -185,7 +185,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-705-CHI',
+        serverName: 'SRV-84O70Q',
         uptime: 99.01,
         region: 'US-C1',
         cores: 32,
@@ -196,7 +196,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-706-BOS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'US-NE1',
         cores: 32,
@@ -207,7 +207,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-707-ATL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'US-SE2',
         cores: 16,
@@ -218,7 +218,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-708-PHX',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'US-SW2',
         cores: 64,
@@ -229,7 +229,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-709-MTL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.89,
         region: 'CA-E1',
         cores: 128,
@@ -240,7 +240,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-710-VAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.93,
         region: 'CA-W1',
         cores: 64,
@@ -251,7 +251,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-711-EDM',
+        serverName: 'SRV-84O70Q',
         uptime: 98.56,
         region: 'CA-W2',
         cores: 32,
@@ -262,7 +262,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'MX-712-MEX',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'MX-E1',
         cores: 64,
@@ -273,7 +273,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'MX-713-MTY',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'MX-N1',
         cores: 32,
@@ -284,7 +284,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-722-SLC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.71,
         region: 'US-NW2',
         cores: 128,
@@ -295,7 +295,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-723-HOU',
+        serverName: 'SRV-84O70Q',
         uptime: 99.49,
         region: 'US-S1',
         cores: 64,
@@ -306,7 +306,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'NA-774-MEX',
+        serverName: 'SRV-84O70Q',
         uptime: 98.50,
         region: 'NA-MX1',
         cores: 32,
@@ -317,7 +317,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-724-DEN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.19,
         region: 'US-C2',
         cores: 64,
@@ -328,7 +328,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-725-POR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.02,
         region: 'US-NW3',
         cores: 32,
@@ -339,7 +339,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-726-MSP',
+        serverName: 'SRV-84O70Q',
         uptime: 98.76,
         region: 'US-NC1',
         cores: 32,
@@ -350,7 +350,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-727-NOR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'US-SE3',
         cores: 64,
@@ -361,7 +361,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-728-SAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.81,
         region: 'US-W2',
         cores: 128,
@@ -372,7 +372,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-729-WIN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.47,
         region: 'CA-C1',
         cores: 32,
@@ -383,7 +383,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-730-ORL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.91,
         region: 'US-SE4',
         cores: 64,
@@ -394,7 +394,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-734-LVS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'US-W3',
         cores: 128,
@@ -405,7 +405,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-735-IND',
+        serverName: 'SRV-84O70Q',
         uptime: 98.98,
         region: 'US-MW1',
         cores: 32,
@@ -416,7 +416,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-736-DET',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'US-NC2',
         cores: 64,
@@ -427,7 +427,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-737-CLE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'US-NC3',
         cores: 64,
@@ -438,7 +438,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-738-BUF',
+        serverName: 'SRV-84O70Q',
         uptime: 99.87,
         region: 'US-NE2',
         cores: 32,
@@ -449,7 +449,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-739-RAL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'US-SE5',
         cores: 32,
@@ -460,7 +460,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'US-740-OMA',
+        serverName: 'SRV-84O70Q',
         uptime: 98.67,
         region: 'US-MW2',
         cores: 32,
@@ -472,7 +472,7 @@ class ServerDataProvider with ChangeNotifier {
       ),
       /////////////
       const ServerModel(
-        serverName: 'BRZ-452-QZA',
+        serverName: 'SRV-84O70Q',
         uptime: 98.76,
         region: 'BR-E1',
         cores: 16,
@@ -483,7 +483,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'BR-578-RIO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'BR-S1',
         cores: 32,
@@ -494,7 +494,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'AR-592-COR',
+        serverName: 'SRV-84O70Q',
         uptime: 98.89,
         region: 'AR-C1',
         cores: 32,
@@ -505,7 +505,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'BR-746-RIO',
+        serverName: 'SRV-84O70Q',
         uptime: 98.87,
         region: 'BR-S1',
         cores: 32,
@@ -516,7 +516,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'AR-747-BUE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'AR-C1',
         cores: 64,
@@ -527,7 +527,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CL-748-SCL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'CL-E1',
         cores: 64,
@@ -538,7 +538,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CO-749-BOG',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'CO-C1',
         cores: 32,
@@ -549,7 +549,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'PE-750-LIM',
+        serverName: 'SRV-84O70Q',
         uptime: 98.97,
         region: 'PE-W1',
         cores: 32,
@@ -560,7 +560,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'BR-714-SPA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.88,
         region: 'BR-S1',
         cores: 128,
@@ -571,7 +571,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'BR-715-BH',
+        serverName: 'SRV-84O70Q',
         uptime: 99.03,
         region: 'BR-C1',
         cores: 64,
@@ -582,7 +582,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'AR-716-BUE',
+        serverName: 'SRV-84O70Q',
         uptime: 98.76,
         region: 'AR-E1',
         cores: 32,
@@ -593,7 +593,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CO-717-BOG',
+        serverName: 'SRV-84O70Q',
         uptime: 98.99,
         region: 'CO-C1',
         cores: 32,
@@ -604,7 +604,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CL-718-SCL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.87,
         region: 'CL-W1',
         cores: 64,
@@ -615,7 +615,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'PE-719-LIM',
+        serverName: 'SRV-84O70Q',
         uptime: 98.88,
         region: 'PE-C1',
         cores: 32,
@@ -626,7 +626,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'VE-720-CCS',
+        serverName: 'SRV-84O70Q',
         uptime: 98.98,
         region: 'VE-N1',
         cores: 64,
@@ -637,7 +637,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'UY-721-MVD',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'UY-S1',
         cores: 32,
@@ -648,7 +648,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'BR-731-CWB',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'BR-S2',
         cores: 64,
@@ -659,7 +659,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'AR-732-SFE',
+        serverName: 'SRV-84O70Q',
         uptime: 98.56,
         region: 'AR-C2',
         cores: 32,
@@ -670,7 +670,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CL-733-VAP',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'CL-N1',
         cores: 64,
@@ -681,7 +681,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'SA-755-RIO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.56,
         region: 'SA-BR1',
         cores: 32,
@@ -692,7 +692,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'SA-759-BUE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.65,
         region: 'SA-AR1',
         cores: 32,
@@ -703,7 +703,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'SA-763-SCL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.60,
         region: 'SA-CL1',
         cores: 32,
@@ -714,7 +714,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'SA-770-LIM',
+        serverName: 'SRV-84O70Q',
         uptime: 98.90,
         region: 'SA-PE1',
         cores: 32,
@@ -725,7 +725,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'SA-776-BOG',
+        serverName: 'SRV-84O70Q',
         uptime: 98.30,
         region: 'SA-CO1',
         cores: 32,
@@ -736,7 +736,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'BR-830-FOR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'BR-N1',
         cores: 32,
@@ -747,7 +747,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'AR-831-ROS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.31,
         region: 'AR-S1',
         cores: 32,
@@ -758,7 +758,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CL-832-ANF',
+        serverName: 'SRV-84O70Q',
         uptime: 99.57,
         region: 'CL-N2',
         cores: 64,
@@ -769,7 +769,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CO-833-MED',
+        serverName: 'SRV-84O70Q',
         uptime: 99.24,
         region: 'CO-N1',
         cores: 64,
@@ -780,7 +780,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'PE-834-TRU',
+        serverName: 'SRV-84O70Q',
         uptime: 99.10,
         region: 'PE-N1',
         cores: 32,
@@ -791,7 +791,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'VE-835-MAR',
+        serverName: 'SRV-84O70Q',
         uptime: 98.93,
         region: 'VE-W1',
         cores: 64,
@@ -802,7 +802,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'UY-836-PDN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.35,
         region: 'UY-E1',
         cores: 32,
@@ -813,7 +813,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'BR-837-MAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.27,
         region: 'BR-A1',
         cores: 64,
@@ -824,7 +824,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'AR-838-SFE',
+        serverName: 'SRV-84O70Q',
         uptime: 98.91,
         region: 'AR-E2',
         cores: 32,
@@ -835,7 +835,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CO-839-CLO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.16,
         region: 'CO-S1',
         cores: 32,
@@ -846,7 +846,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CL-840-PMC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.08,
         region: 'CL-S1',
         cores: 32,
@@ -857,7 +857,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'PE-841-ARE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.32,
         region: 'PE-S1',
         cores: 64,
@@ -868,7 +868,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'BR-842-RBR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.22,
         region: 'BR-W1',
         cores: 32,
@@ -879,7 +879,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'VE-843-MER',
+        serverName: 'SRV-84O70Q',
         uptime: 98.94,
         region: 'VE-W2',
         cores: 32,
@@ -890,7 +890,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'UY-844-RIV',
+        serverName: 'SRV-84O70Q',
         uptime: 99.29,
         region: 'UY-N1',
         cores: 32,
@@ -901,7 +901,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'South America',
       ),
       const ServerModel(
-        serverName: 'CO-845-BUC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.04,
         region: 'CO-N2',
         cores: 32,
@@ -914,7 +914,7 @@ class ServerDataProvider with ChangeNotifier {
 
       ///////////
       const ServerModel(
-        serverName: 'RUS-576-NVS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.85,
         region: 'RU-E1',
         cores: 64,
@@ -925,7 +925,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'DE-579-BER',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'DE-N1',
         cores: 64,
@@ -936,7 +936,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'RU-582-SPB',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'RU-W1',
         cores: 32,
@@ -947,7 +947,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'UK-583-MAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.56,
         region: 'UK-N1',
         cores: 64,
@@ -958,7 +958,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'FR-587-MAR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'FR-S1',
         cores: 64,
@@ -969,7 +969,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'IT-589-MIL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'IT-N1',
         cores: 64,
@@ -980,7 +980,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'ES-590-BCN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'ES-E2',
         cores: 32,
@@ -991,7 +991,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'SE-597-GOT',
+        serverName: 'SRV-84O70Q',
         uptime: 99.76,
         region: 'SE-W1',
         cores: 64,
@@ -1002,7 +1002,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'NO-598-BGO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.54,
         region: 'NO-W1',
         cores: 32,
@@ -1013,7 +1013,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'FI-599-TKU',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'FI-S1',
         cores: 64,
@@ -1024,7 +1024,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'DK-600-AAR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.32,
         region: 'DK-E1',
         cores: 32,
@@ -1035,7 +1035,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'CH-601-GVA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'CH-W1',
         cores: 64,
@@ -1046,7 +1046,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'AT-602-GRZ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'AT-S1',
         cores: 32,
@@ -1057,7 +1057,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'PL-605-WRO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'PL-SW1',
         cores: 64,
@@ -1068,7 +1068,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'CZ-606-BRN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.01,
         region: 'CZ-SE1',
         cores: 32,
@@ -1079,7 +1079,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'HU-607-DEB',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'HU-E1',
         cores: 64,
@@ -1090,7 +1090,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'RO-608-TIM',
+        serverName: 'SRV-84O70Q',
         uptime: 98.98,
         region: 'RO-W1',
         cores: 32,
@@ -1101,7 +1101,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'BG-609-VAR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'BG-E1',
         cores: 64,
@@ -1112,7 +1112,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'DE-751-BER',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'DE-N1',
         cores: 64,
@@ -1123,7 +1123,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'UK-752-LON',
+        serverName: 'SRV-84O70Q',
         uptime: 99.56,
         region: 'UK-E1',
         cores: 64,
@@ -1134,7 +1134,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'FR-753-PAR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'FR-N1',
         cores: 64,
@@ -1145,7 +1145,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'IT-754-ROM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'IT-C1',
         cores: 32,
@@ -1156,7 +1156,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'RU-755-MOS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'RU-W1',
         cores: 128,
@@ -1167,7 +1167,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-750-LON',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'EU-UK1',
         cores: 32,
@@ -1178,7 +1178,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-751-PAR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.56,
         region: 'EU-FR1',
         cores: 32,
@@ -1189,7 +1189,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-752-BER',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'EU-DE1',
         cores: 32,
@@ -1200,7 +1200,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-753-AMS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'EU-NL1',
         cores: 32,
@@ -1211,7 +1211,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-756-FRA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.90,
         region: 'EU-DE1',
         cores: 32,
@@ -1222,7 +1222,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-761-IST',
+        serverName: 'SRV-84O70Q',
         uptime: 99.95,
         region: 'EU-TR1',
         cores: 32,
@@ -1233,7 +1233,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-764-CPH',
+        serverName: 'SRV-84O70Q',
         uptime: 99.50,
         region: 'EU-DK1',
         cores: 32,
@@ -1244,7 +1244,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-767-ARN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.20,
         region: 'EU-SE1',
         cores: 32,
@@ -1255,7 +1255,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'EU-773-MAD',
+        serverName: 'SRV-84O70Q',
         uptime: 98.60,
         region: 'EU-ES1',
         cores: 32,
@@ -1267,7 +1267,7 @@ class ServerDataProvider with ChangeNotifier {
       ),
       // ///////////
       const ServerModel(
-        serverName: 'AU-580-SYD',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'AU-E2',
         cores: 16,
@@ -1278,7 +1278,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'NZ-603-WLG',
+        serverName: 'SRV-84O70Q',
         uptime: 99.56,
         region: 'NZ-N1',
         cores: 64,
@@ -1289,7 +1289,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'AU-761-SYD',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'AU-E1',
         cores: 128,
@@ -1300,7 +1300,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'NZ-762-AUK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.21,
         region: 'NZ-N1',
         cores: 64,
@@ -1311,7 +1311,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'OC-769-SYD',
+        serverName: 'SRV-84O70Q',
         uptime: 99,
         region: 'OC-AU1',
         cores: 32,
@@ -1322,7 +1322,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'OC-775-WLG',
+        serverName: 'SRV-84O70Q',
         uptime: 98.40,
         region: 'OC-NZ1',
         cores: 32,
@@ -1333,7 +1333,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'AU-581-MEL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.71,
         region: 'AU-E3',
         cores: 64,
@@ -1344,7 +1344,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'NZ-604-CHC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.62,
         region: 'NZ-N2',
         cores: 32,
@@ -1355,7 +1355,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'AU-582-PER',
+        serverName: 'SRV-84O70Q',
         uptime: 99.80,
         region: 'AU-W1',
         cores: 32,
@@ -1366,7 +1366,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'NZ-605-HAM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.58,
         region: 'NZ-N3',
         cores: 16,
@@ -1377,7 +1377,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'AU-583-BRI',
+        serverName: 'SRV-84O70Q',
         uptime: 99.74,
         region: 'AU-N1',
         cores: 128,
@@ -1388,7 +1388,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Oceania',
       ),
       const ServerModel(
-        serverName: 'FJ-601-SUV',
+        serverName: 'SRV-84O70Q',
         uptime: 99.65,
         region: 'FJ-N1',
         cores: 16,
@@ -1401,7 +1401,7 @@ class ServerDataProvider with ChangeNotifier {
 
       /////////////
       const ServerModel(
-        serverName: 'IN-581-MUM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.05,
         region: 'IN-W1',
         cores: 64,
@@ -1412,7 +1412,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'CN-584-SHA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.93,
         region: 'CN-E2',
         cores: 128,
@@ -1423,7 +1423,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'JP-585-OSA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.81,
         region: 'JP-W1',
         cores: 64,
@@ -1434,7 +1434,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'TR-594-ANK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'TR-C1',
         cores: 32,
@@ -1445,7 +1445,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'SA-595-JED',
+        serverName: 'SRV-84O70Q',
         uptime: 98.98,
         region: 'SA-W1',
         cores: 64,
@@ -1456,7 +1456,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'IR-596-MSH',
+        serverName: 'SRV-84O70Q',
         uptime: 98.87,
         region: 'IR-NE1',
         cores: 32,
@@ -1467,7 +1467,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'TH-604-CNX',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'TH-N1',
         cores: 32,
@@ -1478,7 +1478,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-610-YEK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'RU-C1',
         cores: 128,
@@ -1489,7 +1489,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'CN-611-CKG',
+        serverName: 'SRV-84O70Q',
         uptime: 99.89,
         region: 'CN-SW1',
         cores: 64,
@@ -1500,7 +1500,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-612-OMS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'RU-SB1',
         cores: 32,
@@ -1511,7 +1511,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'JP-756-TOK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'JP-E1',
         cores: 64,
@@ -1522,7 +1522,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'CN-757-BJS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.54,
         region: 'CN-N1',
         cores: 128,
@@ -1533,7 +1533,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'IN-758-DEL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'IN-N1',
         cores: 64,
@@ -1544,7 +1544,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'KR-759-SEL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.87,
         region: 'KR-E1',
         cores: 32,
@@ -1555,7 +1555,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'TH-760-BKK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.23,
         region: 'TH-E1',
         cores: 32,
@@ -1566,7 +1566,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-743-BKK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'AS-TH1',
         cores: 32,
@@ -1577,7 +1577,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-744-TPE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'AS-TW1',
         cores: 32,
@@ -1588,7 +1588,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-745-HKG',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'AS-HK1',
         cores: 32,
@@ -1599,7 +1599,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-746-JKT',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'AS-ID1',
         cores: 32,
@@ -1610,7 +1610,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-747-TYO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.56,
         region: 'AS-JP1',
         cores: 32,
@@ -1621,7 +1621,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-748-SEO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'AS-KR1',
         cores: 32,
@@ -1632,7 +1632,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-749-SIN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'AS-SG1',
         cores: 32,
@@ -1643,7 +1643,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-758-BKK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.75,
         region: 'AS-TH1',
         cores: 32,
@@ -1654,7 +1654,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-760-DEL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.85,
         region: 'AS-IN1',
         cores: 32,
@@ -1665,7 +1665,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-762-TYO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.70,
         region: 'AS-JP1',
         cores: 32,
@@ -1676,7 +1676,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-766-BKK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.30,
         region: 'AS-TH1',
         cores: 32,
@@ -1687,7 +1687,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'AS-772-HKG',
+        serverName: 'SRV-84O70Q',
         uptime: 98.70,
         region: 'AS-HK1',
         cores: 32,
@@ -1698,7 +1698,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'PH-801-MNL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.55,
         region: 'PH-N1',
         cores: 32,
@@ -1709,7 +1709,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'VN-802-HAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.73,
         region: 'VN-N1',
         cores: 32,
@@ -1720,7 +1720,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'MY-803-KUL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.87,
         region: 'MY-S1',
         cores: 64,
@@ -1731,7 +1731,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'BD-804-DAC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.33,
         region: 'BD-E1',
         cores: 32,
@@ -1742,7 +1742,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'PK-805-LHE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'PK-W1',
         cores: 64,
@@ -1753,7 +1753,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'MM-806-RGN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.19,
         region: 'MM-N1',
         cores: 32,
@@ -1764,7 +1764,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'ID-807-DPS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.61,
         region: 'ID-S1',
         cores: 64,
@@ -1775,7 +1775,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'NP-808-KTM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.50,
         region: 'NP-N1',
         cores: 32,
@@ -1786,7 +1786,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'SG-809-SIN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.90,
         region: 'SG-W1',
         cores: 128,
@@ -1797,7 +1797,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'TW-810-TPE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.89,
         region: 'TW-N1',
         cores: 64,
@@ -1808,7 +1808,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'KH-811-PNH',
+        serverName: 'SRV-84O70Q',
         uptime: 99.63,
         region: 'KH-N1',
         cores: 32,
@@ -1819,7 +1819,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'LK-812-CMB',
+        serverName: 'SRV-84O70Q',
         uptime: 99.48,
         region: 'LK-S1',
         cores: 32,
@@ -1830,7 +1830,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'UZ-813-TAS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.29,
         region: 'UZ-N1',
         cores: 64,
@@ -1841,7 +1841,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'KZ-814-ALA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.67,
         region: 'KZ-S1',
         cores: 128,
@@ -1852,7 +1852,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'MN-815-ULN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.42,
         region: 'MN-E1',
         cores: 64,
@@ -1863,7 +1863,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'KZ-816-NUK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.72,
         region: 'KZ-N1',
         cores: 64,
@@ -1874,7 +1874,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-817-KRS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.61,
         region: 'RU-E1',
         cores: 128,
@@ -1885,7 +1885,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-818-NVS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'RU-W1',
         cores: 64,
@@ -1896,7 +1896,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-819-IRK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.57,
         region: 'RU-E2',
         cores: 64,
@@ -1907,7 +1907,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'CN-820-URM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.88,
         region: 'CN-NW1',
         cores: 128,
@@ -1918,7 +1918,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'MN-821-DAL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.74,
         region: 'MN-N1',
         cores: 64,
@@ -1929,7 +1929,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-822-CHT',
+        serverName: 'SRV-84O70Q',
         uptime: 99.32,
         region: 'RU-C2',
         cores: 64,
@@ -1940,7 +1940,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'MN-823-CHO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.51,
         region: 'MN-C1',
         cores: 32,
@@ -1951,7 +1951,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-824-KHV',
+        serverName: 'SRV-84O70Q',
         uptime: 99.60,
         region: 'RU-FE1',
         cores: 128,
@@ -1962,7 +1962,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'CN-825-HLH',
+        serverName: 'SRV-84O70Q',
         uptime: 99.77,
         region: 'CN-N2',
         cores: 64,
@@ -1973,7 +1973,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'KZ-826-SHM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.48,
         region: 'KZ-S2',
         cores: 64,
@@ -1984,7 +1984,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-827-KAZ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.30,
         region: 'RU-W2',
         cores: 64,
@@ -1995,7 +1995,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'CN-828-HRB',
+        serverName: 'SRV-84O70Q',
         uptime: 99.69,
         region: 'CN-NE1',
         cores: 128,
@@ -2006,7 +2006,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'MN-829-ZMN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.54,
         region: 'MN-E1',
         cores: 32,
@@ -2017,7 +2017,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-830-TOM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.66,
         region: 'RU-C3',
         cores: 128,
@@ -2030,7 +2030,7 @@ class ServerDataProvider with ChangeNotifier {
 
       /////////////
       const ServerModel(
-        serverName: 'AF-765-NBO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.40,
         region: 'AF-KE1',
         cores: 32,
@@ -2041,7 +2041,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'ZA-588-CPT',
+        serverName: 'SRV-84O70Q',
         uptime: 99.21,
         region: 'ZA-W1',
         cores: 32,
@@ -2052,7 +2052,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'EG-593-ALX',
+        serverName: 'SRV-84O70Q',
         uptime: 99.01,
         region: 'EG-N1',
         cores: 64,
@@ -2063,7 +2063,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'ZA-763-CPT',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'ZA-W1',
         cores: 64,
@@ -2074,7 +2074,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'NG-764-LOS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'NG-E1',
         cores: 32,
@@ -2085,7 +2085,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'EG-765-CAI',
+        serverName: 'SRV-84O70Q',
         uptime: 98.99,
         region: 'EG-N1',
         cores: 64,
@@ -2096,7 +2096,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-741-CPT',
+        serverName: 'SRV-84O70Q',
         uptime: 99.56,
         region: 'AF-ZA1',
         cores: 32,
@@ -2107,7 +2107,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-742-CAI',
+        serverName: 'SRV-84O70Q',
         uptime: 99.12,
         region: 'AF-EG1',
         cores: 32,
@@ -2118,7 +2118,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-771-LOS',
+        serverName: 'SRV-84O70Q',
         uptime: 98.80,
         region: 'AF-NG1',
         cores: 32,
@@ -2129,7 +2129,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-772-KGL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.22,
         region: 'AF-RW1',
         cores: 32,
@@ -2140,7 +2140,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-773-ADD',
+        serverName: 'SRV-84O70Q',
         uptime: 99.35,
         region: 'AF-ET1',
         cores: 64,
@@ -2151,7 +2151,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-774-DAR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.28,
         region: 'AF-TZ1',
         cores: 32,
@@ -2162,7 +2162,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-775-DKR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.14,
         region: 'AF-SN1',
         cores: 64,
@@ -2173,7 +2173,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-776-ABJ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.06,
         region: 'AF-CI1',
         cores: 32,
@@ -2184,7 +2184,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-777-ACR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.43,
         region: 'AF-GH1',
         cores: 64,
@@ -2195,7 +2195,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-778-KAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.19,
         region: 'AF-NG2',
         cores: 32,
@@ -2206,7 +2206,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-779-MPM',
+        serverName: 'SRV-84O70Q',
         uptime: 98.95,
         region: 'AF-MZ1',
         cores: 64,
@@ -2217,7 +2217,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-780-WDH',
+        serverName: 'SRV-84O70Q',
         uptime: 99.32,
         region: 'AF-NA1',
         cores: 32,
@@ -2228,7 +2228,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-781-LUQ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.25,
         region: 'AF-ZM1',
         cores: 32,
@@ -2239,7 +2239,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-782-NDJ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.18,
         region: 'AF-TD1',
         cores: 32,
@@ -2250,7 +2250,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-783-JIB',
+        serverName: 'SRV-84O70Q',
         uptime: 99.09,
         region: 'AF-DJ1',
         cores: 32,
@@ -2261,7 +2261,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-784-LBV',
+        serverName: 'SRV-84O70Q',
         uptime: 99.02,
         region: 'AF-GA1',
         cores: 32,
@@ -2272,7 +2272,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-785-MGA',
+        serverName: 'SRV-84O70Q',
         uptime: 99.33,
         region: 'AF-MD1',
         cores: 64,
@@ -2283,7 +2283,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Africa',
       ),
       const ServerModel(
-        serverName: 'AF-786-LUN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.24,
         region: 'AF-ZM2',
         cores: 32,
@@ -2295,7 +2295,7 @@ class ServerDataProvider with ChangeNotifier {
       ),
       // Antarctica
       const ServerModel(
-        serverName: 'AQ-766-MCM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.98,
         region: 'AQ-S1',
         cores: 128,
@@ -2306,7 +2306,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-767-NTH',
+        serverName: 'SRV-84O70Q',
         uptime: 99.92,
         region: 'AQ-S2',
         cores: 64,
@@ -2317,7 +2317,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-768-VST',
+        serverName: 'SRV-84O70Q',
         uptime: 99.91,
         region: 'AQ-S3',
         cores: 32,
@@ -2328,7 +2328,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-769-ICE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.85,
         region: 'AQ-S4',
         cores: 64,
@@ -2339,7 +2339,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-770-FRZ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.76,
         region: 'AQ-S5',
         cores: 32,
@@ -2350,7 +2350,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-771-GLC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.82,
         region: 'AQ-S6',
         cores: 64,
@@ -2361,7 +2361,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-772-ICE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.73,
         region: 'AQ-S7',
         cores: 32,
@@ -2373,7 +2373,7 @@ class ServerDataProvider with ChangeNotifier {
       ),
       // Corrected Antarctica latitudes and longitudes
       const ServerModel(
-        serverName: 'AQ-766-MCM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.98,
         region: 'AQ-S1',
         cores: 128,
@@ -2384,7 +2384,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-767-NTH',
+        serverName: 'SRV-84O70Q',
         uptime: 99.92,
         region: 'AQ-S2',
         cores: 64,
@@ -2395,7 +2395,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-768-VST',
+        serverName: 'SRV-84O70Q',
         uptime: 99.91,
         region: 'AQ-S3',
         cores: 32,
@@ -2406,7 +2406,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-769-ICE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.85,
         region: 'AQ-S4',
         cores: 64,
@@ -2417,7 +2417,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-770-FRZ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.76,
         region: 'AQ-S5',
         cores: 32,
@@ -2428,7 +2428,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Antarctica',
       ),
       const ServerModel(
-        serverName: 'AQ-771-GLC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.82,
         region: 'AQ-S6',
         cores: 64,
@@ -2441,7 +2441,7 @@ class ServerDataProvider with ChangeNotifier {
 
       // Greenland Servers
       const ServerModel(
-        serverName: 'GL-850-NUK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'GL-S1',
         cores: 32,
@@ -2452,7 +2452,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'GL-851-SFJ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.37,
         region: 'GL-N1',
         cores: 64,
@@ -2463,7 +2463,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'GL-852-UMM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.15,
         region: 'GL-E1',
         cores: 32,
@@ -2474,7 +2474,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'GL-853-KAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.08,
         region: 'GL-W1',
         cores: 64,
@@ -2487,7 +2487,7 @@ class ServerDataProvider with ChangeNotifier {
 
 // Norway Servers
       const ServerModel(
-        serverName: 'NO-860-OSL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.72,
         region: 'NO-S1',
         cores: 64,
@@ -2498,7 +2498,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'NO-861-BGO',
+        serverName: 'SRV-84O70Q',
         uptime: 99.51,
         region: 'NO-W1',
         cores: 32,
@@ -2509,7 +2509,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'NO-862-TRD',
+        serverName: 'SRV-84O70Q',
         uptime: 99.34,
         region: 'NO-N1',
         cores: 32,
@@ -2520,7 +2520,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'NO-863-TOS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.28,
         region: 'NO-N2',
         cores: 64,
@@ -2533,7 +2533,7 @@ class ServerDataProvider with ChangeNotifier {
 
 // Canada Servers
       const ServerModel(
-        serverName: 'CA-870-TOR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.85,
         region: 'CA-E1',
         cores: 128,
@@ -2544,7 +2544,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-871-VAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.61,
         region: 'CA-W1',
         cores: 64,
@@ -2555,7 +2555,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-872-YOW',
+        serverName: 'SRV-84O70Q',
         uptime: 99.42,
         region: 'CA-C1',
         cores: 32,
@@ -2566,7 +2566,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-873-MTL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.30,
         region: 'CA-E2',
         cores: 64,
@@ -2579,7 +2579,7 @@ class ServerDataProvider with ChangeNotifier {
 
 // Iceland Servers
       const ServerModel(
-        serverName: 'IS-880-REK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.64,
         region: 'IS-S1',
         cores: 64,
@@ -2590,7 +2590,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'IS-881-AKR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.52,
         region: 'IS-N1',
         cores: 32,
@@ -2601,7 +2601,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'IS-882-KES',
+        serverName: 'SRV-84O70Q',
         uptime: 99.41,
         region: 'IS-W1',
         cores: 32,
@@ -2612,7 +2612,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'IS-883-ISF',
+        serverName: 'SRV-84O70Q',
         uptime: 99.33,
         region: 'IS-W2',
         cores: 64,
@@ -2624,7 +2624,7 @@ class ServerDataProvider with ChangeNotifier {
       ),
 
       const ServerModel(
-        serverName: 'RU-890-MOW',
+        serverName: 'SRV-84O70Q',
         uptime: 99.75,
         region: 'RU-W1',
         cores: 128,
@@ -2635,7 +2635,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'RU-891-LED',
+        serverName: 'SRV-84O70Q',
         uptime: 99.64,
         region: 'RU-W2',
         cores: 64,
@@ -2646,7 +2646,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'RU-892-KZN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.41,
         region: 'RU-C1',
         cores: 32,
@@ -2657,7 +2657,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'RU-893-NVS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.38,
         region: 'RU-S1',
         cores: 64,
@@ -2668,7 +2668,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-894-KHB',
+        serverName: 'SRV-84O70Q',
         uptime: 99.28,
         region: 'RU-E1',
         cores: 32,
@@ -2679,7 +2679,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-895-IRK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.21,
         region: 'RU-S2',
         cores: 64,
@@ -2690,7 +2690,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-896-OMS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.15,
         region: 'RU-S3',
         cores: 32,
@@ -2702,7 +2702,7 @@ class ServerDataProvider with ChangeNotifier {
       ),
 
       const ServerModel(
-        serverName: 'CA-880-CGY',
+        serverName: 'SRV-84O70Q',
         uptime: 99.78,
         region: 'CA-W2',
         cores: 128,
@@ -2713,7 +2713,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-881-WPG',
+        serverName: 'SRV-84O70Q',
         uptime: 99.66,
         region: 'CA-C2',
         cores: 64,
@@ -2724,7 +2724,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-882-EDM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.55,
         region: 'CA-W3',
         cores: 64,
@@ -2735,7 +2735,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-883-HAL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.42,
         region: 'CA-E3',
         cores: 32,
@@ -2746,7 +2746,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-884-YVR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.30,
         region: 'CA-W4',
         cores: 32,
@@ -2757,7 +2757,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'CA-885-QUE',
+        serverName: 'SRV-84O70Q',
         uptime: 99.25,
         region: 'CA-E4',
         cores: 64,
@@ -2769,7 +2769,7 @@ class ServerDataProvider with ChangeNotifier {
       ),
 
       const ServerModel(
-        serverName: 'GL-860-TUL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.54,
         region: 'GL-N2',
         cores: 32,
@@ -2780,7 +2780,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'GL-861-ILL',
+        serverName: 'SRV-84O70Q',
         uptime: 99.46,
         region: 'GL-C1',
         cores: 64,
@@ -2791,7 +2791,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'GL-862-KAN',
+        serverName: 'SRV-84O70Q',
         uptime: 99.32,
         region: 'GL-W2',
         cores: 32,
@@ -2802,7 +2802,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'GL-863-NAR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.28,
         region: 'GL-N3',
         cores: 32,
@@ -2813,7 +2813,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'GL-864-QAQ',
+        serverName: 'SRV-84O70Q',
         uptime: 99.11,
         region: 'GL-S2',
         cores: 64,
@@ -2824,7 +2824,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'North America',
       ),
       const ServerModel(
-        serverName: 'RU-899-MRS',
+        serverName: 'SRV-84O70Q',
         uptime: 99.25,
         region: 'RU-N1',
         cores: 32,
@@ -2835,7 +2835,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'RU-898-SBR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.28,
         region: 'RU-N4',
         cores: 64,
@@ -2846,7 +2846,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-897-YML',
+        serverName: 'SRV-84O70Q',
         uptime: 99.30,
         region: 'RU-N3',
         cores: 32,
@@ -2857,7 +2857,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-900-KOM',
+        serverName: 'SRV-84O70Q',
         uptime: 99.52,
         region: 'RU-N5',
         cores: 64,
@@ -2868,7 +2868,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'RU-901-YKT',
+        serverName: 'SRV-84O70Q',
         uptime: 99.42,
         region: 'RU-E4',
         cores: 64,
@@ -2879,7 +2879,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-902-SBR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.36,
         region: 'RU-S4',
         cores: 32,
@@ -2890,7 +2890,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-903-TAR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.31,
         region: 'RU-S5',
         cores: 32,
@@ -2901,7 +2901,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-904-YAK',
+        serverName: 'SRV-84O70Q',
         uptime: 99.28,
         region: 'RU-E5',
         cores: 32,
@@ -2912,7 +2912,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'RU-905-YML',
+        serverName: 'SRV-84O70Q',
         uptime: 99.19,
         region: 'RU-N6',
         cores: 64,
@@ -2923,7 +2923,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Asia',
       ),
       const ServerModel(
-        serverName: 'GL-869-ARC',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'GL-N5',
         cores: 32,
@@ -2935,7 +2935,7 @@ class ServerDataProvider with ChangeNotifier {
       ),
 
       const ServerModel(
-        serverName: 'IS-884-CTR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.62,
         region: 'IS-C1',
         cores: 64,
@@ -2946,7 +2946,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'NO-864-FMR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.51,
         region: 'NO-N3',
         cores: 64,
@@ -2957,7 +2957,7 @@ class ServerDataProvider with ChangeNotifier {
         continent: 'Europe',
       ),
       const ServerModel(
-        serverName: 'GL-865-NGR',
+        serverName: 'SRV-84O70Q',
         uptime: 99.45,
         region: 'GL-N3',
         cores: 32,
@@ -3008,4 +3008,6 @@ class ServerDataProvider with ChangeNotifier {
         .toSet()
         .toList();
   }
+
+  
 }

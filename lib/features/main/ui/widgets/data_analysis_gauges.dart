@@ -28,17 +28,42 @@ class DataAnalysisGauges extends StatelessWidget {
   }
 }
 
-class DesktopAnalysisCards extends StatelessWidget {
+class DesktopAnalysisCards extends StatefulWidget {
   const DesktopAnalysisCards({super.key});
+
+  @override
+  _DesktopAnalysisCardsState createState() => _DesktopAnalysisCardsState();
+}
+
+class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
+  // Define the dynamic data for the gauges
+  double diskReadsProgress = 40;
+  double diskWritesProgress = 60;
+  double cpuProgress = 60;
+  double ramProgress = 40;
+  double networkOutboundProgress = 40;
+  double networkInboundProgress = 60;
+
+  // Mock function to simulate data updates
+  void updateGaugeData() {
+    setState(() {
+      diskReadsProgress = (diskReadsProgress + 5) % 100;
+      diskWritesProgress = (diskWritesProgress + 3) % 100;
+      cpuProgress = (cpuProgress + 2) % 100;
+      ramProgress = (ramProgress + 4) % 100;
+      networkOutboundProgress = (networkOutboundProgress + 6) % 100;
+      networkInboundProgress = (networkInboundProgress + 5) % 100;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: CircularGauge(
             value: '4.126',
-            progress: 40,
+            progress: diskReadsProgress,
             unit: 'GBit/s',
             title: 'Disk Reads',
             subCardTitle: 'Devices Online',
@@ -46,10 +71,10 @@ class DesktopAnalysisCards extends StatelessWidget {
           ),
         ),
         const Space.horizontal(8),
-        const Expanded(
+        Expanded(
           child: CircularGauge(
             value: '8.098',
-            progress: 60,
+            progress: diskWritesProgress,
             unit: 'MBit/s',
             title: 'Disk Writes',
             subCardTitle: 'Total vCPU Cores',
@@ -58,15 +83,11 @@ class DesktopAnalysisCards extends StatelessWidget {
         ),
         const Space.horizontal(8),
         SizedBox(
-          width: context.isDesktop
-              ? context.width * 0.16
-              : context.isTablet
-                  ? 270
-                  : 270,
-          child: const NeedleCircularGauge(
+          width: context.isDesktop ? context.width * 0.16 : 270,
+          child: NeedleCircularGauge(
             title: '',
-            progress: 60,
-            unit: 'vCPU  Utilization',
+            progress: cpuProgress,
+            unit: 'vCPU Utilization',
             value: 'CPU',
             subCardTitle: 'Total vCPU Cores',
             subCardValue: '8.64K',
@@ -74,14 +95,10 @@ class DesktopAnalysisCards extends StatelessWidget {
         ),
         const Space.horizontal(8),
         SizedBox(
-          width: context.isDesktop
-              ? context.width * 0.16
-              : context.isTablet
-                  ? 270
-                  : 270,
-          child: const NeedleCircularGauge(
+          width: context.isDesktop ? context.width * 0.16 : 270,
+          child: NeedleCircularGauge(
             value: 'RAM',
-            progress: 40,
+            progress: ramProgress,
             unit: 'Memory Used',
             title: '',
             subCardTitle: "Total AI GPU's",
@@ -89,10 +106,10 @@ class DesktopAnalysisCards extends StatelessWidget {
           ),
         ),
         const Space.horizontal(8),
-        const Expanded(
+        Expanded(
           child: CircularGauge(
             value: '4.126',
-            progress: 40,
+            progress: networkOutboundProgress,
             unit: 'GBit/s',
             title: 'Network Outbound',
             subCardTitle: "Total AI GPU's",
@@ -100,10 +117,10 @@ class DesktopAnalysisCards extends StatelessWidget {
           ),
         ),
         const Space.horizontal(8),
-        const Expanded(
+        Expanded(
           child: CircularGauge(
             value: '8.098',
-            progress: 60,
+            progress: networkInboundProgress,
             unit: 'MBit/s',
             title: 'Network Inbound',
             subCardTitle: 'Average Bandwidth',
