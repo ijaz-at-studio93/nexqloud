@@ -164,30 +164,84 @@ class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
   }
 }
 
-class MobileAnalysisCards extends StatelessWidget {
+class MobileAnalysisCards extends StatefulWidget {
   const MobileAnalysisCards({super.key});
 
   @override
+  State<MobileAnalysisCards> createState() => _MobileAnalysisCardsState();
+}
+
+class _MobileAnalysisCardsState extends State<MobileAnalysisCards> {
+  // Define the dynamic data for the gauges
+  double diskReadsProgress = 40;
+  double diskWritesProgress = 60;
+  double cpuProgress = 60;
+  double ramProgress = 40;
+  double networkOutboundProgress = 40;
+  double networkInboundProgress = 60;
+
+  // Mock function to simulate data updates
+  void updateGaugeData() {
+    setState(() {
+      diskReadsProgress = (diskReadsProgress + Random().nextInt(10) - 5)
+          .clamp(10, 90)
+          .toDouble();
+      diskWritesProgress = (diskWritesProgress + Random().nextInt(10) - 5)
+          .clamp(10, 90)
+          .toDouble();
+      cpuProgress =
+          (cpuProgress + Random().nextInt(10) - 5).clamp(40, 90).toDouble();
+      ramProgress =
+          (ramProgress + Random().nextInt(10) - 5).clamp(20, 90).toDouble();
+      networkOutboundProgress =
+          (networkOutboundProgress + Random().nextInt(10) - 5)
+              .clamp(10, 90)
+              .toDouble();
+      networkInboundProgress =
+          (networkInboundProgress + Random().nextInt(10) - 5)
+              .clamp(10, 90)
+              .toDouble();
+    });
+  }
+
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+      // 'called'.printInfo();
+      updateGaugeData();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel(); // Cancel the timer when the widget is disposed
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Row(
           children: [
             Expanded(
               child: CircularGauge(
-                value: '4.126',
-                progress: 40,
+                value: diskReadsProgress.toString(),
+                progress: diskReadsProgress,
                 unit: 'GBit/s',
                 title: 'Disk Reads',
                 subCardTitle: 'Devices Online',
                 subCardValue: '65',
               ),
             ),
-            Space.horizontal(8),
+            const Space.horizontal(8),
             Expanded(
               child: CircularGauge(
-                value: '8.098',
-                progress: 60,
+                value: diskWritesProgress.toString(),
+                progress: diskWritesProgress,
                 unit: 'MBit/s',
                 title: 'Disk Writes',
                 subCardTitle: 'Total vCPU Cores',
@@ -196,24 +250,24 @@ class MobileAnalysisCards extends StatelessWidget {
             ),
           ],
         ),
-        Space.vertical(8),
+        const Space.vertical(8),
         Row(
           children: [
             Expanded(
               child: NeedleCircularGauge(
                 title: '',
-                progress: 60,
+                progress: cpuProgress,
                 unit: 'vCPU  Utilization',
                 value: 'CPU',
                 subCardTitle: 'Total vCPU Cores',
                 subCardValue: '8.64K',
               ),
             ),
-            Space.horizontal(8),
+            const Space.horizontal(8),
             Expanded(
               child: NeedleCircularGauge(
                 value: 'RAM',
-                progress: 40,
+                progress: ramProgress,
                 unit: 'Memory Used',
                 title: '',
                 subCardTitle: "Total AI GPU's",
@@ -222,24 +276,24 @@ class MobileAnalysisCards extends StatelessWidget {
             ),
           ],
         ),
-        Space.vertical(8),
+        const Space.vertical(8),
         Row(
           children: [
             Expanded(
               child: CircularGauge(
-                value: '4.126',
-                progress: 40,
+                value: networkOutboundProgress.toString(),
+                progress: networkOutboundProgress,
                 unit: 'GBit/s',
                 title: 'Network Outbound',
                 subCardTitle: "Total AI GPU's",
                 subCardValue: '298',
               ),
             ),
-            Space.horizontal(8),
+            const Space.horizontal(8),
             Expanded(
               child: CircularGauge(
-                value: '8.098',
-                progress: 60,
+                value: networkInboundProgress.toString(),
+                progress: networkInboundProgress,
                 unit: 'MBit/s',
                 title: 'Network Inbound',
                 subCardTitle: 'Average Bandwidth',
