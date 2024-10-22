@@ -7,7 +7,6 @@ import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/features/main/models/server_model.dart';
 import 'package:nexqloud/features/main/providers/server_data_provider.dart';
-import 'package:nexqloud/features/main/ui/widgets/continent_map.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
@@ -80,7 +79,7 @@ class _WorldMapState extends State<WorldMap> {
     context.read<ServerDataProvider>().data.length;
     _worldMapDataSource = MapShapeSource.asset(
       'world_map.json',
-      shapeDataField: 'name',
+      shapeDataField: 'continent',
       dataCount: context.read<ServerDataProvider>().data.length,
       // primaryValueMapper: (index) => _continentsList.keys.toList()[index],
     );

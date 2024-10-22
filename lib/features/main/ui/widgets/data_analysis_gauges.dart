@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:nexqloud/core/constants/colors.dart';
@@ -28,17 +31,71 @@ class DataAnalysisGauges extends StatelessWidget {
   }
 }
 
-class DesktopAnalysisCards extends StatelessWidget {
+class DesktopAnalysisCards extends StatefulWidget {
   const DesktopAnalysisCards({super.key});
+
+  @override
+  _DesktopAnalysisCardsState createState() => _DesktopAnalysisCardsState();
+}
+
+class _DesktopAnalysisCardsState extends State<DesktopAnalysisCards> {
+  // Define the dynamic data for the gauges
+  double diskReadsProgress = 40;
+  double diskWritesProgress = 60;
+  double cpuProgress = 60;
+  double ramProgress = 40;
+  double networkOutboundProgress = 40;
+  double networkInboundProgress = 60;
+
+  // Mock function to simulate data updates
+  void updateGaugeData() {
+    setState(() {
+      diskReadsProgress = (diskReadsProgress + Random().nextInt(10) - 5)
+          .clamp(10, 90)
+          .toDouble();
+      diskWritesProgress = (diskWritesProgress + Random().nextInt(10) - 5)
+          .clamp(10, 90)
+          .toDouble();
+      cpuProgress =
+          (cpuProgress + Random().nextInt(10) - 5).clamp(10, 90).toDouble();
+      ramProgress =
+          (ramProgress + Random().nextInt(10) - 5).clamp(10, 90).toDouble();
+      networkOutboundProgress =
+          (networkOutboundProgress + Random().nextInt(10) - 5)
+              .clamp(10, 90)
+              .toDouble();
+      networkInboundProgress =
+          (networkInboundProgress + Random().nextInt(10) - 5)
+              .clamp(10, 90)
+              .toDouble();
+    });
+  }
+
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+      'called'.printInfo();
+      updateGaugeData();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel(); // Cancel the timer when the widget is disposed
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: CircularGauge(
-            value: '4.126',
-            progress: 40,
+            value: diskReadsProgress.toString(),
+            progress: diskReadsProgress,
             unit: 'GBit/s',
             title: 'Disk Reads',
             subCardTitle: 'Devices Online',
@@ -46,10 +103,10 @@ class DesktopAnalysisCards extends StatelessWidget {
           ),
         ),
         const Space.horizontal(8),
-        const Expanded(
+        Expanded(
           child: CircularGauge(
-            value: '8.098',
-            progress: 60,
+            value: diskWritesProgress.toString(),
+            progress: diskWritesProgress,
             unit: 'MBit/s',
             title: 'Disk Writes',
             subCardTitle: 'Total vCPU Cores',
@@ -58,15 +115,11 @@ class DesktopAnalysisCards extends StatelessWidget {
         ),
         const Space.horizontal(8),
         SizedBox(
-          width: context.isDesktop
-              ? context.width * 0.16
-              : context.isTablet
-                  ? 270
-                  : 270,
-          child: const NeedleCircularGauge(
+          width: context.isDesktop ? context.width * 0.16 : 270,
+          child: NeedleCircularGauge(
             title: '',
-            progress: 60,
-            unit: 'vCPU  Utilization',
+            progress: cpuProgress,
+            unit: 'vCPU Utilization',
             value: 'CPU',
             subCardTitle: 'Total vCPU Cores',
             subCardValue: '8.64K',
@@ -74,14 +127,10 @@ class DesktopAnalysisCards extends StatelessWidget {
         ),
         const Space.horizontal(8),
         SizedBox(
-          width: context.isDesktop
-              ? context.width * 0.16
-              : context.isTablet
-                  ? 270
-                  : 270,
-          child: const NeedleCircularGauge(
+          width: context.isDesktop ? context.width * 0.16 : 270,
+          child: NeedleCircularGauge(
             value: 'RAM',
-            progress: 40,
+            progress: ramProgress,
             unit: 'Memory Used',
             title: '',
             subCardTitle: "Total AI GPU's",
@@ -89,10 +138,10 @@ class DesktopAnalysisCards extends StatelessWidget {
           ),
         ),
         const Space.horizontal(8),
-        const Expanded(
+        Expanded(
           child: CircularGauge(
-            value: '4.126',
-            progress: 40,
+            value: networkOutboundProgress.toString(),
+            progress: networkOutboundProgress,
             unit: 'GBit/s',
             title: 'Network Outbound',
             subCardTitle: "Total AI GPU's",
@@ -100,10 +149,10 @@ class DesktopAnalysisCards extends StatelessWidget {
           ),
         ),
         const Space.horizontal(8),
-        const Expanded(
+        Expanded(
           child: CircularGauge(
-            value: '8.098',
-            progress: 60,
+            value: networkInboundProgress.toString(),
+            progress: networkInboundProgress,
             unit: 'MBit/s',
             title: 'Network Inbound',
             subCardTitle: 'Average Bandwidth',
