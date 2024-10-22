@@ -25,6 +25,8 @@ dependencies:
   url_launcher: ^6.3.1
   animate_do: ^3.3.4
   syncfusion_flutter_datagrid: ^27.1.52
+  excel: ^4.0.6
+  path_provider: ^2.1.4
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +40,7 @@ flutter:
   assets:
     - assets/
     - assets/world_map.json
+    - assets/servers_list.xlsx
     - assets/icons/svg/
     - assets/icons/png/
     - assets/images/png/

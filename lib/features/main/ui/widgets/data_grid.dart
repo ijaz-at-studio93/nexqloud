@@ -1,4 +1,8 @@
+import 'dart:math';
+
+import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:nexqloud/core/constants/colors.dart';
@@ -16,6 +20,7 @@ class TransparentDataGrid extends StatefulWidget {
 }
 
 class _TransparentDataGridState extends State<TransparentDataGrid> {
+  List<ProviderModel> originalProviderData = []; // Store the original data
   late List<ProviderModel> providerData;
   late ProviderDataSource _providerDataSource;
   int rowsPerPage = 10;
@@ -25,35 +30,108 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
   @override
   void initState() {
     super.initState();
-    providerData = getProviderData(); // Dummy data generation
-    _providerDataSource = ProviderDataSource(providerData: providerData);
+    fetchAndGenerateProviderData();
+    // providerData = getProviderData(); // Dummy data generation
   }
 
-  List<ProviderModel> getProviderData() {
-    return List.generate(
-      50,
-      (index) => ProviderModel(
-        name: 'prov...server $index',
-        location: 'US,UK',
-        uptime: (79 + index % 10).toString() + '%',
-        cpu: '${index % 5 + 1} CPU',
-        gpu: '${index % 5 * 2} GB',
-        memory: '${index % 8 + 1} GB',
-        disk: '${index % 5 + 1} GB',
-        audited: index % 2 == 0 ? 'Audited' : 'Not Audited',
-        price: '\$${(index * 3.3).toStringAsFixed(2)}',
-      ),
-    );
+  List<String> locations = [
+    'New York',
+    'London',
+    'Tokyo',
+    'Berlin',
+    'Paris',
+    'Sydney',
+    'San Francisco'
+  ];
+
+  Future<List<ProviderModel>> fetchAndGenerateProviderData() async {
+    // Initialize the provider data source
+    _providerDataSource = ProviderDataSource(providerData: []);
+
+    // Load the Excel file from assets
+    final data = await rootBundle.load("assets/servers_list.xlsx");
+    final bytes = data.buffer.asUint8List();
+    final excel = Excel.decodeBytes(bytes);
+
+    final providers = <ProviderModel>[];
+    final random = Random();
+
+    // Assuming data is in the first sheet
+    final sheet = excel.tables.keys.first;
+    final table = excel.tables[sheet];
+
+    if (table != null) {
+      for (var i = 1; i < table.rows.length; i++) {
+        final row = table.rows[i];
+
+        // Check if row length matches expected structure
+        if (row.length >= 8) {
+          // Create a ProviderModel object for each row
+          final provider = ProviderModel(
+            name: row[0]!.value?.toString() ?? '', // Server Name
+            model: row[1]?.value.toString() ?? '', // Model
+            online: row[2]?.value.toString() == 'TRUE', // Online status
+            uptime: row[3]?.value.toString() ?? '', // Uptime
+            cpu: row[4]?.value.toString() ?? '', // CPU
+            memory: row[5]?.value.toString() ?? '', // Memory
+            disk: row[6]?.value.toString() ?? '', // Disk
+            qloudscore: row[7]?.value.toString() ?? '', // Qloudscore
+            location: locations[random.nextInt(locations.length)], gpu: '',
+            audited: row[2]?.value.toString() ?? '',
+            price: '', // Random location
+          );
+
+          providers.add(provider);
+        }
+      }
+    }
+
+    // Update the data source
+    originalProviderData = providers;
+    providerData = providers;
+    _providerDataSource = ProviderDataSource(providerData: providerData);
+
+    return providers;
   }
+
+  ///For dummy data generation
+  // List<ProviderModel> getProviderData() {
+  //   return List.generate(
+  //     50,
+  //     (index) => ProviderModel(
+  //       name: 'prov...server $index',
+  //       location: 'US,UK',
+  //       uptime: (79 + index % 10).toString() + '%',
+  //       cpu: '${index % 5 + 1} CPU',
+  //       gpu: '${index % 5 * 2} GB',
+  //       memory: '${index % 8 + 1} GB',
+  //       disk: '${index % 5 + 1} GB',
+  //       audited: index % 2 == 0 ? 'Audited' : 'Not Audited',
+  //       price: '\$${(index * 3.3).toStringAsFixed(2)}',
+  //     ),
+  //   );
+  // }
 
   void _onSearch(String query) {
     setState(() {
       searchQuery = query.toLowerCase();
-      providerData = getProviderData()
-          .where((element) =>
-              element.name.toLowerCase().contains(searchQuery) ||
-              element.location.toLowerCase().contains(searchQuery))
-          .toList();
+
+      if (searchQuery.isEmpty) {
+        // Reset the list to the original data when the query is empty
+        providerData = List.from(originalProviderData);
+      } else {
+        // Perform the search
+        providerData = originalProviderData
+            .where((element) =>
+                element.name.toLowerCase().contains(searchQuery) ||
+                element.location.toLowerCase().contains(searchQuery) ||
+                element.model.toLowerCase().contains(searchQuery) ||
+                element.uptime.toLowerCase().contains(searchQuery) ||
+                element.cpu.toLowerCase().contains(searchQuery) ||
+                element.disk.toLowerCase().contains(searchQuery))
+            .toList();
+      }
+
       _providerDataSource = ProviderDataSource(providerData: providerData);
     });
   }
@@ -84,13 +162,14 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
                         : ColumnWidthMode.fill,
                     columns: <GridColumn>[
                       _buildGridColumn('Name', 'name'),
-                      _buildGridColumn('Location', 'location'),
-                      _buildGridColumn('Up Time', 'uptime'),
+                      _buildGridColumn('Model', 'model'),
                       _buildGridColumn('CPU', 'cpu'),
-                      _buildGridColumn('GPU', 'gpu'),
+                      _buildGridColumn('Q-Score', 'qloudScore'),
                       _buildGridColumn('Memory', 'memory'),
                       _buildGridColumn('Disk', 'disk'),
                       _buildGridColumn('Audited', 'audited'),
+                      _buildGridColumn('Location', 'location'),
+
                       // _buildGridColumn('Price', 'price'),
                     ],
                   ),
@@ -161,6 +240,7 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
                           ),
                         ),
                       ),
+                      style: const TextStyle(color: kWhite),
                     ),
                   ],
                 ),
@@ -327,6 +407,7 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
                       ),
                     ),
                   ),
+                  style: const TextStyle(color: kWhite),
                 ),
               ],
             ),
@@ -537,6 +618,9 @@ class ProviderModel {
     required this.disk,
     required this.audited,
     required this.price,
+    required this.model, // Added field
+    required this.online, // Added field
+    required this.qloudscore, // Added field
   });
 
   final String name;
@@ -548,6 +632,9 @@ class ProviderModel {
   final String disk;
   final String audited;
   final String price;
+  final String model; // Added
+  final bool online; // Added
+  final String qloudscore; // Added
 }
 
 class ProviderDataSource extends DataGridSource {
@@ -555,14 +642,15 @@ class ProviderDataSource extends DataGridSource {
     _providerData = providerData
         .map<DataGridRow>((data) => DataGridRow(cells: [
               DataGridCell<String>(columnName: 'name', value: data.name),
-              DataGridCell<String>(
-                  columnName: 'location', value: data.location),
-              DataGridCell<String>(columnName: 'uptime', value: data.uptime),
+              DataGridCell<String>(columnName: 'model', value: data.model),
               DataGridCell<String>(columnName: 'cpu', value: data.cpu),
-              DataGridCell<String>(columnName: 'gpu', value: data.gpu),
+              DataGridCell<String>(
+                  columnName: 'qloudScore', value: data.qloudscore),
               DataGridCell<String>(columnName: 'memory', value: data.memory),
               DataGridCell<String>(columnName: 'disk', value: data.disk),
               DataGridCell<String>(columnName: 'audited', value: data.audited),
+              DataGridCell<String>(
+                  columnName: 'location', value: data.location),
               // DataGridCell<String>(columnName: 'price', value: data.price),
             ]))
         .toList();
@@ -599,16 +687,16 @@ class ProviderDataSource extends DataGridSource {
                   navigatorKey.currentState!.context.width * 0.03,
                 ),
                 Image.asset(
-                  cell.value == 'Audited'
+                  cell.value == 'true'
                       ? 'assets/icons/png/secure_icon.png'
                       : 'assets/icons/png/warning_icon.png',
                   height: 16,
                   width: 16,
                 ),
                 const Space.horizontal(8),
-                const Text(
+                Text(
                   // cell.value.toString(),
-                  '\$86.52',
+                  cell.value == 'true' ? 'Online' : 'Offline',
                   style: const TextStyle(color: Colors.white),
                 ),
               ],
@@ -618,9 +706,11 @@ class ProviderDataSource extends DataGridSource {
           return Container(
             alignment: Alignment.center,
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              // mainAxisSize: MainAxisSize.min,
               children: [
-                const Space.horizontal(20),
+                Space.horizontal(
+                  navigatorKey.currentState!.context.width * 0.02,
+                ),
                 SvgPicture.asset(
                   'assets/icons/svg/server.svg',
                   height: 16,
@@ -638,9 +728,11 @@ class ProviderDataSource extends DataGridSource {
           return Container(
             alignment: Alignment.center,
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              // mainAxisSize: MainAxisSize.min,
               children: [
-                const Space.horizontal(10),
+                Space.horizontal(
+                  navigatorKey.currentState!.context.width * 0.018,
+                ),
                 SvgPicture.asset(
                   'assets/icons/svg/server.svg',
                   height: 16,
@@ -654,13 +746,15 @@ class ProviderDataSource extends DataGridSource {
               ],
             ),
           );
-        } else if (cell.columnName == 'gpu') {
+        } else if (cell.columnName == 'qloudScore') {
           return Container(
             alignment: Alignment.center,
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              // mainAxisSize: MainAxisSize.min,
               children: [
-                const Space.horizontal(10),
+                Space.horizontal(
+                  navigatorKey.currentState!.context.width * 0.03,
+                ),
                 SvgPicture.asset(
                   'assets/icons/svg/gpu_icon.svg',
                   height: 16,
@@ -678,9 +772,11 @@ class ProviderDataSource extends DataGridSource {
           return Container(
             alignment: Alignment.center,
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              // mainAxisSize: MainAxisSize.min,
               children: [
-                const Space.horizontal(10),
+                Space.horizontal(
+                  navigatorKey.currentState!.context.width * 0.03,
+                ),
                 SvgPicture.asset(
                   'assets/icons/svg/cpu_meter_icon.svg',
                   height: 16,

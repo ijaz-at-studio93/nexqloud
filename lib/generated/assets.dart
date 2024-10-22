@@ -8,6 +8,7 @@ class Assets {
   static const String assetsEurope = 'assets/europe.json';
   static const String assetsNorthAmerica = 'assets/north-america.json';
   static const String assetsOceania = 'assets/oceania.json';
+  static const String assetsServersList = 'assets/servers_list.xlsx';
   static const String assetsSouthAmerica = 'assets/south-america.json';
   static const String assetsWorldMap = 'assets/world_map.json';
   static const String nexqloudAssetsWorldMap = 'assets/world_map.json';
