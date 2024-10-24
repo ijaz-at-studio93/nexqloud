@@ -3,6 +3,7 @@ import 'package:nexqloud/features/main/models/server_model.dart';
 
 class ServerDataProvider with ChangeNotifier {
   List<ServerModel> _data = <ServerModel>[];
+  int totalActiveServers = 545;
 
   List<ServerModel> get data => _data;
 
@@ -3008,6 +3009,4 @@ class ServerDataProvider with ChangeNotifier {
         .toSet()
         .toList();
   }
-
-  
 }

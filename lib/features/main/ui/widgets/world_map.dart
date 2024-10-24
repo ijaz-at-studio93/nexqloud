@@ -139,7 +139,10 @@ class _WorldMapState extends State<WorldMap> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: _worldMapDataSource.dataCount.toString(),
+                      text: context
+                          .read<ServerDataProvider>()
+                          .totalActiveServers
+                          .toString(),
                       style: context.bold?.copyWith(
                         fontSize: context.isMobile ? 18 : 24,
                         color: graphlinecolor2,

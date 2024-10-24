@@ -11,6 +11,8 @@ import 'package:nexqloud/core/extensions/size_ext.dart';
 import 'package:nexqloud/core/extensions/theme_ext.dart';
 import 'package:nexqloud/core/navigation/router.dart';
 import 'package:nexqloud/core/ui/widgets/custom_gradient_button.dart';
+import 'package:nexqloud/features/main/providers/server_data_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
@@ -90,6 +92,7 @@ class _TransparentDataGridState extends State<TransparentDataGrid> {
     originalProviderData = providers;
     providerData = providers;
     _providerDataSource = ProviderDataSource(providerData: providerData);
+    context.read<ServerDataProvider>().totalActiveServers = providerData.length;
     setState(() {});
 
     return providers;
